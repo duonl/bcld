@@ -48,13 +48,13 @@ ethtool
 feh
 file
 firmware-sof-signed
-font-liberation
 fontconfig
 fontconfig-config
 fonts-dejavu
 fonts-font-awesome
 fonts-freefont-ttf
 fonts-inconsolata
+fonts-liberation
 genisoimage
 gettext
 glib-networking
