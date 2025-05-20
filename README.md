@@ -1,8 +1,14 @@
+# UPDATE 20/05/2025
+📣📣📣 IMPORTANT 📣📣📣
+
+> BCLD HAS OFFICIALLY CHANGED OWNERSHIP TO DUO (NL)
+> ALL DEVELOPMENT AND MAINTENANCE ACTIVITIES WILL CONTINUE AS NORMAL
+
 # Introduction
 
 |||
 |---|---|
-| This is BCLD (Bootable Client Lockdown).<br/>This project is a follow-up to the Fedora BCLD project.<br/>BCLD was initiated in hopes of advancing hardware support and being able to operate in accordance with Secure Boot.<br/>Below are extensive instructions to the product. | <img title="" src="./assets/bcld-logo.png" alt="logo" width="300" data-align="left"> |
+| This is the <u>official</u> BCLD (Bootable Client Lockdown) Project.<br/>This project is a follow-up to the Fedora BCLD project.<br/>BCLD was initiated in hopes of advancing hardware support and being able to operate in accordance with Secure Boot.<br/>Below are extensive instructions to the product. | <img title="" src="./assets/bcld-logo.png" alt="logo" width="300" data-align="left"> |
 
 **BCLD Version**: 13.15-4 BCLD (Poseidon)<br/>
 **BCLD Kernel**: 6.11.0-26-generic
