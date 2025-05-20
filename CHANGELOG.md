@@ -3,10 +3,12 @@
 ## 2025
 
 ## May
+* `2025-05-20 15:12:27` : Changed BCLD namespace to [DUONL](https://github.com/duonl/bcld)
+  * Minor kernel patch `6.11.0-25 --> 6.11.0-26`
 * `2025-05-14 15:45:34` : [OAC-1190] Added kernel parameter to default [Grub configuration](config/grub/grub.cfg.img) and [ISO configuration](config/grub/grub.cfg.iso) to prevent hanging on shutdown: `pci=hpiosize=0`
 * `2025-05-12 11:49:04` : Removed [Intel X11 config](config/X11/xorg.conf.d/20-intel.conf)
 * `2025-05-09 17:11:36` : Set Debian repo arch to AMD64 (64-bit packages only)
-  * Imrpoved [file operations](./script/file_operations.sh)
+  * Improved [file operations](./script/file_operations.sh)
 * `2025-05-09 14:30:14` : [OAC-1190] Removing legacy Intel driver from X11 configs
   * Is needed to support Surface laptops
 
