@@ -22,7 +22,7 @@
 #
 # Copyright © 2024 Quintor B.V.
 #
-# BCLD is licensed under the EUPL, Version 1.2 or 
+# BCLD is licensed under the EUPL, Version 1.2 or
 # – as soon they will be approved by the European Commission -
 # subsequent versions of the EUPL (the "Licence");
 # You may not use BCLD except in compliance with the Licence.
@@ -146,14 +146,14 @@ function update_readme () {
 
     BCLD_README='./README.md'
 
-    KERNEL_STRING="$(/usr/bin/cat "${BCLD_README}" | /usr/bin/grep '\*\*BCLD Kernel\*\*' | /usr/bin/cut -d ':' -f2)"
     VERSION_STRING="$(/usr/bin/cat "${BCLD_README}" | /usr/bin/grep '\*\*BCLD Version\*\*' | /usr/bin/cut -d ':' -f2)"
+    KERNEL_STRING="$(/usr/bin/cat "${BCLD_README}" | /usr/bin/grep '\*\*BCLD Kernel\*\*' | /usr/bin/cut -d ':' -f2)"
+
+    list_item "Updating version info: ${BCLD_README}"
+    /usr/bin/sed -i "s#${VERSION_STRING}# ${BCLD_VERSION_STRING}<br/>#" "${BCLD_README}"
 
     list_item "Updating kernel info: ${BCLD_README}"
-    /usr/bin/sed -i "s/${KERNEL_STRING}/ ${KERNEL_VERSION}/" "${BCLD_README}"
-    
-    list_item "Updating version info: ${BCLD_README}"
-    /usr/bin/sed -i "s/${VERSION_STRING}/ ${BCLD_VERSION_STRING}/" "${BCLD_README}"
+    /usr/bin/sed -i "s#${KERNEL_STRING}# ${KERNEL_VERSION}#" "${BCLD_README}"
 }
 
 generate_bcld_md5
