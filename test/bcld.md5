@@ -119,7 +119,7 @@ ddac767ec0000bb3e8a6be031c5a7eae  ./test/bcld_test.sh
 3923f9371b39761f5903a2c9a6f1eb59  ./test/common-setup
 6a4f851f7c95a345938ea4a517043191  ./tools/DOCKER-install.sh
 d00647dac97863f3592f6cccb5a72c46  ./tools/EXPORTER-TOOLKIT.sh
-7aeb2e0b40c3e68744c55d5be87305b5  ./tools/HashGen.sh
+9398e621cb42900bd4681676b9c094d1  ./tools/HashGen.sh
 a07b3a3a7d09801f13569ffe9d4e9074  ./tools/NEXUS-deploy.sh
 1f990216223320459b79c7c912e69bd5  ./tools/PXE-deploy.sh
 72dd05ba572bcbd687e2da96118979cd  ./tools/WIKI-exporter.sh

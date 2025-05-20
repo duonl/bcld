@@ -150,7 +150,7 @@ function update_readme () {
     KERNEL_STRING="$(/usr/bin/cat "${BCLD_README}" | /usr/bin/grep '\*\*BCLD Kernel\*\*' | /usr/bin/cut -d ':' -f2)"
 
     list_item "Updating version info: ${BCLD_README}"
-    /usr/bin/sed -i "s#${VERSION_STRING}# ${BCLD_VERSION_STRING}#" "${BCLD_README}"
+    /usr/bin/sed -i "s#${VERSION_STRING}# ${BCLD_VERSION_STRING}<br/>#" "${BCLD_README}"
 
     list_item "Updating kernel info: ${BCLD_README}"
     /usr/bin/sed -i "s#${KERNEL_STRING}# ${KERNEL_VERSION}#" "${BCLD_README}"
