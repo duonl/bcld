@@ -3,6 +3,8 @@
 ## 2025
 
 ## May
+* `2025-05-26 13:28:02` : Added new BCLD parameter: [bcld.afname.nw_logging](./config/bash/environment#bcld-aliases)
+  * Update major release in sync with CrApp developments
 * `2025-05-20 15:12:27` : Changed BCLD namespace to [DUONL](https://github.com/duonl/bcld)
   * Minor kernel patch `6.11.0-25 --> 6.11.0-26`
   * Updated [HashGen](./tools/HashGen)

@@ -144,6 +144,7 @@ function read_all_params() {
 	readparam "${MOUSE_PARAM}" "${MOUSE_ALIAS}"
 	readparam "${SHUTDOWN_PARAM}" "${SHUTDOWN_ALIAS}"
 	readparam "${LOGGING_PARAM}" "${LOGGING_ALIAS}"
+	readparam "${NW_LOGGING_PARAM}" "${NW_LOGGING_ALIAS}"
 	readparam "${VENDOR_PARAM}" "${VENDOR_ALIAS}"
 	readparam "${ZOOM_PARAM}" "${ZOOM_ALIAS}"
 
@@ -628,7 +629,7 @@ nvidia_modules
 if [[ ${BCLD_MODEL} != 'release' ]]; then
     # If not RELEASE, enable DEBUG port (also for TEST)
 
-    export BCLD_OPTS="${BCLD_OPTS} --remote-debugging-port=${APP_DEBUG_PORT}"
+    BCLD_OPTS="${BCLD_OPTS} --remote-debugging-port=${APP_DEBUG_PORT}"
 
 	# Check if CLIENT_DEBUG_PORT in use
     if [[ $(/usr/bin/ss -ptln | /usr/bin/grep -c ${CLIENT_DEBUG_PORT}) -eq 0 ]]; then
@@ -637,6 +638,11 @@ if [[ ${BCLD_MODEL} != 'release' ]]; then
         list_item "Remote port set!"
     fi
 
+	if [[ "${BCLD_NW_LOGGING}" -eq 1 ]]; then
+		BCLD_OPTS="${BCLD_OPTS} --lang=nl --disable-gpu --enable-logging --log-file=$(pwd)/logfile.log --v=9 --vmodule=statistics_recorder=0,*layout*=-1,compositor=-1,display=-1,layer_tree_*=-1 --log-net-log=$(pwd)/net-log.json"
+	fi
+
+	export BCLD_OPTS
 fi
 
 ### Generic Configurations
