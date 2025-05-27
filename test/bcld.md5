@@ -6,7 +6,7 @@ bb9cd8f6b404dc391601d1610b3518b2  ./.github/workflows/release.yml
 0f9bc2b595325394e775dcdb2f0164da  ./.github/workflows/unit-test.yml
 fe04418f518751b34909a21f6bd44c94  ./.gitignore
 ce2d9b29f5e16b1023375f232369f7ff  ./.gitmodules
-e6aee9a52934ef2a8033fcc31ac20eaf  ./CHANGELOG.md
+40bac6577a85a2e5a2763fef3159463a  ./CHANGELOG.md
 04aff3cce210e9c2a8f21df593f07b19  ./COPYING
 8b8022ccbc7e2bc33c9cb36b5d5897ce  ./Docker-builder.sh
 ef29c64bd35fec47b154096be5a4c7d0  ./IMG-builder.sh
@@ -16,7 +16,7 @@ ef29c64bd35fec47b154096be5a4c7d0  ./IMG-builder.sh
 f6c4276a99ee9de5b0bc0e385f7f4b57  ./RepoMan.sh
 b1447f0cf092dc2f9c8770aaedd8fb5f  ./SECURITY.md
 5ee37144e15f8bf49e7f683935a27f15  ./assets/bcld-logo.png
-503ddd8043958b1e01c943049c111139  ./config/BUILD.conf
+3a4887ef2b895607c018bcce9b40c22e  ./config/BUILD.conf
 f9308ddcf62532c70ae0b4970c39b082  ./config/X11/xbindkeys/.xbindkeysrc
 7bd9630940ecaabfb8e22c6560fbf2c0  ./config/X11/xmodmap/.xmodmap
 12e8a46bb563daf82e8ce5fc143cf69b  ./config/X11/xorg.conf.d/80-bcld-basic.conf
@@ -26,7 +26,7 @@ cfc9284e73df9db03f57d490adfa71a2  ./config/X11/xorg.conf.test/99-bcld-disable-ki
 9f5fd90d71fcba2be63627e80f5f7392  ./config/X11/xterm/XTerm.white
 fb432fece1031f6ae105d1b5f20652a3  ./config/apt/sources.list
 b7639e4fc5894bb8f36869a867a04f31  ./config/bash/bcld-init
-05a5c20f50b40c1d3211a04f89625799  ./config/bash/environment
+e9c48d978c7701e9d3183a12c53d0b93  ./config/bash/environment
 25085e77b1d6fcca2e1064fedf8c7a01  ./config/bash/profile.d/10-BCLD.sh
 0b2f54f8464ca64d5d043716b3556c52  ./config/bcld/bcld.cfg
 1de846a4704142ca17abda1433e8d0d8  ./config/casper/casper.conf
@@ -110,7 +110,7 @@ c554f5a8b2dfa6d9a7f3802993eee73a  ./script/chroot.sh
 7c66bc065ab30078e268bb764698501c  ./script/file_operations.sh
 07de693b053c97f6f8d44c43d0ab202b  ./script/log_tools.sh
 c654fc690b0600c48719f7cb3803f142  ./script/rsyslogger.sh
-7a11675e5f9e1233905b8afaa9e8d60a  ./script/startup.sh
+b730254a8b6d62e0ff0d115d3318e06d  ./script/startup.sh
 d267254e779d5f15b28f8f79442f707d  ./script/usb_logger.sh
 47c636dd3dc7191d173062dbf8324844  ./test/00_BCLD-BUILD.bats
 0b1d119254ad08f0c28a1975b28bbc2a  ./test/BCLD-BATS.sh
