@@ -629,7 +629,7 @@ nvidia_modules
 if [[ ${BCLD_MODEL} != 'release' ]]; then
     # If not RELEASE, enable DEBUG port (also for TEST)
 
-    BCLD_OPTS="${BCLD_OPTS} --remote-debugging-port=${APP_DEBUG_PORT}"
+    export BCLD_OPTS="${BCLD_OPTS} --remote-debugging-port=${APP_DEBUG_PORT}"
 
 	# Check if CLIENT_DEBUG_PORT in use
     if [[ $(/usr/bin/ss -ptln | /usr/bin/grep -c ${CLIENT_DEBUG_PORT}) -eq 0 ]]; then
@@ -639,10 +639,9 @@ if [[ ${BCLD_MODEL} != 'release' ]]; then
     fi
 
 	if [[ "${BCLD_NW_LOGGING}" -eq 1 ]]; then
-		BCLD_OPTS="${BCLD_OPTS} --lang=nl --disable-gpu --enable-logging --log-file=$(pwd)/logfile.log --v=9 --vmodule=statistics_recorder=0,*layout*=-1,compositor=-1,display=-1,layer_tree_*=-1 --log-net-log=$(pwd)/net-log.json"
+		export BCLD_OPTS="${BCLD_OPTS} --lang=nl --disable-gpu --enable-logging --log-file=$(pwd)/logfile.log --v=9 --vmodule=statistics_recorder=0,*layout*=-1,compositor=-1,display=-1,layer_tree_*=-1 --log-net-log=$(pwd)/net-log.json"
 	fi
 
-	export BCLD_OPTS
 fi
 
 ### Generic Configurations
