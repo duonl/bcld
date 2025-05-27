@@ -67,7 +67,6 @@ WIFI_EAP_USER_PARAM='BCLD_EAP_USER'
 AFNAME_ALIAS='bcld.afname.url'
 LOGGING_ALIAS='bcld.afname.logging'
 MOUSE_ALIAS='bcld.afname.mouse'
-NW_LOGGING_ALIAS='bcld.afname.nw_logging'
 SHUTDOWN_ALIAS='bcld.afname.shutdown'
 VENDOR_ALIAS='bcld.afname.vendor'
 VERBOSE_ALIAS='bcld.afname.verbose'
@@ -104,5 +103,8 @@ WIFI_EAP_AUTH_ALIAS='bcld.wifi.eap.auth'
 WIFI_EAP_METHOD_ALIAS='bcld.wifi.eap.method'
 WIFI_EAP_PASSWD_ALIAS='bcld.wifi.eap.password'
 WIFI_EAP_USER_ALIAS='bcld.wifi.eap.user'
+
+## DEBUG
+NW_LOGGING_ALIAS='bcld.debug.nw_logging'
 
 # Add extra PARAMs with BCLD_PARAM (test images only) <name> <value>
