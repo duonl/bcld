@@ -638,6 +638,7 @@ if [[ ${BCLD_MODEL} != 'release' ]]; then
         list_item "Remote port set!"
     fi
 
+	# Added extra NW.js logging switch only for DEBUG and TEST
 	if [[ "${BCLD_NW_LOGGING}" -eq 1 ]]; then
 		export BCLD_OPTS="${BCLD_OPTS} --lang=nl --disable-gpu --enable-logging --log-file=$(pwd)/logfile.log --v=9 --vmodule=statistics_recorder=0,*layout*=-1,compositor=-1,display=-1,layer_tree_*=-1 --log-net-log=$(pwd)/net-log.json"
 	fi
@@ -667,7 +668,7 @@ fi
 ### Vendor Configurations
 if [[ "${BCLD_VENDOR}" == 'vendorless' ]]; then
     # Vendor features don't work without the BCLD app
-    # Unset BCLD_OPTS if running Vendorless BCLD    
+    # Unset BCLD_OPTS if running Vendorless BCLD
     unset 'BCLD_OPTS'
     
     # Configure Vendorless URL if not set
