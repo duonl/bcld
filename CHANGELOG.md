@@ -3,6 +3,8 @@
 ## 2025
 
 ## May
+* `2025-05-28 15:39:43` : Added new BCLD parameter: [bcld.afname.restart](./config/bash/environment#bcld-aliases)
+  * Allows administrator to restart BCLD in set amount of hours
 * `2025-05-26 13:28:02` : Added new BCLD parameter: [bcld.debug.nw_logging](./config/bash/environment#bcld-aliases)
   * Meant for debugging with CrApp
   * Update major release in sync with CrApp developments
