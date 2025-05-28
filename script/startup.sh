@@ -142,6 +142,7 @@ function read_all_params() {
 	### Afname
 	readparam "${AFNAME_PARAM}" "${AFNAME_ALIAS}"
 	readparam "${MOUSE_PARAM}" "${MOUSE_ALIAS}"
+	readparam "${RESTART_PARAM}" "${RESTART_ALIAS}"
 	readparam "${SHUTDOWN_PARAM}" "${SHUTDOWN_ALIAS}"
 	readparam "${LOGGING_PARAM}" "${LOGGING_ALIAS}"
 	readparam "${NW_LOGGING_PARAM}" "${NW_LOGGING_ALIAS}"
@@ -713,8 +714,19 @@ else
 	    list_item_pass "SHUTDOWN added to BCLD_OPTS"
     fi
 
+	# Configure BCLD Shutdown Timer
+    if [[ "${BCLD_RESTART}" -gt 0 ]]; then
+		# Translate hours to minutes
+		restart_mins=$((BCLD_RESTART*60))
+		list_entry
+	    /usr/sbin/shutdown -r "+${restart_mins}"
+		list_catch
+    fi
+
+	# Extra BCLD logging
 	if [[ "${BCLD_LOGGING}" -eq 1 ]]; then
 		export BCLD_OPTS="${BCLD_OPTS} --enableLogging --logfile=/opt/bcld_log.json"
+		list_item_pass "LOGGING added to BCLD_OPTS"
 	fi
 fi
 
