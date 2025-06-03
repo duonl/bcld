@@ -719,7 +719,8 @@ else
 		# Translate hours to minutes
 		restart_mins=$((BCLD_RESTART*60))
 
-		list_item_pass "BCLD_RESTART detected: ${BCLD_RESTART}"
+		list_item_pass "BCLD_RESTART detected!"
+		list_item "BCLD will restart every ${BCLD_RESTART} hour(s)..."
 		list_entry
 	    /usr/sbin/shutdown -r "+${restart_mins}"
 		list_catch
