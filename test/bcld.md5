@@ -12,7 +12,7 @@ db72388f32860d3ed49de0bd3f411120  ./CHANGELOG.md
 ef29c64bd35fec47b154096be5a4c7d0  ./IMG-builder.sh
 0bc3eb1ce82dc6fce8ab454fa5467394  ./ISO-builder.sh
 524b704f7687543521a4f126f3b50422  ./LICENSE.eupl
-16cea254e17a46d235ad7b1bade7e565  ./README.md
+6212980aee13ee54e7142be3813b74d3  ./README.md
 f6c4276a99ee9de5b0bc0e385f7f4b57  ./RepoMan.sh
 b1447f0cf092dc2f9c8770aaedd8fb5f  ./SECURITY.md
 5ee37144e15f8bf49e7f683935a27f15  ./assets/bcld-logo.png
@@ -28,7 +28,7 @@ fb432fece1031f6ae105d1b5f20652a3  ./config/apt/sources.list
 b7639e4fc5894bb8f36869a867a04f31  ./config/bash/bcld-init
 665a5ff7a2f917b26cb6b04bdfc1bf6a  ./config/bash/environment
 25085e77b1d6fcca2e1064fedf8c7a01  ./config/bash/profile.d/10-BCLD.sh
-0b2f54f8464ca64d5d043716b3556c52  ./config/bcld/bcld.cfg
+42633aa495ef8de0aecf1111be9d277e  ./config/bcld/bcld.cfg
 1de846a4704142ca17abda1433e8d0d8  ./config/casper/casper.conf
 d41d8cd98f00b204e9800998ecf8427e  ./config/grub/.disk/base_installable
 7744f57495e19ee51aa0d9ec66e3fb2d  ./config/grub/.disk/casper-uuid-generic
