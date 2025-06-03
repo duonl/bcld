@@ -3,13 +3,15 @@
 ## 2025
 
 ## May
-* `2025-05-28 15:39:43` : Added new BCLD parameter: [bcld.afname.restart](./config/bash/environment#bcld-aliases)
+* `2025-06-03 15:13:31` : [OAC-1279] Removed BCLD parameter `bcld.afname.logging` from [bcld.cfg](./config/bcld/bcld.cfg) and added `bcld.afname.restart`
+  * Logging only worked for Facet Chrome App
+* `2025-05-28 15:39:43` : [OAC-1279] Added new BCLD parameter: [bcld.afname.restart](./config/bash/environment#bcld-aliases)
   * Allows administrator to restart BCLD in set amount of hours
-* `2025-05-26 13:28:02` : Added new BCLD parameter: [bcld.debug.nw_logging](./config/bash/environment#bcld-aliases)
+* `2025-05-26 13:28:02` : [OAC-1282] Added new BCLD parameter: [bcld.debug.nw_logging](./config/bash/environment#bcld-aliases)
   * Meant for debugging with CrApp
   * Update major release in sync with CrApp developments
   * Will not be documented and is a test feature
-* `2025-05-20 15:12:27` : Changed BCLD namespace to [DUONL](https://github.com/duonl/bcld)
+* `2025-05-20 15:12:27` : [OAC-1212] Changed BCLD namespace to [DUONL](https://github.com/duonl/bcld)
   * Minor kernel patch `6.11.0-25 --> 6.11.0-26`
   * Updated [HashGen](./tools/HashGen)
   * Updated [README](./README.md)
