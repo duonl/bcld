@@ -718,6 +718,8 @@ else
     if [[ "${BCLD_RESTART}" -gt 0 ]]; then
 		# Translate hours to minutes
 		restart_mins=$((BCLD_RESTART*60))
+
+		list_item_pass "BCLD_RESTART detected: ${BCLD_RESTART}"
 		list_entry
 	    /usr/sbin/shutdown -r "+${restart_mins}"
 		list_catch
