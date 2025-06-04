@@ -2,9 +2,12 @@
 
 ## 2025
 
-## May
+## June
+* `2025-06-04 13:27:28` : [OAC-1282] Changing NW logging to `NW_PRE_ARGS` from `BCLD_OPTS`
 * `2025-06-03 15:13:31` : [OAC-1279] Removed BCLD parameter `bcld.afname.logging` from [bcld.cfg](./config/bcld/bcld.cfg) and added `bcld.afname.restart`
   * Logging only worked for Facet Chrome App
+
+## May
 * `2025-05-28 15:39:43` : [OAC-1279] Added new BCLD parameter: [bcld.afname.restart](./config/bash/environment#bcld-aliases)
   * Allows administrator to restart BCLD in set amount of hours
 * `2025-05-26 13:28:02` : [OAC-1282] Added new BCLD parameter: [bcld.debug.nw_logging](./config/bash/environment#bcld-aliases)
