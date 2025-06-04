@@ -641,7 +641,7 @@ if [[ ${BCLD_MODEL} != 'release' ]]; then
 
 	# Added extra NW.js logging switch only for DEBUG and TEST
 	if [[ ${BCLD_NW_LOGGING} -eq 1 ]]; then
-		export BCLD_OPTS="${BCLD_OPTS} --lang=nl --disable-gpu --enable-logging --log-file=$(pwd)/logfile.log --v=9 --vmodule=statistics_recorder=0,*layout*=-1,compositor=-1,display=-1,layer_tree_*=-1 --log-net-log=$(pwd)/net-log.json"
+		export NW_PRE_ARGS="--lang=nl --disable-gpu --enable-logging --log-file=$(pwd)/logfile.log --v=9 --vmodule=statistics_recorder=0,*layout*=-1,compositor=-1,display=-1,layer_tree_*=-1 --log-net-log=$(pwd)/net-log.json"
 	fi
 
 fi
