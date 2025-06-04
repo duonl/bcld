@@ -640,16 +640,11 @@ if [[ ${BCLD_MODEL} != 'release' ]]; then
     fi
 
 	# Added extra NW.js logging switch only for DEBUG and TEST
-	if [[ ${BCLD_NW_LOGGING} -eq 1 ]]; then
-
+	if [[ -n "${BCLD_NW_LOGGING}" ]]; then
 		list_item_pass 'BCLD_NW_LOGGING detected!'
-		list_item 'Adding NW_PRE_ARGS logging options...'
-
-		if [[ -n "${BCLD_NW_LOGGING}" ]]; then
-			# If BCLD_NW_LOGGING is set, use it as NW_PRE_ARGS
-			export NW_PRE_ARGS="${BCLD_NW_LOGGING}"
-		fi
-
+		list_item "Adding NW_PRE_ARGS logging options: ${BCLD_NW_LOGGING}"
+		# If BCLD_NW_LOGGING is set, use it as NW_PRE_ARGS
+		export NW_PRE_ARGS="${BCLD_NW_LOGGING}"
 	fi
 
 fi
