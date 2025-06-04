@@ -55,6 +55,11 @@ TAG="RUN-APP"
 # For automatic certificate selection
 /usr/bin/autocert.sh
 
+if [[ -v BCLD_AFNAME_ENV ]]
+then
+    eval "$BCLD_AFNAME_ENV"
+fi
+
 # Launch app with BCLD_OPTS
 /usr/bin/bash -c "${BCLD_APP} ${BCLD_OPTS}" &> "${OPENBOX_LOG}" &
 
