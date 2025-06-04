@@ -645,11 +645,8 @@ if [[ ${BCLD_MODEL} != 'release' ]]; then
 		list_item_pass 'BCLD_NW_LOGGING detected!'
 		list_item 'Adding NW_PRE_ARGS logging options...'
 
-		if [[ ${BCLD_NW_LOGGING} -eq 1  ]]; then
-			# If BCLD_NW_LOGGING equals '1', use NW logging preset
-			export NW_PRE_ARGS="--lang=nl --disable-gpu --enable-logging --log-file=$(pwd)/logfile.log --v=9 --vmodule=statistics_recorder=0,*layout*=-1,compositor=-1,display=-1,layer_tree_*=-1 --log-net-log=$(pwd)/net-log.json"
-		elif [[ -n ${BCLD_NW_LOGGING} ]]; then
-			# If BCLD_NW_LOGGING is anything else, use it as NW_PRE_ARGS
+		if [[ -n "${BCLD_NW_LOGGING}" ]]; then
+			# If BCLD_NW_LOGGING is set, use it as NW_PRE_ARGS
 			export NW_PRE_ARGS="${BCLD_NW_LOGGING}"
 		fi
 
