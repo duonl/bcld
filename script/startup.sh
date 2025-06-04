@@ -145,7 +145,6 @@ function read_all_params() {
 	readparam "${RESTART_PARAM}" "${RESTART_ALIAS}"
 	readparam "${SHUTDOWN_PARAM}" "${SHUTDOWN_ALIAS}"
 	readparam "${LOGGING_PARAM}" "${LOGGING_ALIAS}"
-	readparam "${NW_LOGGING_PARAM}" "${NW_LOGGING_ALIAS}"
 	readparam "${VENDOR_PARAM}" "${VENDOR_ALIAS}"
 	readparam "${ZOOM_PARAM}" "${ZOOM_ALIAS}"
 
@@ -638,14 +637,6 @@ if [[ ${BCLD_MODEL} != 'release' ]]; then
         /usr/bin/socat TCP-Listen:${CLIENT_DEBUG_PORT},fork TCP:127.0.0.1:${APP_DEBUG_PORT} &
         list_item "Remote port set!"
     fi
-
-	# Added extra NW.js logging switch only for DEBUG and TEST
-	if [[ -n "${BCLD_NW_LOGGING}" ]]; then
-		list_item_pass 'BCLD_NW_LOGGING detected!'
-		list_item "Adding NW_PRE_ARGS logging options: ${BCLD_NW_LOGGING}"
-		# If BCLD_NW_LOGGING is set, use it as NW_PRE_ARGS
-		export NW_PRE_ARGS="${BCLD_NW_LOGGING}"
-	fi
 
 fi
 
