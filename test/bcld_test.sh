@@ -54,13 +54,14 @@ export NSSDB="${HOME}/.pki/nssdb"
 
 # VARs
 APP_FILE='/usr/bin/bcld_app.sh'
+BCLD_NW_PARAM='bcld.debug.nw_logging'
 CERT_LINKS='/etc/ssl/certs'
+ENV_FILE="/etc/environment"
 
 BCLD_ENV="${HOME}/BCLD_ENVs"
 CA_CRT="${CERT_LINKS}/ca.crt"
 CLIENT_CRT="${CERT_LINKS}/bcld.crt"
 CLIENT_KEY="${CERT_LINKS}/bcld.key"
-ENV_FILE="/etc/environment"
 TTY="$(/usr/bin/tty)"
 
 list_header "Enabling BCLD TEST package..."
@@ -523,4 +524,19 @@ function write_ENVs () {
 ## Allow password only for TEST, since only TEST has SSH
 /usr/bin/echo "${BCLD_USER}:${BCLD_SECRET}" | /usr/bin/sudo chpasswd
 list_item_pass "Changed password for ${BCLD_USER}:${BCLD_SECRET}"
+
+## Added extra NW.js logging switch only for TEST
+### Extract the value from /proc/cmdline if detected
+BCLD_NW_LOGGING="$(/usr/bin/grep -oP "${BCLD_NW_PARAM}=\K[^ ]+" /proc/cmdline)"
+
+if [[ -n "${BCLD_NW_LOGGING}" ]]; then
+
+    list_item "${BCLD_NW_PARAM} detected!"
+
+    # If BCLD_NW_LOGGING is set, use it as NW_PRE_ARGS
+    export NW_PRE_ARGS="$(/usr/bin/echo "${BCLD_NW_LOGGING}" | /usr/bin/base64 -d)"
+
+    list_item_pass "Added NW_PRE_ARGS logging options: ${NW_PRE_ARGS}"
+fi
+
 list_exit
