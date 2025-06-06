@@ -28,7 +28,7 @@ fb432fece1031f6ae105d1b5f20652a3  ./config/apt/sources.list
 b7639e4fc5894bb8f36869a867a04f31  ./config/bash/bcld-init
 de4e05168403dabcb273f13fb0048e0d  ./config/bash/environment
 25085e77b1d6fcca2e1064fedf8c7a01  ./config/bash/profile.d/10-BCLD.sh
-f04ca41c50f2b8f1e2bde2bebc59c297  ./config/bcld/bcld.cfg
+6f74508836bd6618877097fff55eaca5  ./config/bcld/bcld.cfg
 1de846a4704142ca17abda1433e8d0d8  ./config/casper/casper.conf
 d41d8cd98f00b204e9800998ecf8427e  ./config/grub/.disk/base_installable
 7744f57495e19ee51aa0d9ec66e3fb2d  ./config/grub/.disk/casper-uuid-generic
