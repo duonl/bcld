@@ -3,6 +3,7 @@
 ## 2025
 
 ## June
+* `2025-06-06 15:18:06` : Replace Wiki submodule with regular clone because Git
 * `2025-06-04 13:27:28` : [OAC-1282] Changing NW logging to `NW_PRE_ARGS` from `BCLD_OPTS`
   * Moved to [bcld_test.sh](./test/bcld_test.sh)
   * Removed from [startup.sh](./script/startup.sh)
