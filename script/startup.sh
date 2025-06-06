@@ -709,11 +709,11 @@ else
     fi
 
 	# Configure BCLD Shutdown Timer
-    if [[ "${BCLD_RESTART}" -gt 0 ]]; then
+    if [[ -n "${BCLD_RESTART}" ]]; then
 
 		list_item_pass "BCLD_RESTART detected: ${BCLD_RESTART}"
 		list_entry
-	    /usr/sbin/shutdown -r "+${BCLD_RESTART}"
+	    /usr/sbin/shutdown -r "${BCLD_RESTART}"
 		list_catch
     fi
 
