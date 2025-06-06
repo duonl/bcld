@@ -5,7 +5,7 @@ cde0706ae97857adf10546a47adf4a91  ./.github/workflows/regression-test.yml
 bb9cd8f6b404dc391601d1610b3518b2  ./.github/workflows/release.yml
 0f9bc2b595325394e775dcdb2f0164da  ./.github/workflows/unit-test.yml
 fe04418f518751b34909a21f6bd44c94  ./.gitignore
-ccdb84c58b30bb3b194a128f06d30804  ./.gitmodules
+27386e4520efee7804dd7b945ce37d0f  ./.gitmodules
 e01a6943be6d976ec6cfdffe929c1609  ./CHANGELOG.md
 04aff3cce210e9c2a8f21df593f07b19  ./COPYING
 8b8022ccbc7e2bc33c9cb36b5d5897ce  ./Docker-builder.sh
@@ -28,7 +28,7 @@ fb432fece1031f6ae105d1b5f20652a3  ./config/apt/sources.list
 b7639e4fc5894bb8f36869a867a04f31  ./config/bash/bcld-init
 de4e05168403dabcb273f13fb0048e0d  ./config/bash/environment
 25085e77b1d6fcca2e1064fedf8c7a01  ./config/bash/profile.d/10-BCLD.sh
-f04ca41c50f2b8f1e2bde2bebc59c297  ./config/bcld/bcld.cfg
+6f74508836bd6618877097fff55eaca5  ./config/bcld/bcld.cfg
 1de846a4704142ca17abda1433e8d0d8  ./config/casper/casper.conf
 d41d8cd98f00b204e9800998ecf8427e  ./config/grub/.disk/base_installable
 7744f57495e19ee51aa0d9ec66e3fb2d  ./config/grub/.disk/casper-uuid-generic
@@ -110,7 +110,7 @@ c554f5a8b2dfa6d9a7f3802993eee73a  ./script/chroot.sh
 7c66bc065ab30078e268bb764698501c  ./script/file_operations.sh
 07de693b053c97f6f8d44c43d0ab202b  ./script/log_tools.sh
 c654fc690b0600c48719f7cb3803f142  ./script/rsyslogger.sh
-8a8dcbea417c84b1b3529b28e03fd9ab  ./script/startup.sh
+b9f072476398c7c654516da6253da166  ./script/startup.sh
 d267254e779d5f15b28f8f79442f707d  ./script/usb_logger.sh
 47c636dd3dc7191d173062dbf8324844  ./test/00_BCLD-BUILD.bats
 0b1d119254ad08f0c28a1975b28bbc2a  ./test/BCLD-BATS.sh

@@ -51,8 +51,16 @@ TAG='WIKI-EXPORT'
 WIKI_NAME='bcld.wiki'
 
 MOD_PATH="./modules/${WIKI_NAME}"
+REPO_URL="https://www.github.com/duonl/${WIKI_NAME}"
 
 list_header "Starting Wiki Exporter"
+list_entry
+
+# Since Git modules are (once again) useless, we'll do it our own way...
+cd ./modules || exit 1
+git clone "${REPO_URL}"
+cd - || exit 1
+list_catch
 
 if [[ -x ./tools/WIKI-exporter.sh ]]; then
     ART_DIR="${PWD}/artifacts"

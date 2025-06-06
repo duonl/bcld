@@ -28,6 +28,7 @@ image/ISO/md5_file
 image/ISO/md5sum.txt
 .ISO-builder.sh.swp
 log/
+modules/bcld.wiki/
 opt/
 test/BATS-REPORT.txt
 test/BATS-SUCCESS
