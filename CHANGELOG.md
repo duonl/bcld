@@ -2,6 +2,10 @@
 
 ## 2025
 
+## July
+* `2025-07-02 13:22:51` : [OAC-1292] Shutdown timer BCLD
+  * Minor kernel patch: `6.11.0-26` --> `6.11.0-29`
+
 ## June
 * `2025-06-06 15:18:06` : Replace Wiki submodule with regular clone because Git
   * Adding [precommit](./config/git/pre-commit) to repo since Git is atrocious and keeps removing it...

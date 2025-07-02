@@ -143,7 +143,8 @@ function read_all_params() {
 	readparam "${AFNAME_PARAM}" "${AFNAME_ALIAS}"
 	readparam "${MOUSE_PARAM}" "${MOUSE_ALIAS}"
 	readparam "${RESTART_PARAM}" "${RESTART_ALIAS}"
-	readparam "${SHUTDOWN_PARAM}" "${SHUTDOWN_ALIAS}"
+	readparam "${SHUTDOWN_APP_PARAM}" "${SHUTDOWN_APP_ALIAS}"
+	readparam "${SHUTDOWN_CLIENT_PARAM}" "${SHUTDOWN_CLIENT_ALIAS}"
 	readparam "${LOGGING_PARAM}" "${LOGGING_ALIAS}"
 	readparam "${VENDOR_PARAM}" "${VENDOR_ALIAS}"
 	readparam "${ZOOM_PARAM}" "${ZOOM_ALIAS}"
@@ -702,13 +703,22 @@ else
 	    list_item_pass "ZOOM added to BCLD_OPTS"
     fi
 
-    # Configure BCLD Shutdown Timer
-    if [[ "${BCLD_SHUTDOWN}" -gt 0 ]]; then
-	    export BCLD_OPTS="${BCLD_OPTS} --shutdown-timer=${BCLD_SHUTDOWN}"
-	    list_item_pass "SHUTDOWN added to BCLD_OPTS"
+    # Configure BCLD App Shutdown Timer
+    if [[ "${BCLD_APP_SHUTDOWN}" -gt 0 ]]; then
+	    export BCLD_OPTS="${BCLD_OPTS} --shutdown-timer=${BCLD_APP_SHUTDOWN}"
+	    list_item_pass "BCLD_APP_SHUTDOWN added to BCLD_OPTS"
     fi
 
-	# Configure BCLD Shutdown Timer
+	# Configure BCLD Client Shutdown Timer
+    if [[ -n "${BCLD_CLIENT_SHUTDOWN}" ]]; then
+
+		list_item_pass "BCLD_CLIENT_SHUTDOWN detected: ${BCLD_CLIENT_SHUTDOWN}"
+		list_entry
+	    /usr/sbin/shutdown "${BCLD_CLIENT_SHUTDOWN}"
+		list_catch
+    fi
+
+	# Configure BCLD Restart Timer
     if [[ -n "${BCLD_RESTART}" ]]; then
 
 		list_item_pass "BCLD_RESTART detected: ${BCLD_RESTART}"
