@@ -3,6 +3,7 @@
 ## 2025
 
 ## July
+* `2025-07-03 17:50:54` : [OAC-1292] Added test methods to check BCLD power cycle parameters
 * `2025-07-02 13:22:51` : [OAC-1292] Shutdown timer BCLD
   * Minor kernel patch: `6.11.0-26` --> `6.11.0-29`
 
