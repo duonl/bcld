@@ -112,14 +112,10 @@ function BCLD_KEYMAPs () {
 
 ## Function to display if BCLD power settings are enabled
 function BCLD_POWER () {
-        # Check app shutdown timer
-		if [[ -n "${BCLD_APP_SHUTDOWN}" ]]; then
-			list_param "${BCLD_APP_SHUTDOWN}" 'Chrome app shutdown timer'
-		fi
 
         # Check client shutdown timer
-		if [[ -n "${BCLD_CLIENT_SHUTDOWN}" ]]; then
-			list_param "${BCLD_CLIENT_SHUTDOWN}" 'BCLD client shutdown timer'
+		if [[ -n "${BCLD_SHUTDOWN}" ]]; then
+			list_param "${BCLD_SHUTDOWN}" 'BCLD client shutdown timer'
 		fi
 
         # Check client restart timer
