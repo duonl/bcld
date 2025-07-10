@@ -3,6 +3,8 @@
 ## 2025
 
 ## July
+* `2025-07-10 16:58:29` : [OAC-1292] Completely removed `bcld.afname.client` and `BCLD_APP_SHUTDOWN` references
+  * App shutdown timer has been completely replaced by client shutdown timer
 * `2025-07-03 17:50:54` : [OAC-1292] Added test methods to check BCLD power cycle parameters
 * `2025-07-02 13:22:51` : [OAC-1292] Shutdown timer BCLD
   * Minor kernel patch: `6.11.0-26` --> `6.11.0-29`
