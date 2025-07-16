@@ -656,7 +656,14 @@ fi
 #### Configure BCLD Big Mouse
 if [[ "${BCLD_MOUSE}" -eq 1 ]] && [[ -f "${HOME}/big-cursor.pcf.gz" ]]; then
 	list_item_pass "Setting BCLD Big Mouse: ${BCLD_MOUSE}"
-    /usr/bin/cp "${HOME}/big-cursor.pcf.gz" /usr/share/fonts/X11/misc/cursor.pcf.gz && list_item 'BCLD Big Mouse enabled!'
+    /usr/bin/cp "${HOME}/big-cursor.pcf.gz" /usr/share/fonts/X11/misc/cursor.pcf.gz
+
+	/usr/bin/cat <<- EOF | /usr/bin/sudo /usr/bin/tee /usr/share/icons/default/index.theme &> /dev/null
+	[Icon Theme]
+	Inherits=big-cursor
+	EOF
+
+	list_item 'BCLD Big Mouse enabled!'
 fi
 
 
