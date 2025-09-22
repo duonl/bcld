@@ -54,10 +54,18 @@ MOD_PATH="./modules/${WIKI_NAME}"
 REPO_URL="https://www.github.com/duonl/${WIKI_NAME}"
 
 list_header "Starting Wiki Exporter"
-list_entry
 
-# Since Git modules are (once again) useless, we'll do it our own way...
-cd ./modules || exit 1
+# Manually import Git module, if not present
+if [[ -d "${MOD_PATH}" ]]; then
+    list_item_pass 'Old Wiki directory found. Removing...'
+    list_entry
+    /usr/bin/rm -rfv "${MOD_PATH}"
+    list_catch
+fi
+
+list_item 'Cloning BCLD-WIKI repository...'
+list_entry
+cd "$(/usr/bin/dirname "${MOD_PATH}")" || exit 1
 git clone "${REPO_URL}"
 cd - || exit 1
 list_catch
