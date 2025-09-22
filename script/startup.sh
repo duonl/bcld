@@ -656,7 +656,14 @@ fi
 #### Configure BCLD Big Mouse
 if [[ "${BCLD_MOUSE}" -eq 1 ]] && [[ -f "${HOME}/big-cursor.pcf.gz" ]]; then
 	list_item_pass "Setting BCLD Big Mouse: ${BCLD_MOUSE}"
-    /usr/bin/cp "${HOME}/big-cursor.pcf.gz" /usr/share/fonts/X11/misc/cursor.pcf.gz && list_item 'BCLD Big Mouse enabled!'
+    /usr/bin/cp "${HOME}/big-cursor.pcf.gz" /usr/share/fonts/X11/misc/cursor.pcf.gz
+
+	/usr/bin/cat <<- EOF | /usr/bin/sudo /usr/bin/tee /usr/share/icons/default/index.theme &> /dev/null
+	[Icon Theme]
+	Inherits=big-cursor
+	EOF
+
+	list_item 'BCLD Big Mouse enabled!'
 fi
 
 
@@ -702,13 +709,16 @@ else
 	    list_item_pass "ZOOM added to BCLD_OPTS"
     fi
 
-    # Configure BCLD Shutdown Timer
-    if [[ "${BCLD_SHUTDOWN}" -gt 0 ]]; then
-	    export BCLD_OPTS="${BCLD_OPTS} --shutdown-timer=${BCLD_SHUTDOWN}"
-	    list_item_pass "SHUTDOWN added to BCLD_OPTS"
+	# Configure BCLD Client Shutdown Timer
+    if [[ -n "${BCLD_SHUTDOWN}" ]]; then
+
+		list_item_pass "BCLD_SHUTDOWN detected: ${BCLD_SHUTDOWN}"
+		list_entry
+	    /usr/sbin/shutdown "${BCLD_SHUTDOWN}"
+		list_catch
     fi
 
-	# Configure BCLD Shutdown Timer
+	# Configure BCLD Restart Timer
     if [[ -n "${BCLD_RESTART}" ]]; then
 
 		list_item_pass "BCLD_RESTART detected: ${BCLD_RESTART}"

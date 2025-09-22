@@ -5,6 +5,14 @@
 ## September
 * `2025-09-22 13:40:00` : Update internal app.
 
+## July
+* `2025-07-14 17:09:27` : [OAC-1291] Adding new default icon config file in attempt to fix BCLD Big Mouse
+* `2025-07-10 16:58:29` : [OAC-1292] Completely removed `bcld.afname.client` and `BCLD_APP_SHUTDOWN` references
+  * App shutdown timer has been completely replaced by client shutdown timer
+* `2025-07-03 17:50:54` : [OAC-1292] Added test methods to check BCLD power cycle parameters
+* `2025-07-02 13:22:51` : [OAC-1292] Shutdown timer BCLD
+  * Minor kernel patch: `6.11.0-26` --> `6.11.0-29`
+
 ## June
 * `2025-06-06 15:18:06` : Replace Wiki submodule with regular clone because Git
   * Adding [precommit](./config/git/pre-commit) to repo since Git is atrocious and keeps removing it...
