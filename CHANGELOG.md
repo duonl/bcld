@@ -3,7 +3,10 @@
 ## 2025
 
 ## September
-* `2025-09-22 13:40:00` : Update internal app.
+* `2025-09-22 13:40:00` : [OAC-1320] Updated internal app --> `14.1.0`
+    * Incremental kernel update `6.11.0-29` --> `6.14.0-29`
+    * Added a cleanup to [WIKI-exporter](./tools/WIKI-exporter.sh)
+    * Fixed URL in GitHub [Workflows](.github/workflows/release.yml)
 
 ## July
 * `2025-07-14 17:09:27` : [OAC-1291] Adding new default icon config file in attempt to fix BCLD Big Mouse
