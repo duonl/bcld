@@ -2,6 +2,9 @@
 
 ## 2025
 
+## September
+* `2025-09-22 13:40:00` : Update internal app.
+
 ## June
 * `2025-06-06 15:18:06` : Replace Wiki submodule with regular clone because Git
   * Adding [precommit](./config/git/pre-commit) to repo since Git is atrocious and keeps removing it...
