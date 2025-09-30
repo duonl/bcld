@@ -18,7 +18,7 @@ b1447f0cf092dc2f9c8770aaedd8fb5f  ./SECURITY.md
 5ee37144e15f8bf49e7f683935a27f15  ./assets/bcld-logo.png
 7fd61304876342f4986b024ae89af821  ./config/BUILD.conf
 f9308ddcf62532c70ae0b4970c39b082  ./config/X11/xbindkeys/.xbindkeysrc
-7bd9630940ecaabfb8e22c6560fbf2c0  ./config/X11/xmodmap/.xmodmap
+1ec9d5b19d19cd01d6046371e6aeb42b  ./config/X11/xmodmap/.xmodmap
 12e8a46bb563daf82e8ce5fc143cf69b  ./config/X11/xorg.conf.d/80-bcld-basic.conf
 1dd0fe36979d5936d50b4b6065a41437  ./config/X11/xorg.conf.nvidia/30-nvidia.conf
 cfc9284e73df9db03f57d490adfa71a2  ./config/X11/xorg.conf.test/99-bcld-disable-kiosk.conf

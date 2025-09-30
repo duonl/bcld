@@ -48,3 +48,118 @@ keycode 206 = NoSymbol
 
 ! Disable Super_R
 keycode 134 = NoSymbol
+
+
+! Allow Numpad keys
+
+! Allow Add
+! keycode  86 = KP_Add KP_Add KP_Add KP_Add KP_Add KP_Add XF86Next_VMode KP_Add KP_Add XF86Next_VMode
+
+! Allow Subtract
+! keycode  82 = KP_Subtract KP_Subtract KP_Subtract KP_Subtract KP_Subtract KP_Subtract XF86Prev_VMode KP_Subtract KP_Subtract XF86Prev_VMode
+
+! Allow Multiply
+! keycode  63 = KP_Multiply KP_Multiply KP_Multiply KP_Multiply KP_Multiply KP_Multiply XF86ClearGrab KP_Multiply KP_Multiply XF86ClearGrab
+
+! Allow Divide
+! keycode 106 = KP_Divide KP_Divide KP_Divide KP_Divide KP_Divide KP_Divide XF86Ungrab KP_Divide KP_Divide XF86Ungrab
+
+
+! Disable extra (media) XF86 keys
+
+! Disable everything else
+keycode 121 = NoSymbol
+keycode 122 = NoSymbol
+keycode 123 = NoSymbol
+keycode 124 = NoSymbol
+keycode 128 = NoSymbol
+keycode 141 = NoSymbol
+keycode 142 = NoSymbol
+keycode 143 = NoSymbol
+keycode 145 = NoSymbol
+keycode 147 = NoSymbol
+keycode 148 = NoSymbol
+keycode 150 = NoSymbol
+keycode 151 = NoSymbol
+keycode 152 = NoSymbol
+keycode 153 = NoSymbol
+keycode 155 = NoSymbol
+keycode 156 = NoSymbol
+keycode 157 = NoSymbol
+keycode 158 = NoSymbol
+keycode 159 = NoSymbol
+keycode 160 = NoSymbol
+keycode 161 = NoSymbol
+keycode 162 = NoSymbol
+keycode 163 = NoSymbol
+keycode 164 = NoSymbol
+keycode 165 = NoSymbol
+keycode 166 = NoSymbol
+keycode 167 = NoSymbol
+keycode 169 = NoSymbol
+keycode 170 = NoSymbol
+keycode 171 = NoSymbol
+keycode 172 = NoSymbol
+keycode 173 = NoSymbol
+keycode 174 = NoSymbol
+keycode 175 = NoSymbol
+keycode 176 = NoSymbol
+keycode 177 = NoSymbol
+keycode 179 = NoSymbol
+keycode 180 = NoSymbol
+keycode 181 = NoSymbol
+keycode 182 = NoSymbol
+keycode 185 = NoSymbol
+keycode 186 = NoSymbol
+keycode 189 = NoSymbol
+keycode 191 = NoSymbol
+keycode 192 = NoSymbol
+keycode 193 = NoSymbol
+keycode 194 = NoSymbol
+keycode 195 = NoSymbol
+keycode 196 = NoSymbol
+keycode 198 = NoSymbol
+keycode 199 = NoSymbol
+keycode 200 = NoSymbol
+keycode 201 = NoSymbol
+keycode 208 = NoSymbol
+keycode 209 = NoSymbol
+keycode 210 = NoSymbol
+keycode 211 = NoSymbol
+keycode 212 = NoSymbol
+keycode 213 = NoSymbol
+keycode 214 = NoSymbol
+keycode 215 = NoSymbol
+keycode 216 = NoSymbol
+keycode 220 = NoSymbol
+keycode 221 = NoSymbol
+keycode 223 = NoSymbol
+keycode 224 = NoSymbol
+keycode 225 = NoSymbol
+keycode 226 = NoSymbol
+keycode 227 = NoSymbol
+keycode 228 = NoSymbol
+keycode 229 = NoSymbol
+keycode 232 = NoSymbol
+keycode 233 = NoSymbol
+keycode 234 = NoSymbol
+keycode 235 = NoSymbol
+keycode 236 = NoSymbol
+keycode 237 = NoSymbol
+keycode 238 = NoSymbol
+keycode 239 = NoSymbol
+keycode 240 = NoSymbol
+keycode 241 = NoSymbol
+keycode 242 = NoSymbol
+keycode 243 = NoSymbol
+keycode 244 = NoSymbol
+keycode 245 = NoSymbol
+keycode 246 = NoSymbol
+keycode 247 = NoSymbol
+keycode 249 = NoSymbol
+keycode 250 = NoSymbol
+keycode 251 = NoSymbol
+keycode 252 = NoSymbol
+keycode 253 = NoSymbol
+keycode 254 = NoSymbol
+keycode 255 = NoSymbol
