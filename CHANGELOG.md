@@ -2,6 +2,10 @@
 
 ## 2025
 
+## October
+* `2025-10-01 16:31:15` : [OAC-1313] Disabled most XF86 media keys
+  * Minor kernel patch: `6.14.0-29` --> `6.14.0-33`
+
 ## September
 * `2025-09-22 13:40:00` : [OAC-1320] Updated internal app --> `14.1.0`
     * Incremental kernel update `6.11.0-29` --> `6.14.0-29`
