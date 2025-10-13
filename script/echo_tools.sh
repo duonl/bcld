@@ -248,8 +248,12 @@ function check_req_env () {
 # Function to check optional ENVs
 function check_opt_env () {
 
-    if [[  -v "${1}" ]] && [[ -n "$(/usr/bin/printenv "${1}")" ]]; then
-		list_item_pass "${1} is set."
+    opt_env="$(/usr/bin/printenv "${1}")"
+
+    if [[  -v "${1}" ]] && [[ "${1}" == 'true' ]] && [[ -n "${opt_env}" ]]; then
+		list_item_pass "${1} is set to 'true'."
+    elif [[  -v "${1}" ]] && [[ "${1}" == 'false' ]]; then
+        list_item_fail "${1} is set to 'false'."
 	else
 		list_item "${1} is not set, but optional, skipping..."
 	fi

@@ -3,6 +3,9 @@
 ## 2025
 
 ## October
+* `2025-10-13 17:53:17` : [OAC-1193] Added extra console output to inspect (Nvidia) package lists
+ * Added `ISO-PKGS`-tag to [ISO-Builder](./ISO-builder.sh)
+ * Also added extra tag to `TagCheck` in [00_BCLD-BUILD](./test/00_BCLD-BUILD.bats)
 * `2025-10-01 16:31:15` : [OAC-1313] Disabled most XF86 media keys
   * Minor kernel patch: `6.14.0-29` --> `6.14.0-33`
 
