@@ -497,7 +497,7 @@ function copy_config_scripts () {
 	on_completion
 }
 
-## Function to copy Nvidia files
+## Function to copy Nvidia files (DEPRECATED)
 function copy_nvidia_configs () {
     if [[ ${BCLD_NVIDIA} == 'true' ]]; then
 	    list_header "BCLD_NVIDIA set to 'true'"
@@ -844,7 +844,7 @@ copy_post_config_dirs
 copy_post_configs
 
 ## Copy Nvidia configuration files for BCLD_NVIDIA builds
-copy_nvidia_configs
+#copy_nvidia_configs
 
 ## Substitutions
 subst_file "${CONFIG_DIR}/bash/environment" "${CHENV}"
