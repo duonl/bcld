@@ -65,6 +65,11 @@ function list_item_pass () {
     /usr/bin/echo "    ├─(+)╼ ${1}"
 }
 
+# Function to echo an added pkg list
+function list_pkg_pass () {
+    /usr/bin/echo "    ├─(+)╼ Added PKG list: ${1}"
+}
+
 # Function to echo a failed item
 function list_item_fail () {
     /usr/bin/echo "    ├─[-]╼ ${1}"

@@ -689,6 +689,8 @@ list_item "Generating ${CHROOT_DIR}/VERSION..."
 /usr/bin/echo "${BCLD_VERSION_STRING}" > "${ART_DIR}/VERSION"
 
 ## Package management
+TAG='ISO-PKGS'
+
 copy_file "${BUILD_CONF}" "${CHROOT_ROOT}"
 subst_file "${CONFIG_DIR}/apt/sources.list" "${CHROOT_DIR}/etc/apt/sources.list"
 list_item 'Retrieving Linux Surface GPG key...'
@@ -717,12 +719,12 @@ list_item 'Retrieving Linux Surface GPG key...'
 # fi
 
 ### Substitute KERNEL lines
-subst_file "${PKGS_DIR}/KERNEL" "${PKG_ART}"
+subst_file "${PKGS_DIR}/KERNEL" "${PKG_ART}" && list_pkg_pass 'KERNEL'
 pkgs_line
 
 ### Add main packages
 # Kernel packages and dependencies from REQUIRED are always installed
-cat "${PKGS_DIR}/REQUIRED" >> "${PKG_ART}"
+cat "${PKGS_DIR}/REQUIRED" >> "${PKG_ART}"  && list_pkg_pass 'REQUIRED'
 pkgs_line
 
 ### Debian Non-interactive
@@ -730,19 +732,19 @@ copy_file "${PKGS_DIR}/selections.conf" "${CHROOT_DIR}/${BCLD_HOME}"
 
 ### Add Nvidia drivers if enabled
 if [[ ${BCLD_NVIDIA} == 'true' ]]; then
-    subst_file_add "${PKGS_DIR}/NVIDIA" "${PKG_ART}"
+    subst_file_add "${PKGS_DIR}/NVIDIA" "${PKG_ART}" && list_pkg_pass 'NVIDIA'
     pkgs_line
 fi
 
 ### Add DEBUG packages for everything except RELEASE
 if [[ ${BCLD_MODEL} != 'release' ]]; then
-    cat "${PKGS_DIR}/DEBUG" >> "${PKG_ART}"
+    cat "${PKGS_DIR}/DEBUG" >> "${PKG_ART}"  && list_pkg_pass 'DEBUG'
     pkgs_line
 fi
 
 ### Add TEST packages specifically for TEST
 if [[ ${BCLD_MODEL} = 'test' ]]; then
-    cat "${PKGS_DIR}/TEST" >> "${PKG_ART}"
+    cat "${PKGS_DIR}/TEST" >> "${PKG_ART}" && list_pkg_pass 'TEST'
     pkgs_line
 fi
 
