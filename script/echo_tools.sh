@@ -250,10 +250,10 @@ function check_opt_env () {
 
     opt_env="$(/usr/bin/printenv "${1}")"
 
-    if [[  -v "${1}" ]] && [[ "${1}" == 'true' ]] && [[ -n "${opt_env}" ]]; then
-		list_item_pass "${1} is set to 'true'."
+    if [[  -v "${1}" ]] && [[ -n "${opt_env}" ]]; then
+		list_item_pass "${1} is set."
     elif [[  -v "${1}" ]] && [[ "${1}" == 'false' ]]; then
-        list_item_fail "${1} is set to 'false'."
+        list_item_fail "${1} is set, but 'false'."
 	else
 		list_item "${1} is not set, but optional, skipping..."
 	fi
