@@ -504,20 +504,21 @@ function copy_nvidia_configs () {
 
         NVIDIA_XRUN="${PROJECT_DIR}/modules/nvidia-xrun"
 
-        if [[ -d ${NVIDIA_XRUN} ]]; then
+        if [[ -x "$(which nvidia-xconfig)" ]]; then
             list_item 'Copying Nvidia configuration files...'
             
             # nvidia-xrun
             #copy_file "${NVIDIA_XRUN}/nvidia-xorg.conf" "${CHETC}/X11/"
-            copy_file "${NVIDIA_XRUN}/nvidia-xinitrc" "${CHETC}/X11/xinit/"
-            copy_file "${NVIDIA_XRUN}/nvidia-xrun" "${CHROOT_BIN}"
+            # copy_file "${NVIDIA_XRUN}/nvidia-xinitrc" "${CHETC}/X11/xinit/"
+            # copy_file "${NVIDIA_XRUN}/nvidia-xrun" "${CHROOT_BIN}"
+            list_item_pass "$(which nvidia-xconfig)"
             
             # X11 config
-            copy_file "${CONFIG_DIR}/X11/xorg.conf.nvidia/30-nvidia.conf" "${CHROOT_DIR}/etc/X11/xorg.conf.d/30-nvidia.conf"
+            # copy_file "${CONFIG_DIR}/X11/xorg.conf.nvidia/30-nvidia.conf" "${CHROOT_DIR}/etc/X11/xorg.conf.d/30-nvidia.conf"
 
-            /usr/bin/chmod +x "${CHROOT_BIN}/nvidia-xrun"
-            
-            /usr/bin/echo 'openbox' > "${CHOME_DIR}/.xinitrc"
+            # /usr/bin/chmod +x "${CHROOT_BIN}/nvidia-xrun"
+
+            # /usr/bin/echo 'openbox' > "${CHOME_DIR}/.xinitrc"
         else
             list_item_fail 'Nvidia Git modules not found...'
             on_failure
