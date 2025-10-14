@@ -3,6 +3,9 @@
 ## 2025
 
 ## October
+* `2025-10-14 15:01:54` : [OAC-1193] Started working on package management refactor in [ISO-Builder](./ISO-builder.sh)
+  * Converging methods; created `add_pkgs` in [file operations](./script/file_operations.sh)
+  * New method aims to simplify package list generation
 * `2025-10-13 17:53:17` : [OAC-1193] Added extra console output to inspect (Nvidia) package lists
  * Added `ISO-PKGS`-tag to [ISO-Builder](./ISO-builder.sh)
  * Also added extra tag to `TagCheck` in [00_BCLD-BUILD](./test/00_BCLD-BUILD.bats)

@@ -60,7 +60,7 @@ source "${BUILD_CONF}" \
 BCLD_ROOT='/root'
 BCLD_MOUNT='/media/BCLD-USB'
 CHROOT_RM='/opt/remotelogging'
-SSHD="/etc/ssh/sshd_config.d/10-BCLD.sh"
+SSHD="/etc/ssh/sshd_config.d/10-BCLD.conf"
 SUDOERS="/etc/sudoers"
 
 # VARs

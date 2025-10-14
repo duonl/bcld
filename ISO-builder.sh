@@ -695,58 +695,58 @@ copy_file "${BUILD_CONF}" "${CHROOT_ROOT}"
 subst_file "${CONFIG_DIR}/apt/sources.list" "${CHROOT_DIR}/etc/apt/sources.list"
 list_item 'Retrieving Linux Surface GPG key...'
 
-### Linux Surface key
-# CHSURFACE_KEY="${CHETC}/apt/trusted.gpg.d/linux-surface.gpg"
-
-# /usr/bin/curl -s https://raw.githubusercontent.com/linux-surface/linux-surface/master/pkg/keys/surface.asc \
-#     | /usr/bin/gpg --dearmor | /usr/bin/dd of="${CHSURFACE_KEY}"
-
-# list_item 'Checking Linux Surface GPG key...'
-# if [[ -f ${CHSURFACE_KEY} ]] \
-#     && [[  "$(/usr/bin/wc -l < ${CHSURFACE_KEY})" -gt 0 ]]; then
-#     list_item_pass "Linux Surface GPG key found! $(/usr/bin/md5sum ${CHSURFACE_KEY} | awk '{ print $1 }')"
-#     list_entry
-#     /usr/bin/gpg --list-keys --keyring "${CHSURFACE_KEY}" || exit 1
-#     /usr/bin/gpg --fingerprint --keyring "${CHSURFACE_KEY}" || exit 1
-
-#     # DEBUGGING
-#     /usr/bin/apt-get update || exit
-
-#     list_catch
-# else
-#     list_item_fail 'Linux Surface GPG key NOT found!'
-#     exit 1
-# fi
-
-### Substitute KERNEL lines
-subst_file "${PKGS_DIR}/KERNEL" "${PKG_ART}" && list_pkg_pass 'KERNEL'
-pkgs_line
-
-### Add main packages
-# Kernel packages and dependencies from REQUIRED are always installed
-cat "${PKGS_DIR}/REQUIRED" >> "${PKG_ART}"  && list_pkg_pass 'REQUIRED'
-pkgs_line
-
 ### Debian Non-interactive
 copy_file "${PKGS_DIR}/selections.conf" "${CHROOT_DIR}/${BCLD_HOME}"
 
-### Add Nvidia drivers if enabled
+### !!! PACKAGE MANAGEMENT REFACTOR !!!
+
+add_pkgs "${PKGS_DIR}/KERNEL" "${PKG_ART}" # always need KERNEL pkgs
+add_pkgs "${PKGS_DIR}/REQUIRED" "${PKG_ART}" # always need REQUIRED pkgs
+
+# If BCLD_MODEL is NOT 'release',
+# this is probably either a 'debug' or a 'test' build
+if [[ "${BCLD_MODEL}" != 'release' ]]; then
+    # We always need these outside 'release'
+    add_pkgs "${PKGS_DIR}/DEBUG" "${PKG_ART}"
+
+    # We ONLY need these for 'test',
+    # but 'test' still needs 'debug' packages
+    if [[ "${BCLD_MODEL}" = 'test' ]]; then
+        add_pkgs "${PKGS_DIR}/TEST" "${PKG_ART}"
+    fi
+fi
+
+# !!! NVIDIA TESTING !!!
 if [[ ${BCLD_NVIDIA} == 'true' ]]; then
-    subst_file_add "${PKGS_DIR}/NVIDIA" "${PKG_ART}" && list_pkg_pass 'NVIDIA'
-    pkgs_line
+    add_pkgs "${PKGS_DIR}/NVIDIA" "${PKG_ART}"
 fi
 
-### Add DEBUG packages for everything except RELEASE
-if [[ ${BCLD_MODEL} != 'release' ]]; then
-    cat "${PKGS_DIR}/DEBUG" >> "${PKG_ART}"  && list_pkg_pass 'DEBUG'
-    pkgs_line
-fi
+# ### Substitute KERNEL lines
+# subst_file "${PKGS_DIR}/KERNEL" "${PKG_ART}" && list_pkg_pass 'KERNEL'
+# pkgs_line
 
-### Add TEST packages specifically for TEST
-if [[ ${BCLD_MODEL} = 'test' ]]; then
-    cat "${PKGS_DIR}/TEST" >> "${PKG_ART}" && list_pkg_pass 'TEST'
-    pkgs_line
-fi
+# ### Add main packages
+# # Kernel packages and dependencies from REQUIRED are always installed
+# cat "${PKGS_DIR}/REQUIRED" >> "${PKG_ART}"  && list_pkg_pass 'REQUIRED'
+# pkgs_line
+
+# ### Add Nvidia drivers if enabled
+# if [[ ${BCLD_NVIDIA} == 'true' ]]; then
+#     subst_file_add "${PKGS_DIR}/NVIDIA" "${PKG_ART}" && list_pkg_pass 'NVIDIA'
+#     pkgs_line
+# fi
+
+# ### Add DEBUG packages for everything except RELEASE
+# if [[ ${BCLD_MODEL} != 'release' ]]; then
+#     cat "${PKGS_DIR}/DEBUG" >> "${PKG_ART}"  && list_pkg_pass 'DEBUG'
+#     pkgs_line
+# fi
+
+# ### Add TEST packages specifically for TEST
+# if [[ ${BCLD_MODEL} = 'test' ]]; then
+#     cat "${PKGS_DIR}/TEST" >> "${PKG_ART}" && list_pkg_pass 'TEST'
+#     pkgs_line
+# fi
 
 ### Display all packages, if there are no packages we cannot continue!
 if [[ -f ${PKG_ART} ]]; then
