@@ -3,6 +3,14 @@
 ## 2025
 
 ## October
+* `2025-10-15 18:07:56` : Discontinuing Nvidia efforts, switching to Nouveau
+  * Added `xserver-xorg-video-nouveau` to [REQUIRED](./config/packages/REQUIRED)
+    * `nouveau` removed from [modproble blacklist](./config/modprobe/blacklist.conf)
+  * Changed `libwacom9` back to [REQUIRED](./config/packages/REQUIRED)
+    * No longer needed for Surface builds
+  * It sucks, but we can't use proprietary drivers
+  * We ran into the same problem before
+  * Nvidia is simply not possible (unless we create our own drivers)
 * `2025-10-14 15:01:54` : [OAC-1193] Started working on package management refactor in [ISO-Builder](./ISO-builder.sh)
   * Converging methods; created `add_pkgs` in [file operations](./script/file_operations.sh)
   * New method aims to simplify package list generation

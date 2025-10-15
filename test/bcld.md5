@@ -6,7 +6,7 @@ b0da6cbaaf9e9d66c2dc962aafda21b4  ./.github/workflows/release.yml
 0f9bc2b595325394e775dcdb2f0164da  ./.github/workflows/unit-test.yml
 a1d62bcaf8202e22136ae828daf6b389  ./.gitignore
 4a6fa59b1c01aecca6b7504953723f01  ./.gitmodules
-f1a0c35130cef72a93ef7565b47970a1  ./CHANGELOG.md
+91c5ee60a69b0170c4c6daa21705b5ab  ./CHANGELOG.md
 04aff3cce210e9c2a8f21df593f07b19  ./COPYING
 8b8022ccbc7e2bc33c9cb36b5d5897ce  ./Docker-builder.sh
 ef29c64bd35fec47b154096be5a4c7d0  ./IMG-builder.sh
@@ -16,7 +16,7 @@ ddf5d271b5d0c1e0a6c3e0babfe6ed1f  ./ISO-builder.sh
 f6c4276a99ee9de5b0bc0e385f7f4b57  ./RepoMan.sh
 b1447f0cf092dc2f9c8770aaedd8fb5f  ./SECURITY.md
 5ee37144e15f8bf49e7f683935a27f15  ./assets/bcld-logo.png
-5cd7618fb38608496333554fa30f9113  ./config/BUILD.conf
+ced20aa03f0da25237d5c8be0dea2118  ./config/BUILD.conf
 f9308ddcf62532c70ae0b4970c39b082  ./config/X11/xbindkeys/.xbindkeysrc
 2bd011392d7c87070a19a6733fcc03dc  ./config/X11/xmodmap/.xmodmap
 12e8a46bb563daf82e8ce5fc143cf69b  ./config/X11/xorg.conf.d/80-bcld-basic.conf
@@ -41,7 +41,7 @@ c489c87b382083ef1d0c9d348b8d5f86  ./config/iptables/iptables.firewall.rules
 1c15609dca974842113ed8e3abea9e9f  ./config/iptables/iptables.firewall.rules.debug
 a00a8bb0185041ea072b4a2087d792e1  ./config/iptables/iptables.firewall.rules.test
 ab23e76d42c8177569124b709cf36a10  ./config/modprobe/alsa-base.conf
-d5fa17464f6a8520b0fc28a2731b053c  ./config/modprobe/blacklist.conf
+ac0d8b15cfc28b7a597be3843148a218  ./config/modprobe/blacklist.conf
 1b327f0daaf44a643bf8e08af4842922  ./config/network-manager/NetworkManager.conf
 5b19b43c2beaa7bcdf82ef510a4514ea  ./config/network-manager/conf.d/default-wifi-powersave-on.conf
 98230f0794ee06f1899c3fd3c9f3f4d3  ./config/network-manager/interfaces
@@ -52,10 +52,10 @@ d57cf84974e9a959d64a38710983a18d  ./config/packages/APP
 077a8a5014546daf883328e708b9dfbd  ./config/packages/BUILD
 acb938f50e2aa3ac3e0b082c320a1439  ./config/packages/CHROOT
 86d2f4b86e0a87d5ad05fab55ec33ba9  ./config/packages/DEBUG
-1fb3d6b8b654704bcd9bfb79dd7acca5  ./config/packages/KERNEL
-ec32ff4583123e8d6f9857ec94043ca8  ./config/packages/NVIDIA
+62a3601248c7a5ffa19abbcd416c59a1  ./config/packages/KERNEL
+492fba79e914fd8e325dc2fcfd3b00f2  ./config/packages/NVIDIA
 6c224b812083575965b9bf1aca105231  ./config/packages/REMOVE
-366551bbaaabbd8997ebc675c33b5f49  ./config/packages/REQUIRED
+94d52da5f3f7db38ef5a694ed8088376  ./config/packages/REQUIRED
 55f163a84fe275801f8058cffa324d92  ./config/packages/TEST
 c4194d2bde957994fa74aaa13bc8333e  ./config/packages/VIRTUAL
 e7c3341206da6e77bfed1923d6a11883  ./config/packages/selections.conf
@@ -116,7 +116,7 @@ d267254e779d5f15b28f8f79442f707d  ./script/usb_logger.sh
 4dbccc99d58adefa2e9815705d46c766  ./test/00_BCLD-BUILD.bats
 0b1d119254ad08f0c28a1975b28bbc2a  ./test/BCLD-BATS.sh
 1348c09b472f193682790b0fe9ae6792  ./test/SHELL-CHECK.sh
-bdc067cd2b0b8c99e5053b7c2389a696  ./test/bcld_test.sh
+78ac0bbd44db7b5b13615f02e0e7052a  ./test/bcld_test.sh
 3923f9371b39761f5903a2c9a6f1eb59  ./test/common-setup
 6a4f851f7c95a345938ea4a517043191  ./tools/DOCKER-install.sh
 d00647dac97863f3592f6cccb5a72c46  ./tools/EXPORTER-TOOLKIT.sh

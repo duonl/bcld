@@ -4,6 +4,6 @@ linux-signatures-nvidia-${KERNEL_VERSION}
 nvidia-dkms-${NVIDIA_DRIVER}
 nvidia-driver-${NVIDIA_DRIVER}
 nvidia-kernel-common-${NVIDIA_DRIVER}
-nvidia-prime
-nvidia-settings
-nvidia-utils-${NVIDIA_DRIVER}
+#nvidia-prime
+#nvidia-settings
+#nvidia-utils-${NVIDIA_DRIVER}
