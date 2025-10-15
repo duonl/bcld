@@ -142,11 +142,15 @@ function add_pkgs () {
 
     file_name="$(/usr/bin/basename "${pkg_file}")" # file name
 
+    # Read each pkgs from the file
     while IFS= read -r pkg; do
-        if [[ "${pkg}" == \#* ]]; then
-            list_item_fail "Skipping package: ${pkg}"
+
+        full_pkg="$(/usr/bin/echo "${pkg}" | /usr/bin/envsubst)"
+
+        if [[ "${full_pkg}" == \#* ]]; then
+            list_item_fail "Skipping package: ${full_pkg}"
         else
-            /usr/bin/echo "${pkg}" | /usr/bin/envsubst >> "${pkg_list}"
+            /usr/bin/echo "${full_pkg}" >> "${pkg_list}"
         fi
     done < "${pkg_file}"
 
