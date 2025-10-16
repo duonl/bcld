@@ -434,7 +434,7 @@ function reset_terminal () {
     list_header "Resetting terminal"
 
     # Checking the sinks in remote sessions takes long and is useless
-    if [[ "$(/usr/bin/tty)" == /dev/pts/* ]]; then
+    if [[ "$(/usr/bin/tty)" != /dev/pts/* ]]; then
         default_sink="$(/usr/bin/pactl get-default-sink)"
     fi
 
