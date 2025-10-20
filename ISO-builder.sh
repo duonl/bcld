@@ -497,36 +497,6 @@ function copy_config_scripts () {
 	on_completion
 }
 
-## Function to copy Nvidia files (DEPRECATED)
-function copy_nvidia_configs () {
-    if [[ ${BCLD_NVIDIA} == 'true' ]]; then
-	    list_header "BCLD_NVIDIA set to 'true'"
-
-        NVIDIA_XRUN="${PROJECT_DIR}/modules/nvidia-xrun"
-
-        if [[ -x "$(which nvidia-xconfig)" ]]; then
-            list_item 'Copying Nvidia configuration files...'
-            
-            # nvidia-xrun
-            #copy_file "${NVIDIA_XRUN}/nvidia-xorg.conf" "${CHETC}/X11/"
-            # copy_file "${NVIDIA_XRUN}/nvidia-xinitrc" "${CHETC}/X11/xinit/"
-            # copy_file "${NVIDIA_XRUN}/nvidia-xrun" "${CHROOT_BIN}"
-            list_item_pass "$(which nvidia-xconfig)"
-            
-            # X11 config
-            # copy_file "${CONFIG_DIR}/X11/xorg.conf.nvidia/30-nvidia.conf" "${CHROOT_DIR}/etc/X11/xorg.conf.d/30-nvidia.conf"
-
-            # /usr/bin/chmod +x "${CHROOT_BIN}/nvidia-xrun"
-
-            # /usr/bin/echo 'openbox' > "${CHOME_DIR}/.xinitrc"
-        else
-            list_item_fail 'Nvidia Git modules not found...'
-            on_failure
-        fi
-    fi
-
-}
-
 ## Function to copy post-configuration directories
 function copy_post_config_dirs () {
     list_item "Copying configuration directories"
@@ -717,35 +687,8 @@ if [[ "${BCLD_MODEL}" != 'release' ]]; then
 fi
 
 # !!! NVIDIA TESTING !!!
-if [[ ${BCLD_NVIDIA} == 'true' ]]; then
-    add_pkgs "${PKGS_DIR}/NVIDIA" "${PKG_ART}"
-fi
-
-# ### Substitute KERNEL lines
-# subst_file "${PKGS_DIR}/KERNEL" "${PKG_ART}" && list_pkg_pass 'KERNEL'
-# pkgs_line
-
-# ### Add main packages
-# # Kernel packages and dependencies from REQUIRED are always installed
-# cat "${PKGS_DIR}/REQUIRED" >> "${PKG_ART}"  && list_pkg_pass 'REQUIRED'
-# pkgs_line
-
-# ### Add Nvidia drivers if enabled
 # if [[ ${BCLD_NVIDIA} == 'true' ]]; then
-#     subst_file_add "${PKGS_DIR}/NVIDIA" "${PKG_ART}" && list_pkg_pass 'NVIDIA'
-#     pkgs_line
-# fi
-
-# ### Add DEBUG packages for everything except RELEASE
-# if [[ ${BCLD_MODEL} != 'release' ]]; then
-#     cat "${PKGS_DIR}/DEBUG" >> "${PKG_ART}"  && list_pkg_pass 'DEBUG'
-#     pkgs_line
-# fi
-
-# ### Add TEST packages specifically for TEST
-# if [[ ${BCLD_MODEL} = 'test' ]]; then
-#     cat "${PKGS_DIR}/TEST" >> "${PKG_ART}" && list_pkg_pass 'TEST'
-#     pkgs_line
+#     add_pkgs "${PKGS_DIR}/NVIDIA" "${PKG_ART}"
 # fi
 
 ### Display all packages, if there are no packages we cannot continue!
@@ -844,9 +787,6 @@ copy_post_config_dirs
 
 ## Copy post-configuration files
 copy_post_configs
-
-## Copy Nvidia configuration files for BCLD_NVIDIA builds
-#copy_nvidia_configs
 
 ## Substitutions
 subst_file "${CONFIG_DIR}/bash/environment" "${CHENV}"
