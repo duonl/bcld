@@ -132,6 +132,33 @@ function subst_file_add () {
     fi    
 }
 
+# New method to add packages with feature toggle
+# Usage: add_pkgs <source> <target>
+# Will add package lists to an incremental list
+function add_pkgs () {
+
+    pkg_file="${1}" # source file
+    pkg_list="${2}" # target file
+
+    file_name="$(/usr/bin/basename "${pkg_file}")" # file name
+
+    # Read each pkgs from the file
+    while IFS= read -r pkg; do
+
+        full_pkg="$(/usr/bin/echo "${pkg}" | /usr/bin/envsubst)"
+
+        if [[ "${full_pkg}" == \#* ]]; then
+            list_item_fail "Skipping package: ${full_pkg}"
+        else
+            /usr/bin/echo "${full_pkg}" >> "${pkg_list}"
+        fi
+    done < "${pkg_file}"
+
+    /usr/bin/echo >> "${pkg_list}"
+    list_item_pass "Succesfully added package list: ${file_name}"
+
+}
+
 # Function to delete file which already exists
 function reset_file () {
     base_name=$(basename "${1}")

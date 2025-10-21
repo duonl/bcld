@@ -433,6 +433,11 @@ function reset_terminal () {
     
     list_header "Resetting terminal"
 
+    # Checking the sinks in remote sessions takes long and is useless
+    if [[ "$(/usr/bin/tty)" != /dev/pts/* ]]; then
+        default_sink="$(/usr/bin/pactl get-default-sink)"
+    fi
+
     list_param "${BCLD_USER}" 'User'
     list_param "${BCLD_HOST}" 'Host ID'
     list_param "${BCLD_VENDOR}" 'Vendor'
@@ -442,7 +447,7 @@ function reset_terminal () {
     list_param "${BCLD_URL}" 'BCLD afname URL'
     list_param "${BCLD_DOWNLOAD}" 'Link download (Bytes/s)'
     list_param "${BCLD_OPTS}" 'BCLD options'
-    list_param "$(/usr/bin/pactl get-default-sink)" 'Audio adapter'
+    list_param "${default_sink}" 'Audio adapter'
     list_param "${BCLD_IF}" 'Network interface'
     list_param "${BCLD_IP}" 'IP address'
     list_param "${BCLD_MAC}" 'Link address'

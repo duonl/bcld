@@ -497,35 +497,6 @@ function copy_config_scripts () {
 	on_completion
 }
 
-## Function to copy Nvidia files
-function copy_nvidia_configs () {
-    if [[ ${BCLD_NVIDIA} == 'true' ]]; then
-	    list_header "BCLD_NVIDIA set to 'true'"
-
-        NVIDIA_XRUN="${PROJECT_DIR}/modules/nvidia-xrun"
-
-        if [[ -d ${NVIDIA_XRUN} ]]; then
-            list_item 'Copying Nvidia configuration files...'
-            
-            # nvidia-xrun
-            #copy_file "${NVIDIA_XRUN}/nvidia-xorg.conf" "${CHETC}/X11/"
-            copy_file "${NVIDIA_XRUN}/nvidia-xinitrc" "${CHETC}/X11/xinit/"
-            copy_file "${NVIDIA_XRUN}/nvidia-xrun" "${CHROOT_BIN}"
-            
-            # X11 config
-            copy_file "${CONFIG_DIR}/X11/xorg.conf.nvidia/30-nvidia.conf" "${CHROOT_DIR}/etc/X11/xorg.conf.d/30-nvidia.conf"
-
-            /usr/bin/chmod +x "${CHROOT_BIN}/nvidia-xrun"
-            
-            /usr/bin/echo 'openbox' > "${CHOME_DIR}/.xinitrc"
-        else
-            list_item_fail 'Nvidia Git modules not found...'
-            on_failure
-        fi
-    fi
-
-}
-
 ## Function to copy post-configuration directories
 function copy_post_config_dirs () {
     list_item "Copying configuration directories"
@@ -688,62 +659,37 @@ list_item "Generating ${CHROOT_DIR}/VERSION..."
 /usr/bin/echo "${BCLD_VERSION_STRING}" > "${ART_DIR}/VERSION"
 
 ## Package management
+TAG='ISO-PKGS'
+
 copy_file "${BUILD_CONF}" "${CHROOT_ROOT}"
 subst_file "${CONFIG_DIR}/apt/sources.list" "${CHROOT_DIR}/etc/apt/sources.list"
 list_item 'Retrieving Linux Surface GPG key...'
 
-### Linux Surface key
-# CHSURFACE_KEY="${CHETC}/apt/trusted.gpg.d/linux-surface.gpg"
-
-# /usr/bin/curl -s https://raw.githubusercontent.com/linux-surface/linux-surface/master/pkg/keys/surface.asc \
-#     | /usr/bin/gpg --dearmor | /usr/bin/dd of="${CHSURFACE_KEY}"
-
-# list_item 'Checking Linux Surface GPG key...'
-# if [[ -f ${CHSURFACE_KEY} ]] \
-#     && [[  "$(/usr/bin/wc -l < ${CHSURFACE_KEY})" -gt 0 ]]; then
-#     list_item_pass "Linux Surface GPG key found! $(/usr/bin/md5sum ${CHSURFACE_KEY} | awk '{ print $1 }')"
-#     list_entry
-#     /usr/bin/gpg --list-keys --keyring "${CHSURFACE_KEY}" || exit 1
-#     /usr/bin/gpg --fingerprint --keyring "${CHSURFACE_KEY}" || exit 1
-
-#     # DEBUGGING
-#     /usr/bin/apt-get update || exit
-
-#     list_catch
-# else
-#     list_item_fail 'Linux Surface GPG key NOT found!'
-#     exit 1
-# fi
-
-### Substitute KERNEL lines
-subst_file "${PKGS_DIR}/KERNEL" "${PKG_ART}"
-pkgs_line
-
-### Add main packages
-# Kernel packages and dependencies from REQUIRED are always installed
-cat "${PKGS_DIR}/REQUIRED" >> "${PKG_ART}"
-pkgs_line
-
 ### Debian Non-interactive
 copy_file "${PKGS_DIR}/selections.conf" "${CHROOT_DIR}/${BCLD_HOME}"
 
-### Add Nvidia drivers if enabled
-if [[ ${BCLD_NVIDIA} == 'true' ]]; then
-    subst_file_add "${PKGS_DIR}/NVIDIA" "${PKG_ART}"
-    pkgs_line
+### !!! PACKAGE MANAGEMENT REFACTOR !!!
+
+add_pkgs "${PKGS_DIR}/KERNEL" "${PKG_ART}" # always need KERNEL pkgs
+add_pkgs "${PKGS_DIR}/REQUIRED" "${PKG_ART}" # always need REQUIRED pkgs
+
+# If BCLD_MODEL is NOT 'release',
+# this is probably either a 'debug' or a 'test' build
+if [[ "${BCLD_MODEL}" != 'release' ]]; then
+    # We always need these outside 'release'
+    add_pkgs "${PKGS_DIR}/DEBUG" "${PKG_ART}"
+
+    # We ONLY need these for 'test',
+    # but 'test' still needs 'debug' packages
+    if [[ "${BCLD_MODEL}" = 'test' ]]; then
+        add_pkgs "${PKGS_DIR}/TEST" "${PKG_ART}"
+    fi
 fi
 
-### Add DEBUG packages for everything except RELEASE
-if [[ ${BCLD_MODEL} != 'release' ]]; then
-    cat "${PKGS_DIR}/DEBUG" >> "${PKG_ART}"
-    pkgs_line
-fi
-
-### Add TEST packages specifically for TEST
-if [[ ${BCLD_MODEL} = 'test' ]]; then
-    cat "${PKGS_DIR}/TEST" >> "${PKG_ART}"
-    pkgs_line
-fi
+# !!! NVIDIA TESTING !!!
+# if [[ ${BCLD_NVIDIA} == 'true' ]]; then
+#     add_pkgs "${PKGS_DIR}/NVIDIA" "${PKG_ART}"
+# fi
 
 ### Display all packages, if there are no packages we cannot continue!
 if [[ -f ${PKG_ART} ]]; then
@@ -841,9 +787,6 @@ copy_post_config_dirs
 
 ## Copy post-configuration files
 copy_post_configs
-
-## Copy Nvidia configuration files for BCLD_NVIDIA builds
-copy_nvidia_configs
 
 ## Substitutions
 subst_file "${CONFIG_DIR}/bash/environment" "${CHENV}"

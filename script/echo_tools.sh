@@ -65,6 +65,11 @@ function list_item_pass () {
     /usr/bin/echo "    ├─(+)╼ ${1}"
 }
 
+# Function to echo an added pkg list
+function list_pkg_pass () {
+    /usr/bin/echo "    ├─(+)╼ Added PKG list: ${1}"
+}
+
 # Function to echo a failed item
 function list_item_fail () {
     /usr/bin/echo "    ├─[-]╼ ${1}"
@@ -243,8 +248,12 @@ function check_req_env () {
 # Function to check optional ENVs
 function check_opt_env () {
 
-    if [[  -v "${1}" ]] && [[ -n "$(/usr/bin/printenv "${1}")" ]]; then
+    opt_env="$(/usr/bin/printenv "${1}")"
+
+    if [[  -v "${1}" ]] && [[ -n "${opt_env}" ]]; then
 		list_item_pass "${1} is set."
+    elif [[  -v "${1}" ]] && [[ "${1}" == 'false' ]]; then
+        list_item_fail "${1} is set, but 'false'."
 	else
 		list_item "${1} is not set, but optional, skipping..."
 	fi
