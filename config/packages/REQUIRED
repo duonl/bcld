@@ -152,6 +152,7 @@ libsoup-gnome-2.4-1
 libsoxr0
 libthai0
 libtiff6
+libwacom9
 libwbclient0
 libx11-6
 libxaw7
@@ -256,6 +257,7 @@ xserver-xorg-input-synaptics
 xserver-xorg-legacy
 xserver-xorg-video-all
 xserver-xorg-video-intel
+xserver-xorg-video-nouveau
 xserver-xorg-video-openchrome
 xterm
 zlib1g
