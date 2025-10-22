@@ -49,8 +49,8 @@ source '/usr/bin/echo_tools.sh'
 TAG='BCLD-TEST'
 
 # ENVs
-export BCLD_VERBOSE=1 && export BCLD_VERBOSE
-export NSSDB="${HOME}/.pki/nssdb" && export NSSDB
+BCLD_VERBOSE=1 && export BCLD_VERBOSE
+NSSDB="${HOME}/.pki/nssdb" && export NSSDB
 
 # VARs
 APP_FILE='/usr/bin/bcld_app.sh'
