@@ -119,7 +119,7 @@ d267254e779d5f15b28f8f79442f707d  ./script/usb_logger.sh
 2a094581301f4cedc02f10ead818d3e1  ./test/bcld_test.sh
 3923f9371b39761f5903a2c9a6f1eb59  ./test/common-setup
 6a4f851f7c95a345938ea4a517043191  ./tools/DOCKER-install.sh
-d478f166660b2963eca99bba5646fd3c  ./tools/EXPORTER-TOOLKIT.sh
+3fa73707ffbe6b51d4a40f006358bb88  ./tools/EXPORTER-TOOLKIT.sh
 9398e621cb42900bd4681676b9c094d1  ./tools/HashGen.sh
 a07b3a3a7d09801f13569ffe9d4e9074  ./tools/NEXUS-deploy.sh
 420a06f2970603cb53f3be3877b2ff6a  ./tools/PXE-deploy.sh

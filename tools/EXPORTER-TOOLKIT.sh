@@ -47,7 +47,7 @@ TAG='EXPORTER-KIT'
 TOOLS_DIR=$(/usr/bin/dirname "$(/usr/bin/readlink -f ${BASH_SOURCE[0]})")
 
 # So, we need to dirname twice to get the PROJECT_DIR
-PROJECT_DIR=$(/usr/bin/dirname "${PROJECT_DIR}")
+PROJECT_DIR=$(/usr/bin/dirname "${TOOLS_DIR}")
 
 source "${PROJECT_DIR}/config/BUILD.conf"
 source "${PROJECT_DIR}/script/echo_tools.sh"
