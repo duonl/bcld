@@ -3,6 +3,7 @@
 ## 2025
 
 ## October
+* `2025-10-22 13:12:13` : [OAC-1193] Adding [Mesa and Vulkan drivers](./config/packages/REQUIRED) for Nouveau Vulkan support
 * `2025-10-15 18:07:56` : Discontinuing Nvidia efforts, switching to Nouveau
   * Added `xserver-xorg-video-nouveau` to [REQUIRED](./config/packages/REQUIRED)
     * `nouveau` removed from [modproble blacklist](./config/modprobe/blacklist.conf)

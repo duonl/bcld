@@ -183,9 +183,12 @@ m4
 mailutils
 mailutils-mda
 man-db
+mesa-common
+mesa-vulkan-drivers
 net-tools
 netplan.io
 network-manager
+nouveau-firmware
 openbox
 openssl
 passwd
