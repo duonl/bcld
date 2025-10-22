@@ -99,7 +99,7 @@ bc8d4c92bdbadd1c62c088184f39073f  ./config/trap_shutdown/virt/virt-warning-5.png
 c99677e6deb495fb2b90cbfb84ac7349  ./config/udev/rules.d/BCLD-USB.rules
 87ecdd57738b7ed7fe23e3da8a492593  ./image/ISO/README.diskdefines
 49a4210f52e5bcc79077d12c3dfd63f5  ./image/ISO/isolinux/isolinux.cfg
-e13ef6429867f4c212988f795f0d6d68  ./script/Xconfigure.sh
+cc563f1636e421e28ef0895286a19fce  ./script/Xconfigure.sh
 3f0e4d55a962e4dd009c1ae8c4db7739  ./script/autocert.sh
 f6604ec06c9aa1b19247785ed0f280a2  ./script/bcld_app.sh
 caeaba6f3ea103a2d0ee5a68b44baa93  ./script/bcld_vendor.sh
@@ -110,13 +110,13 @@ b9b48c32d7ecd5f25a50302e5b8ddbf4  ./script/chroot.sh
 ae7f9f52e4d6465ccbd9545c91432d7c  ./script/echo_tools.sh
 582c1f3f44207520fcadc5d49a2efac9  ./script/file_operations.sh
 07de693b053c97f6f8d44c43d0ab202b  ./script/log_tools.sh
-c654fc690b0600c48719f7cb3803f142  ./script/rsyslogger.sh
+ac1b0449b30317aa48ebea853fefc43f  ./script/rsyslogger.sh
 8a578bf79e2b9126acc19971b13cd5fe  ./script/startup.sh
 d267254e779d5f15b28f8f79442f707d  ./script/usb_logger.sh
 4dbccc99d58adefa2e9815705d46c766  ./test/00_BCLD-BUILD.bats
 0b1d119254ad08f0c28a1975b28bbc2a  ./test/BCLD-BATS.sh
 1348c09b472f193682790b0fe9ae6792  ./test/SHELL-CHECK.sh
-aed0af1f65cfb8cff4c3756434583cbc  ./test/bcld_test.sh
+3064c066dde9c091007c024eb405a920  ./test/bcld_test.sh
 3923f9371b39761f5903a2c9a6f1eb59  ./test/common-setup
 6a4f851f7c95a345938ea4a517043191  ./tools/DOCKER-install.sh
 d478f166660b2963eca99bba5646fd3c  ./tools/EXPORTER-TOOLKIT.sh

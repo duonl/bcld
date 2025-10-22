@@ -48,7 +48,8 @@
 source '/bin/log_tools.sh'
 
 # ENVs
-export BCLD_SYSLOG_PORT='6514'
+BCLD_SYSLOG_PORT='6514'
+export BCLD_SYSLOG_PORT
 
 FILE_NAME='60-BCLD-rsyslog.conf'
 INPUT_FILE='/opt/remotelogging/input.json'
@@ -67,7 +68,8 @@ BCLD_LOG_RSYSLOG_SRC="${HOME}/${BCLD_LOG_RSYSLOG_CONF}"
         log_line 'FAO INPUT_FILE DETECTED!!!'
         log_line "${file} appeared in ${dir} by ${action}"
 		if [ -z "${BCLD_FAO}" ]; then
-			export BCLD_FAO=$(/usr/bin/cat "${INPUT_FILE}" | /usr/bin/jq '.hostAndPort' | cut -d \" -f2)
+			BCLD_FAO=$(/usr/bin/cat "${INPUT_FILE}" | /usr/bin/jq '.hostAndPort' | cut -d \" -f2) \
+				&& export BCLD_FAO
 		fi
 
 		# Restart Rsyslog with BCLD_FAO
