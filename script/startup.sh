@@ -64,15 +64,20 @@ source '/usr/bin/echo_tools.sh'
 # ENVs
 if [[ $(/usr/bin/apt-cache show "${BCLD_RUN}" | /usr/bin/wc -l) -gt 0 ]]; then
     # If BCLD_RUN is a DEB, grab version
-    export BCLD_APP_VERSION="$(/usr/bin/apt-cache show "${BCLD_RUN}" | /usr/bin/grep 'Version:' | cut -d ' ' -f2) (${BCLD_RUN})"
+	BCLD_APP_VERSION="$(/usr/bin/apt-cache show "${BCLD_RUN}" | /usr/bin/grep 'Version:' | cut -d ' ' -f2) (${BCLD_RUN})" \
+		&& export BCLD_APP_VERSION
 else
     # If BCLD_RUN is an AppImage, grab version from name
-    export BCLD_APP_VERSION="$(/usr/bin/echo ${BCLD_APP} | /usr/bin/cut -d '_' -f2)"
+    BCLD_APP_VERSION="$(/usr/bin/echo ${BCLD_APP} | /usr/bin/cut -d '_' -f2)" \
+		&& export BCLD_APP_VERSION
 
 fi
 
-export BCLD_KERNEL_VERSION="$(/usr/bin/uname -r)"
-export BCLD_VERSION_STRING="$(/usr/bin/cat /VERSION)"
+BCLD_KERNEL_VERSION="$(/usr/bin/uname -r)" \
+	&& export BCLD_KERNEL_VERSION
+
+BCLD_VERSION_STRING="$(/usr/bin/cat /VERSION)" \
+	&& export BCLD_VERSION_STRING
 
 # VARs
 TAG="RUN-LIVE"
@@ -226,40 +231,40 @@ function realtek_modules () {
 }
 
 # Function to check for Nvidia kernel modules
-function nvidia_modules () {
+# function nvidia_modules () {
 
-    NVIDIA_MODULES="$(/usr/bin/find /lib/modules/"$(/usr/bin/uname -r)"/kernel/ -maxdepth 1 -type d -name 'nvidia*' | /usr/bin/wc -l)"
+#     NVIDIA_MODULES="$(/usr/bin/find /lib/modules/"$(/usr/bin/uname -r)"/kernel/ -maxdepth 1 -type d -name 'nvidia*' | /usr/bin/wc -l)"
 
-    if [[ ${NVIDIA_MODULES} -gt 0 ]]; then
+#     if [[ ${NVIDIA_MODULES} -gt 0 ]]; then
         
-        silent_item_pass 'Nvidia modules installed...'
-        export BCLD_NVIDIA='installed'
+#         silent_item_pass 'Nvidia modules installed...'
+#         export BCLD_NVIDIA='installed'
         
-        if [[ $(/usr/bin/lsmod | /usr/bin/grep -c 'nvidia') -gt 0 ]]; then
-            silent_item_pass 'Nvidia modules loaded!'
-            export BCLD_NVIDIA='loaded'
+#         if [[ $(/usr/bin/lsmod | /usr/bin/grep -c 'nvidia') -gt 0 ]]; then
+#             silent_item_pass 'Nvidia modules loaded!'
+#             export BCLD_NVIDIA='loaded'
+
+#             if [[ -x /usr/bin/nvidia-smi ]] && [[ -x /usr/bin/nvidia-detector ]]; then
+#                     if [[ ${BCLD_VERBOSE} -eq 1 ]]; then
+#                         list_item_pass 'Nvidia driver detected!'
+#                         list_entry
+#                         /usr/bin/sudo nvidia-smi
+#                         list_catch
+#                     else
+#                         list_item_pass "Nvidia driver detected: $(/usr/bin/nvidia-detector)"
+#                     fi
+#                     export BCLD_NVIDIA='detected'
+#             else
+#                 list_item_fail "Unable to detect Nvidia driver!"
+#                 export BCLD_NVIDIA='undetected'
+#             fi
             
-            if [[ -x /usr/bin/nvidia-smi ]] && [[ -x /usr/bin/nvidia-detector ]]; then
-                    if [[ ${BCLD_VERBOSE} -eq 1 ]]; then
-                        list_item_pass 'Nvidia driver detected!'
-                        list_entry
-                        /usr/bin/sudo nvidia-smi
-                        list_catch
-                    else
-                        list_item_pass "Nvidia driver detected: $(/usr/bin/nvidia-detector)"
-                    fi
-                    export BCLD_NVIDIA='detected'
-            else
-                list_item_fail "Unable to detect Nvidia driver!"
-                export BCLD_NVIDIA='undetected'
-            fi
-            
-        else
-            list_item_fail 'Nvidia modules could not be loaded!'
-            export BCLD_NVIDIA='not loaded'
-        fi
-    fi
-}
+#         else
+#             list_item_fail 'Nvidia modules could not be loaded!'
+#             export BCLD_NVIDIA='not loaded'
+#         fi
+#     fi
+# }
 
 ## To list BCLD_OPTS
 function get_vendor_opts () {
@@ -279,7 +284,8 @@ function ip_link () {
 		    # Only perform network check on BCLD_URL (trusted) if present
 			elif [[ -n "${BCLD_URL}" ]]; then
 			    list_item_pass "Performing network check on: \"${BCLD_URL}\""
-			    export BCLD_DOWNLOAD="$(/usr/bin/curl -L -s -o /dev/null -w '%{speed_download}' --max-time 10 "${BCLD_URL}")"
+			    BCLD_DOWNLOAD="$(/usr/bin/curl -L -s -o /dev/null -w '%{speed_download}' --max-time 10 "${BCLD_URL}")" \
+					&& export BCLD_DOWNLOAD
 			    
 			    # If BCLD_URL is set, but network check fails, this network is unstable
 			    if [[ "${BCLD_DOWNLOAD}" -eq 0 ]]; then
@@ -289,10 +295,13 @@ function ip_link () {
 			    
 			fi
 			
-			export BCLD_IP="$(/usr/sbin/ip address | /usr/bin/grep "${BCLD_IF}" | /usr/bin/grep inet | /usr/bin/awk '{ print $2 }' | /usr/bin/cut -d '/' -f1 | /usr/bin/head -n 1)"
-		    export BCLD_MAC="$(/usr/sbin/ip link show "${BCLD_IF}" | /usr/bin/grep link | /usr/bin/awk '{ print $2 }')"
-		    export BCLD_SPEED="$(/usr/sbin/ip a | /usr/bin/grep "${BCLD_IF}" | /usr/bin/grep 'qlen' | /usr/bin/awk '{print $NF}')"
-			
+			BCLD_IP="$(/usr/sbin/ip address | /usr/bin/grep "${BCLD_IF}" | /usr/bin/grep inet | /usr/bin/awk '{ print $2 }' | /usr/bin/cut -d '/' -f1 | /usr/bin/head -n 1)" \
+				&& export BCLD_IP
+		    BCLD_MAC="$(/usr/sbin/ip link show "${BCLD_IF}" | /usr/bin/grep link | /usr/bin/awk '{ print $2 }')" \
+				&& export BCLD_MAC
+		    BCLD_SPEED="$(/usr/sbin/ip a | /usr/bin/grep "${BCLD_IF}" | /usr/bin/grep 'qlen' | /usr/bin/awk '{print $NF}')" \
+				&& export BCLD_SPEED
+
 			BCLD_DISCARDED="$(/usr/bin/netstat --statistics | /usr/bin/grep 'incoming packets discarded' | /usr/bin/awk '{ print $1 }')"
 			BCLD_DROPPED="$(/usr/bin/netstat --statistics | /usr/bin/grep 'outgoing packets dropped' | /usr/bin/awk '{ print $1 }')"
 			
@@ -307,14 +316,17 @@ function set_bcld_wireless () {
 	# If BCLD_IF is still empty, it means we're going wireless
 	if [[ -z "${BCLD_IF}" ]]; then   
 		list_item "Setting default wireless interface..."
-		export BCLD_IF="$(/usr/bin/basename $(/usr/bin/find /sys/class/ieee80211/*/device/net -mindepth 1 -maxdepth 1 -type d | /usr/bin/head -n 1))"
+		if_dir="$(/usr/bin/find /sys/class/ieee80211/*/device/net -mindepth 1 -maxdepth 1 -type d | /usr/bin/head -n 1)"
+		BCLD_IF="$(/usr/bin/basename "${if_dir}")" \
+			&& export BCLD_IF
 	fi
 }
 
 ## Function to set BCLD_EAP_AUTH if still empty
 function set_EAP_AUTH () {
 	if [[ -z "${BCLD_EAP_AUTH}" ]]; then   
-		export BCLD_EAP_AUTH='mschapv2'
+		BCLD_EAP_AUTH='mschapv2'
+		export BCLD_EAP_AUTH
 	fi
 	
 	list_item "Setting default EAP authentication method: ${BCLD_EAP_AUTH}"
@@ -445,7 +457,8 @@ function connect_establish () {
 	/usr/bin/sudo dhclient
 
 	# Set BCLD_IF if it exists
-	export BCLD_IF="$(/usr/sbin/ip route | /usr/bin/grep -v 'linkdown' | /usr/bin/grep -m1 'default' | /usr/bin/awk '{ print $5 }')"
+	BCLD_IF="$(/usr/sbin/ip route | /usr/bin/grep -v 'linkdown' | /usr/bin/grep -m1 'default' | /usr/bin/awk '{ print $5 }')" \
+		&& export BCLD_IF
 
 	# If there is no DHCP_LEASE AND no BCLD_IF, shutdown
 	if [[ ! -s "${DHCP_LEASE}" ]] && [[ -z "${BCLD_IF}" ]]; then
@@ -534,11 +547,14 @@ function init_app () {
         
         if [[ ${BCLD_VERBOSE} -eq 1 ]]; then
     		# Set BCLD_LAUNCH_COMMAND (verbose)
-        	export BCLD_LAUNCH_COMMAND="startx openbox-session"
+        	BCLD_LAUNCH_COMMAND="startx openbox-session"
     	else
     		# Set BCLD_LAUNCH_COMMAND (hide)
-    		export BCLD_LAUNCH_COMMAND="startx openbox-session &> /dev/null"
+    		BCLD_LAUNCH_COMMAND="startx openbox-session &> /dev/null"
         fi
+
+		# Export the selected launch command
+		export BCLD_LAUNCH_COMMAND
         
         if [[ "${BCLD_MODEL}" == 'test' ]] \
             && [[ -f "${BCLD_TEST}" ]]; then
@@ -587,7 +603,8 @@ if [[ $(/usr/bin/systemd-detect-virt) == 'none' ]]; then
     /usr/bin/echo
 
     # When started, we can now use Pulse Audio controls
-    export BCLD_SINKS="$(/usr/bin/pactl list short sinks  | /usr/bin/awk '{ print $2 }' )"
+    BCLD_SINKS="$(/usr/bin/pactl list short sinks  | /usr/bin/awk '{ print $2 }' )"
+	export BCLD_SINKS
     
     # If no BCLD_SINKS can be found, or if PA sets it to (auto_)null, take action based on BCLD_MODEL
     if [[ -z "${BCLD_SINKS}" ]] \
@@ -622,14 +639,15 @@ read_all_params
 ## Check Realtek modules
 realtek_modules
 
-## Check if running BCLD Nvidia
-nvidia_modules
+## Check if running BCLD Nvidia (DISCONTINUED)
+# nvidia_modules
 
 ## ALTERNATE MODES
 if [[ ${BCLD_MODEL} != 'release' ]]; then
     # If not RELEASE, enable DEBUG port (also for TEST)
 
-    export BCLD_OPTS="${BCLD_OPTS} --remote-debugging-port=${APP_DEBUG_PORT}"
+    BCLD_OPTS="${BCLD_OPTS} --remote-debugging-port=${APP_DEBUG_PORT}" \
+		&&	export BCLD_OPTS
 
 	# Check if CLIENT_DEBUG_PORT in use
     if [[ $(/usr/bin/ss -ptln | /usr/bin/grep -c ${CLIENT_DEBUG_PORT}) -eq 0 ]]; then
@@ -694,18 +712,18 @@ else
 
     # Add VENDOR PARAM if 'wft'
     if [[ "${BCLD_VENDOR}" == 'wft' ]]; then
-        export BCLD_OPTS="${BCLD_OPTS} --vendor=wftbsb"
+        BCLD_OPTS="${BCLD_OPTS} --vendor=wftbsb"
     fi
 
     # Configure BCLD Overwrite URL
     if [[ -n "${BCLD_URL}" ]]; then
-	    export BCLD_OPTS="${BCLD_OPTS} --facet-overwrite-url=${BCLD_URL}"
+	    BCLD_OPTS="${BCLD_OPTS} --facet-overwrite-url=${BCLD_URL}"
 	    list_item_pass "BCLD_URL added to BCLD_OPTS"
     fi
 
     # Configure BCLD Zoom
     if [[ "${BCLD_ZOOM}" -eq 1 ]]; then
-	    export BCLD_OPTS="${BCLD_OPTS} --zoom"
+	    BCLD_OPTS="${BCLD_OPTS} --zoom"
 	    list_item_pass "ZOOM added to BCLD_OPTS"
     fi
 
@@ -729,9 +747,12 @@ else
 
 	# Extra BCLD logging
 	if [[ "${BCLD_LOGGING}" -eq 1 ]]; then
-		export BCLD_OPTS="${BCLD_OPTS} --enableLogging --logfile=/opt/bcld_log.json"
+		BCLD_OPTS="${BCLD_OPTS} --enableLogging --logfile=/opt/bcld_log.json"
 		list_item_pass "LOGGING added to BCLD_OPTS"
 	fi
+
+	# Export the desired configuration
+	export BCLD_OPTS
 fi
 
 ### Show BCLD_OPTS
