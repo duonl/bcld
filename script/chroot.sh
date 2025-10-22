@@ -289,7 +289,7 @@ list_catch
 if [[ ${BCLD_MODEL} = 'test' ]]; then
     list_item "BCLD_MODEL set to: ${BCLD_MODEL}"
     last_item 'Configuring OpenSSH Server...'
-    /usr/bin/echo 'PasswordAuthentication yes' >> "${SSHD}"
+    /usr/bin/echo 'PasswordAuthentication yes' > "${SSHD}"
     /usr/bin/echo 'X11Forwarding yes' >> "${SSHD}"
     /usr/bin/systemctl enable ssh.service
 fi
