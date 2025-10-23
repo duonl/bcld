@@ -146,7 +146,11 @@ if [[ -z ${DISPLAY} ]]; then
 fi
 
 ## Detect default display
-export BCLD_DISPLAY="$(/usr/bin/xrandr | /usr/bin/grep connected | /usr/bin/grep -v disconnected | /usr/bin/awk '{print $1}')"
+BCLD_DISPLAY="$(/usr/bin/xrandr \
+    | /usr/bin/grep 'connected' \
+    | /usr/bin/grep -v 'disconnected' \
+    | /usr/bin/awk '{print $1}')"
+export BCLD_DISPLAY
 
 ## X Settings
 /usr/bin/xset s off
