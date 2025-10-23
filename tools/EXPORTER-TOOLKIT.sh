@@ -43,7 +43,11 @@
 # Collection of functions to work with BCLD files
 TAG='EXPORTER-KIT'
 
-PROJECT_DIR=$(/usr/bin/dirname "$(/usr/bin/dirname "$(/usr/bin/readlink -f ${BASH_SOURCE})")")
+# The Exporter starts in TOOLS_DIR
+TOOLS_DIR=$(/usr/bin/dirname "$(/usr/bin/readlink -f ${BASH_SOURCE[0]})")
+
+# So, we need to dirname twice to get the PROJECT_DIR
+PROJECT_DIR=$(/usr/bin/dirname "${TOOLS_DIR}")
 
 source "${PROJECT_DIR}/config/BUILD.conf"
 source "${PROJECT_DIR}/script/echo_tools.sh"

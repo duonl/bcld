@@ -89,6 +89,8 @@ if [[ -n "${PXE_SERVER}" ]] \
     /usr/bin/echo -e 'PXE deployment complete!\n'
 elif [[ -z "${PXE_SERVER}" ]]; then
     /usr/bin/echo -e 'Please supply a URL...\n'
+    exit 1
 else
     /usr/bin/echo -e 'Please make sure all artifacts are available: bcld.iso, initrd, and vmlinuz...\n'
+    exit 1
 fi

@@ -49,8 +49,8 @@ source '/usr/bin/echo_tools.sh'
 TAG='BCLD-TEST'
 
 # ENVs
-export BCLD_VERBOSE=1
-export NSSDB="${HOME}/.pki/nssdb"
+BCLD_VERBOSE=1 && export BCLD_VERBOSE
+NSSDB="${HOME}/.pki/nssdb" && export NSSDB
 
 # VARs
 APP_FILE='/usr/bin/bcld_app.sh'
@@ -554,7 +554,8 @@ if [[ -n "${BCLD_NW_LOGGING}" ]]; then
     list_item "${BCLD_NW_PARAM} detected!"
 
     # If BCLD_NW_LOGGING is set, use it as NW_PRE_ARGS
-    export NW_PRE_ARGS="$(/usr/bin/echo "${BCLD_NW_LOGGING}" | /usr/bin/base64 -d)"
+    NW_PRE_ARGS="$(/usr/bin/echo "${BCLD_NW_LOGGING}" | /usr/bin/base64 -d)" \
+        && export NW_PRE_ARGS
 
     list_item_pass "Added NW_PRE_ARGS logging options: ${NW_PRE_ARGS}"
 fi
