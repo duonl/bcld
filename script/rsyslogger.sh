@@ -48,8 +48,8 @@
 source '/bin/log_tools.sh'
 
 # ENVs
-BCLD_SYSLOG_PORT='6514'
-export BCLD_SYSLOG_PORT
+BCLD_SYSLOG_PORT='6514' \
+	&& export BCLD_SYSLOG_PORT
 
 FILE_NAME='60-BCLD-rsyslog.conf'
 INPUT_FILE='/opt/remotelogging/input.json'

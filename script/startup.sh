@@ -325,8 +325,8 @@ function set_bcld_wireless () {
 ## Function to set BCLD_EAP_AUTH if still empty
 function set_EAP_AUTH () {
 	if [[ -z "${BCLD_EAP_AUTH}" ]]; then   
-		BCLD_EAP_AUTH='mschapv2'
-		export BCLD_EAP_AUTH
+		BCLD_EAP_AUTH='mschapv2' \
+			&& export BCLD_EAP_AUTH
 	fi
 	
 	list_item "Setting default EAP authentication method: ${BCLD_EAP_AUTH}"
@@ -603,8 +603,8 @@ if [[ $(/usr/bin/systemd-detect-virt) == 'none' ]]; then
     /usr/bin/echo
 
     # When started, we can now use Pulse Audio controls
-    BCLD_SINKS="$(/usr/bin/pactl list short sinks  | /usr/bin/awk '{ print $2 }' )"
-	export BCLD_SINKS
+    BCLD_SINKS="$(/usr/bin/pactl list short sinks  | /usr/bin/awk '{ print $2 }' )" \
+		&& export BCLD_SINKS
     
     # If no BCLD_SINKS can be found, or if PA sets it to (auto_)null, take action based on BCLD_MODEL
     if [[ -z "${BCLD_SINKS}" ]] \
