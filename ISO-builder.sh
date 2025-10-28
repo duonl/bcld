@@ -55,7 +55,7 @@ if [[ -f "$(pwd)/ISO-builder.sh" ]]; then
     CONFIG_DIR="${PROJECT_DIR}/config"
     SCRIPT_DIR="${PROJECT_DIR}/script"
     TOOLS_DIR="${PROJECT_DIR}/tools"
-    
+
     BUILD_CONF="${CONFIG_DIR}/BUILD.conf"
     ECHO_TOOLS="${SCRIPT_DIR}/echo_tools.sh"
     EXPORTER_KIT="${TOOLS_DIR}/EXPORTER-TOOLKIT.sh"
@@ -824,10 +824,12 @@ list_item "Changing mouse permissions for BCLD Big Mouse..."
 
 ## Suspend / Lock
 # Disable lock on lid close
-if [[ -f ${CHLOGIND} ]]; then
+if [[ -f "${CHLOGIND}" ]] && [[ -f "${CONFIG_DIR}/logind/${BCLD_LOGIND}" ]]; then
 	list_item "Disable lock on lid close..."
 	# Search lock on lid close, replace with ignore
-	/usr/bin/echo 'HandleLidSwitch=ignore' >> "${CHLOGIND}"
+	#/usr/bin/echo 'HandleLidSwitch=ignore' >> "${CHLOGIND}"
+    BCLD_LOGIND='10_BCLD-logind.conf'
+    copy_file "${CONFIG_DIR}/logind/${BCLD_LOGIND}" "${CHLOGIND}.d/${BCLD_LOGIND}"
 fi
 
 ## Shutdown
