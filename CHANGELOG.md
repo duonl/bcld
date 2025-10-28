@@ -4,6 +4,7 @@
 
 ## October
 * `2025-10-28 16:27:56` : [OAC-1313] Added more [logind configurations](./config/logind/10_BCLD-logind.conf), since XF86 controls barely make a difference
+  * Added SOF and NVK monitor to [BCLD TEST](./test/bcld_test.sh)
 * `2025-10-22 13:12:13` : [OAC-1193] Adding [Mesa and Vulkan drivers](./config/packages/REQUIRED) for Nouveau Vulkan support
   * Added [vulkan-tools](./config/packages/TEST) for TEST
   * Refactored [startup script](./script/startup.sh) to prevent masking return values for var assignment (SC2155)
