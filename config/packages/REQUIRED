@@ -173,7 +173,7 @@ libxtst6
 libxvmc1
 libze-intel-gpu1
 libze1
-#linux-firmware
+linux-firmware
 linux-libc-dev
 localechooser-data
 locales

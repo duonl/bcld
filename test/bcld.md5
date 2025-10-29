@@ -56,7 +56,7 @@ acb938f50e2aa3ac3e0b082c320a1439  ./config/packages/CHROOT
 62a3601248c7a5ffa19abbcd416c59a1  ./config/packages/KERNEL
 492fba79e914fd8e325dc2fcfd3b00f2  ./config/packages/NVIDIA
 6c224b812083575965b9bf1aca105231  ./config/packages/REMOVE
-a816b1f3efc8e3aad3ec1934e5e42504  ./config/packages/REQUIRED
+1761c1937ad2012452cd7b72d6387d32  ./config/packages/REQUIRED
 57f1862c24f16ce5847cd06bf7d64421  ./config/packages/TEST
 c4194d2bde957994fa74aaa13bc8333e  ./config/packages/VIRTUAL
 e7c3341206da6e77bfed1923d6a11883  ./config/packages/selections.conf
