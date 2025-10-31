@@ -423,6 +423,16 @@ function BCLD_OVAL () {
     fi
 }
 
+## Function to quickly retrieve package version
+function package_version () {
+
+    # Find package version
+    pkg_ver="$(/usr/bin/dpkg-query -f '${Version}' -W "${1}")"
+
+    # Return result
+    /usr/bin/echo "${pkg_ver}"
+}
+
 ## Function to reset TEST sessions, RELEASE and DEBUG can never escape the app
 function reset_terminal () {
 
@@ -443,6 +453,8 @@ function reset_terminal () {
     list_param "${BCLD_VENDOR}" 'Vendor'
     list_param "${BCLD_APP_VERSION}" 'App Version'
     list_param "${BCLD_KERNEL_VERSION}" 'Kernel version'
+    list_param "$(package_version 'firmware-sof-signed')" 'SOF-version'
+    list_param "$(package_version 'mesa-vulkan-drivers')" 'NVK-version'
     list_param "${BCLD_LAUNCH_COMMAND}" 'Launch command'
     list_param "${BCLD_URL}" 'BCLD afname URL'
     list_param "${BCLD_DOWNLOAD}" 'Link download (Bytes/s)'
