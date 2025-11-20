@@ -210,6 +210,24 @@ if [[ -n "${BCLD_DISPLAY}" ]] && [[ -n "${BCLD_BRIGHTNESS}"  ]]; then
     /usr/bin/xrandr --output "${BCLD_DISPLAY}" --brightness "${BCLD_TRUE_BRIGHTNESS}"
 fi
 
+
+# Screensaver
+log_item "Starting XScreenSaver:"
+
+SS_CONFIG="/home/${USER}/.xscreensaver"
+DEFAULT_SS_TIMEOUT='0:15:00'    # 15 minutes
+
+# Set to default unless a BCLD parameter is given
+if [[ -n "${BCLD_SCREENSAVER}" ]]; then
+    BCLD_SS_TIMEOUT="0:${BCLD_SCREENSAVER}:00"
+    /usr/bin/echo "timeout: ${BCLD_SS_TIMEOUT}" >> "${SS_CONFIG}"
+else
+    /usr/bin/echo "timeout: ${DEFAULT_SS_TIMEOUT}" >> "${SS_CONFIG}"
+fi
+
+/usr/bin/xscreensaver &
+
+
 log_last 'X settings configured!'
 
 # For adding XORG logs to the journal
