@@ -3,9 +3,13 @@
 ## 2025
 
 ## December
-* `2025-12-02 13:37:30` : Changed DSP configuration parameter in [BCLD config](./config/bcld/bcld.cfg) back to: `snd_intel_dspcfg.dsp_driver=1`
+* `2025-12-02 13:37:30` : [OAC-1261] Changed DSP configuration parameter in [BCLD config](./config/bcld/bcld.cfg) back to: `snd_intel_dspcfg.dsp_driver=1`
   * Original parameter was with underscores
   * Hyphen notation was for convience but create confusion
+  * Added extra parameters for [OAC-1353]:
+    * `i915.enable_psr=0`,
+    * `i915.enable_dc=0`, and
+    * `intel_iommu=igfx_off`
 
 ## October
 * `2025-10-31 16:39:50` : Changed DSP configuration parameter in [BCLD config](./config/bcld/bcld.cfg) to: `snd-intel-dspcfg.dsp_driver=1`
