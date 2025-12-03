@@ -1,0 +1,14 @@
+# XScreenSaver Preferences File
+# Written by xscreensaver-settings 6.08 for balrog-test
+# https://www.jwz.org/xscreensaver/
+
+dialogTheme: borderlessblack
+fade: True
+fadeSeconds: 0:00:03
+lock: False
+mode: blank
+nice: 10
+splash: false
+splashDuration: 0:00:00
+unfade: True
+visualID: default
