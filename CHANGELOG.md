@@ -10,6 +10,7 @@
     * `i915.enable_psr=0`,
     * `i915.enable_dc=0`, and
     * `intel_iommu=igfx_off`
+  * Minor kernel patch: `6.14.0-33` --> `6.14.0-36`
 
 ## November
 * `2025-11-20 16:28:45` : Added `xscreensaver` to [REQUIRED](./config/packages/REQUIRED) packages
