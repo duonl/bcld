@@ -520,14 +520,15 @@ function copy_post_configs () {
 	copy_file "${CONFIG_DIR}/network-manager/NetworkManager.conf" "${CHROOT_DIR}/etc/NetworkManager/"
 	copy_file "${CONFIG_DIR}/openbox/autostart" "${CHROOT_DIR}/etc/xdg/openbox/"
 	copy_file "${CONFIG_DIR}/pam/login" "${CHROOT_DIR}/etc/pam.d/login"
-	copy_file "${CONFIG_DIR}/plymouth/spinner.plymouth" "${CHPLY_DIR}/themes/spinner/spinner.plymouth"
 	copy_file "${CONFIG_DIR}/plymouth/bcld-plymouth.png" "${CHPLY_DIR}/themes/spinner/watermark.png"
 	copy_file "${CONFIG_DIR}/plymouth/bcld-plymouth.png" "${CHPLY_DIR}/ubuntu-logo.png"
+	copy_file "${CONFIG_DIR}/plymouth/spinner.plymouth" "${CHPLY_DIR}/themes/spinner/spinner.plymouth"
 	copy_file "${CONFIG_DIR}/rsyslog/60-BCLD-rsyslog.conf" "${CHOME_DIR}/60-BCLD-rsyslog.conf"
     copy_file "${CONFIG_DIR}/rsyslog/70-bcld-log.conf" "${CHOME_DIR}/70-bcld-log.conf"
-	copy_file "${SCRIPT_DIR}/rsyslogger.sh" "${CHROOT_BIN}"
-    copy_file "${CONFIG_DIR}/X11/xmodmap/.xmodmap" "${CHOME_DIR}"
 	copy_file "${CONFIG_DIR}/X11/xbindkeys/.xbindkeysrc" "${CHOME_DIR}"
+    copy_file "${CONFIG_DIR}/X11/xmodmap/.xmodmap" "${CHOME_DIR}"
+    copy_file "${CONFIG_DIR}/X11/xscreensaver/.xscreensaver" "${CHOME_DIR}"
+	copy_file "${SCRIPT_DIR}/rsyslogger.sh" "${CHROOT_BIN}"
 	
 	## Copy ISOLINUX
     copy_file /usr/lib/ISOLINUX/isolinux.bin "${ISOLINUX_DIR}/isolinux.bin"

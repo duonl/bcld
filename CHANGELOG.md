@@ -10,6 +10,12 @@
     * `i915.enable_psr=0`,
     * `i915.enable_dc=0`, and
     * `intel_iommu=igfx_off`
+  * Minor kernel patch: `6.14.0-33` --> `6.14.0-36`
+
+## November
+* `2025-11-20 16:28:45` : Added `xscreensaver` to [REQUIRED](./config/packages/REQUIRED) packages
+  * Screen will now blank after 15 minutes by default
+  * Can be customized with new BCLD parameter: [BCLD Display Screensaver](./config/bash/environment)
 
 ## October
 * `2025-10-31 16:39:50` : Changed DSP configuration parameter in [BCLD config](./config/bcld/bcld.cfg) to: `snd-intel-dspcfg.dsp_driver=1`
