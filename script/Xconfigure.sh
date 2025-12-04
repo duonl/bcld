@@ -220,8 +220,11 @@ DEFAULT_SS_TIMEOUT='0:15:00'    # 15 minutes
 # Set to default unless a BCLD parameter is given
 if [[ -n "${BCLD_SCREENSAVER}" ]]; then
     BCLD_SS_TIMEOUT="0:${BCLD_SCREENSAVER}:00"
+
+    /usr/bin/echo "BCLD_SCREENSAVER found!: ${BCLD_SS_TIMEOUT}"
     /usr/bin/echo "timeout: ${BCLD_SS_TIMEOUT}" >> "${SS_CONFIG}"
 else
+    /usr/bin/echo "BCLD_SCREENSAVER not found! Using default: ${DEFAULT_SS_TIMEOUT}"
     /usr/bin/echo "timeout: ${DEFAULT_SS_TIMEOUT}" >> "${SS_CONFIG}"
 fi
 
