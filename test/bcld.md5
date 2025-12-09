@@ -12,11 +12,11 @@ a1d62bcaf8202e22136ae828daf6b389  ./.gitignore
 ef29c64bd35fec47b154096be5a4c7d0  ./IMG-builder.sh
 65638da7960b4cfc03b3c34809d62561  ./ISO-builder.sh
 524b704f7687543521a4f126f3b50422  ./LICENSE.eupl
-eabfebfe5d84844cae23e0668851679c  ./README.md
+dbdea4a3be2b93ef495c21a01d75527e  ./README.md
 f6c4276a99ee9de5b0bc0e385f7f4b57  ./RepoMan.sh
 b1447f0cf092dc2f9c8770aaedd8fb5f  ./SECURITY.md
 5ee37144e15f8bf49e7f683935a27f15  ./assets/bcld-logo.png
-a5cbbf37baaa8eeeefd21d624df0859c  ./config/BUILD.conf
+a012375e1b83dfdb563d3609369a3f25  ./config/BUILD.conf
 f9308ddcf62532c70ae0b4970c39b082  ./config/X11/xbindkeys/.xbindkeysrc
 2bd011392d7c87070a19a6733fcc03dc  ./config/X11/xmodmap/.xmodmap
 12e8a46bb563daf82e8ce5fc143cf69b  ./config/X11/xorg.conf.d/80-bcld-basic.conf
@@ -101,7 +101,7 @@ bc8d4c92bdbadd1c62c088184f39073f  ./config/trap_shutdown/virt/virt-warning-5.png
 c99677e6deb495fb2b90cbfb84ac7349  ./config/udev/rules.d/BCLD-USB.rules
 87ecdd57738b7ed7fe23e3da8a492593  ./image/ISO/README.diskdefines
 49a4210f52e5bcc79077d12c3dfd63f5  ./image/ISO/isolinux/isolinux.cfg
-5be585ab6953dd5461cd2f22da1861b5  ./script/Xconfigure.sh
+25dd76d6889e35fe9800c1465067944a  ./script/Xconfigure.sh
 3f0e4d55a962e4dd009c1ae8c4db7739  ./script/autocert.sh
 f6604ec06c9aa1b19247785ed0f280a2  ./script/bcld_app.sh
 caeaba6f3ea103a2d0ee5a68b44baa93  ./script/bcld_vendor.sh
