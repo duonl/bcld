@@ -228,13 +228,6 @@ else
     /usr/bin/echo -e "\ntimeout: ${DEFAULT_SS_TIMEOUT}" >> "${SS_CONFIG}"
 fi
 
-SS_PID="$(/usr/bin/pidof 'xscreensaver')"
-
-if [[ -n "${SS_PID}" ]]; then
-    /usr/bin/echo 'Killing old screensaver...'
-    /usr/bin/pkill 'xscreensaver'
-fi
-
 /usr/bin/xscreensaver &
 
 
