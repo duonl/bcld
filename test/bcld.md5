@@ -101,7 +101,7 @@ bc8d4c92bdbadd1c62c088184f39073f  ./config/trap_shutdown/virt/virt-warning-5.png
 c99677e6deb495fb2b90cbfb84ac7349  ./config/udev/rules.d/BCLD-USB.rules
 87ecdd57738b7ed7fe23e3da8a492593  ./image/ISO/README.diskdefines
 49a4210f52e5bcc79077d12c3dfd63f5  ./image/ISO/isolinux/isolinux.cfg
-9e2a5b057da738bc2f2cdeb136639d9f  ./script/Xconfigure.sh
+465e374bc72836c068c82b37b8f00546  ./script/Xconfigure.sh
 3f0e4d55a962e4dd009c1ae8c4db7739  ./script/autocert.sh
 f6604ec06c9aa1b19247785ed0f280a2  ./script/bcld_app.sh
 caeaba6f3ea103a2d0ee5a68b44baa93  ./script/bcld_vendor.sh
