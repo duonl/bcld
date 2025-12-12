@@ -218,9 +218,9 @@ SS_CONFIG="/home/${USER}/.xscreensaver"
 DEFAULT_SS_TIMEOUT='0:15:00'    # 15 minutes
 
 # Set to default unless a BCLD parameter is given
-if [[ ${BCLD_SCREENSAVER} -eq 0 ]]; then
+if [[ "${BCLD_SCREENSAVER}" == '0' ]]; then
     # Disable xscreensaver if the value is 0
-    /usr/bin/echo "BCLD_SCREENSAVER found, but set to: ${BCLD_SS_TIMEOUT}"
+    /usr/bin/echo "BCLD_SCREENSAVER found, but set to: ${BCLD_SCREENSAVER}"
     /usr/bin/echo "xscreensaver disabled!"
 
     # Do not start xscreensaver
