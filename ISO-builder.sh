@@ -153,8 +153,8 @@ ISO_MD5="${ISO_DIR}/${MD5_TAG}"
 SQUASHFS="${CASPER_DIR}/filesystem.squashfs"
 UBUNTU_DIR="${EFI_DIR}/ubuntu"
 
-### ISOLINUX/Grub artifacts
-#### Legacy
+### Dependencies
+#### ISOLINUX/Grub
 BIOS_IMG="${ISOLINUX_DIR}/bios.img"
 CORE_IMG="${ISOLINUX_DIR}/core.img"
 UBUNTU_GRUB="${UBUNTU_DIR}/grub.cfg"
@@ -162,6 +162,11 @@ UBUNTU_GRUB="${UBUNTU_DIR}/grub.cfg"
 #### UEFI
 #BOOT_EFI="${EFI_BOOT_DIR}/bootx64.efi"
 EFI_IMG="${EFI_BOOT_DIR}/efi.img"
+
+#### SOF-BIN
+SOF_LATEST="$(ls -d ${PROJECT_DIR}/modules/sof-bin/v* | sort -V | tail -1)"
+SOF_DIR="${PROJECT_DIR}/modules/sof-bin/${SOF_LATEST}"
+CHFW_DIR="${CHROOT_DIR}/lib/firmware/intel"
 
 ### Dummy Repo dirs
 REPO_DIR="${ISO_DIR}/dists/${CODE_NAME}"
@@ -507,6 +512,10 @@ function copy_post_config_dirs () {
     copy_directory "${CONFIG_DIR}/trap_shutdown" "${CHOME_DIR}"
     copy_directory "${CONFIG_DIR}/X11/xorg.conf.d" "${CHROOT_DIR}/etc/X11/"
     copy_directory "${PROFILE_DIR}" "${CHROOT_DIR}/etc/"
+
+    # SOF SUPPORT
+    copy_directory "${SOF_DIR}/sof" "${CHFW_DIR}/sof"
+    copy_directory "${SOF_DIR}/sof-tplg" "${CHFW_DIR}/sof-tplg"
 }
 
 ## Function to copy post-configuration files
@@ -942,7 +951,7 @@ fi
 
 on_completion
 
-## Trigger update-initramfs before exporting artifacts
+## Trigger update-initramfs before exporting artifacts (update initrd)
 TAG='ISO-INITRAMFS'
 list_header "Triggering update-initramfs"
 list_entry
