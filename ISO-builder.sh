@@ -515,9 +515,9 @@ function copy_post_config_dirs () {
 
     # SOF SUPPORT
     list_item "copy_directory ${SOF_DIR}/sof-ipc4-v${SOF_VERSION}/* ${CHFW_DIR}/sof-ipc4" # debugging
-    copy_directory ${SOF_DIR}/sof-ipc4-v${SOF_VERSION}/* "${CHFW_DIR}/sof-ipc4"
-    copy_directory ${SOF_DIR}/sof-ipc4-lib-v${SOF_VERSION}/* "${CHFW_DIR}/sof-ipc4-lib"
-    copy_directory ${SOF_DIR}/sof-ipc4-tplg-v${SOF_VERSION}/* "${CHFW_DIR}/sof-tplg"
+    /usr/bin/rsync -a ${SOF_DIR}/sof-ipc4-v${SOF_VERSION}/* "${CHFW_DIR}/sof-ipc4"
+    /usr/bin/rsync -a ${SOF_DIR}/sof-ipc4-lib-v${SOF_VERSION}/* "${CHFW_DIR}/sof-ipc4-lib"
+    /usr/bin/rsync -a ${SOF_DIR}/sof-ipc4-tplg-v${SOF_VERSION}/* "${CHFW_DIR}/sof-tplg"
 }
 
 ## Function to copy post-configuration files
