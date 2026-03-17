@@ -1,5 +1,11 @@
 # Release Information
 
+## 2026
+
+## March
+* `2026-03-17 12:41:45` : [OAC-1392] Adding support for newer SOF systems
+    * Kernel patch: `6.14.0-37` --> `6.17.0-19`
+
 ## 2025
 
 ## December

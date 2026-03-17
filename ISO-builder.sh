@@ -514,8 +514,9 @@ function copy_post_config_dirs () {
     copy_directory "${PROFILE_DIR}" "${CHROOT_DIR}/etc/"
 
     # SOF SUPPORT
-    copy_directory "${SOF_DIR}/sof" "${CHFW_DIR}/sof"
-    copy_directory "${SOF_DIR}/sof-tplg" "${CHFW_DIR}/sof-tplg"
+    copy_directory ${SOF_DIR}/sof-ipc4-${SOF_LATEST:2:-2}/* "${CHFW_DIR}/sof-ipc4"
+    copy_directory ${SOF_DIR}/sof-ipc4-tplg-${SOF_LATEST:2:-2}/* "${CHFW_DIR}/sof-ipc4-tplg"
+    copy_directory ${SOF_DIR}/sof-ace-tplg-${SOF_LATEST:2:-2}/* "${CHFW_DIR}/sof-ace-tplg"
 }
 
 ## Function to copy post-configuration files
