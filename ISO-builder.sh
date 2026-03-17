@@ -164,8 +164,8 @@ UBUNTU_GRUB="${UBUNTU_DIR}/grub.cfg"
 EFI_IMG="${EFI_BOOT_DIR}/efi.img"
 
 #### SOF-BIN
-SOF_LATEST="$(ls -d ${PROJECT_DIR}/modules/sof-bin/v* | sort -V | tail -1)"
-SOF_DIR="${PROJECT_DIR}/modules/sof-bin/${SOF_LATEST}"
+SOF_VER_SHORT="$(/usr/bin/echo "${SOF_VERSION}" | /usr/bin/cut -d. -f1-2)"
+SOF_DIR="${PROJECT_DIR}/modules/sof-bin/v${SOF_VER_SHORT}.x"
 CHFW_DIR="${CHROOT_DIR}/lib/firmware/intel"
 
 ### Dummy Repo dirs
@@ -514,9 +514,8 @@ function copy_post_config_dirs () {
     copy_directory "${PROFILE_DIR}" "${CHROOT_DIR}/etc/"
 
     # SOF SUPPORT
-    copy_directory ${SOF_DIR}/sof-ipc4-${SOF_LATEST:2:-2}/* "${CHFW_DIR}/sof-ipc4"
-    copy_directory ${SOF_DIR}/sof-ipc4-tplg-${SOF_LATEST:2:-2}/* "${CHFW_DIR}/sof-ipc4-tplg"
-    copy_directory ${SOF_DIR}/sof-ace-tplg-${SOF_LATEST:2:-2}/* "${CHFW_DIR}/sof-ace-tplg"
+    copy_directory ${SOF_DIR}/sof-ipc4-v${SOF_VERSION}/* "${CHFW_DIR}/sof-ipc4"
+    copy_directory ${SOF_DIR}/sof-ipc4-tplg-v${SOF_VERSION}/* "${CHFW_DIR}/sof-ipc4-tplg"
 }
 
 ## Function to copy post-configuration files
