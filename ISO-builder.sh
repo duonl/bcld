@@ -525,23 +525,30 @@ function copy_post_config_dirs () {
 
     list_item "copy_directory ${SOF_BIN_DIR}/* ${CHFW_DIR}/${SOF_BIN_STR}" # debugging
 
-    list_entry
 
-    ## Copy SOF binaries
-    for d in ${SOF_BIN_STR}-v${SOF_VERSION}*; do
-        /usr/bin/rsync -av ${d}/* "${CHFW_DIR}/${SOF_BIN_STR}"
-    done
+    if [[ -d "${SOF_DIR}" ]]; then
+        list_entry
 
-    # ## Copy SOF libraries
-    for d in ${SOF_LIB_STR}-v${SOF_VERSION}*; do
-        /usr/bin/rsync -av ${d}/* "${CHFW_DIR}/${SOF_LIB_STR}"
-    done
+        ## Copy SOF binaries
+        for d in ${SOF_BIN_DIR}*; do
+            /usr/bin/rsync -av ${d}/* "${CHFW_DIR}/${SOF_BIN_STR}"
+        done
 
-    for d in ${SOF_TPLG_STR}-v${SOF_VERSION}*; do
-        /usr/bin/rsync -av ${d}/* "${CHFW_DIR}/${SOF_TPLG_STR}"
-    done
+        # ## Copy SOF libraries
+        for d in ${SOF_LIB_DIR}*; do
+            /usr/bin/rsync -av ${d}/* "${CHFW_DIR}/${SOF_LIB_STR}"
+        done
 
-    list_catch
+        for d in ${SOF_TPLG_DIR}*; do
+            /usr/bin/rsync -av ${d}/* "${CHFW_DIR}/${SOF_TPLG_STR}"
+        done
+
+        list_catch
+    else
+        list_item_fail "/"${SOF_DIR}/" could not be found!"
+        list_exit
+        exit 1
+    fi
 }
 
 ## Function to copy post-configuration files
