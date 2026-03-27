@@ -514,10 +514,34 @@ function copy_post_config_dirs () {
     copy_directory "${PROFILE_DIR}" "${CHROOT_DIR}/etc/"
 
     # SOF SUPPORT
-    list_item "copy_directory ${SOF_DIR}/sof-ipc4-v${SOF_VERSION}/* ${CHFW_DIR}/sof-ipc4" # debugging
-    /usr/bin/rsync -a ${SOF_DIR}/sof-ipc4-v${SOF_VERSION}/* "${CHFW_DIR}/sof-ipc4"
-    /usr/bin/rsync -a ${SOF_DIR}/sof-ipc4-lib-v${SOF_VERSION}/* "${CHFW_DIR}/sof-ipc4-lib"
-    /usr/bin/rsync -a ${SOF_DIR}/sof-ipc4-tplg-v${SOF_VERSION}/* "${CHFW_DIR}/sof-tplg"
+    SOF_BIN_STR='sof-ipc4'
+    SOF_LIB_STR='sof-ipc4-lib'
+    SOF_TPLG_STR='sof-ipc4-tplg'
+
+    ## SOF directories
+    SOF_BIN_DIR="${SOF_DIR}/${SOF_BIN_STR}-v${SOF_VERSION}"
+    SOF_LIB_DIR="${SOF_DIR}/${SOF_LIB_STR}-v${SOF_VERSION}"
+    SOF_TPLG_DIR="${SOF_DIR}/${SOF_TPLG_STR}-v${SOF_VERSION}"
+
+    list_item "copy_directory ${SOF_BIN_DIR}/* ${CHFW_DIR}/${SOF_BIN_STR}" # debugging
+
+    list_entry
+
+    ## Copy SOF binaries
+    for d in ${SOF_BIN_STR}-v${SOF_VERSION}*; do
+        /usr/bin/rsync -av ${d}/* "${CHFW_DIR}/${SOF_BIN_STR}"
+    done
+
+    # ## Copy SOF libraries
+    for d in ${SOF_LIB_STR}-v${SOF_VERSION}*; do
+        /usr/bin/rsync -av ${d}/* "${CHFW_DIR}/${SOF_LIB_STR}"
+    done
+
+    for d in ${SOF_TPLG_STR}-v${SOF_VERSION}*; do
+        /usr/bin/rsync -av ${d}/* "${CHFW_DIR}/${SOF_TPLG_STR}"
+    done
+
+    list_catch
 }
 
 ## Function to copy post-configuration files
