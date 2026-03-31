@@ -94,7 +94,7 @@ function copy_directory {
 		list_item "Copying directory $(basename "${1}")..."
 		/usr/bin/cp -r ${1} ${2}
 	else
-		list_item "Directory does not exist!"
+		list_item "Directory \"${1}\" does not exist!"
 		exit 1
     fi
 }

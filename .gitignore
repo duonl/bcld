@@ -1,17 +1,20 @@
+
+.idea/*
+.ISO-builder.sh.swp
+.vagrant/
+*deb
+app/
 artifacts/
 bootstrap/
 cert/
 chroot/
-app/
 deb/
-*deb
-.idea/*
 image/boot/grub/device.map
 image/boot/grub/grub.cfg
+image/ISO/.disk/
 image/ISO/boot/
 image/ISO/casper/
 image/ISO/cdrom/
-image/ISO/.disk/
 image/ISO/dists/
 image/ISO/EFI/BOOT/bootx64.efi
 image/ISO/EFI/BOOT/efi.img
@@ -26,7 +29,6 @@ image/ISO/isolinux/grub.cfg
 image/ISO/isolinux/isolinux.bin
 image/ISO/md5_file
 image/ISO/md5sum.txt
-.ISO-builder.sh.swp
 log/
 modules/bcld.wiki/
 opt/
@@ -39,4 +41,3 @@ tmp/
 tools/ubcld-repo-manager/artifacts
 tools/ubcld-repo-manager/tmp
 tools/ubcld-repo-manager/ubcld_repo/
-

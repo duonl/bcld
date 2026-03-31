@@ -153,8 +153,8 @@ ISO_MD5="${ISO_DIR}/${MD5_TAG}"
 SQUASHFS="${CASPER_DIR}/filesystem.squashfs"
 UBUNTU_DIR="${EFI_DIR}/ubuntu"
 
-### ISOLINUX/Grub artifacts
-#### Legacy
+### Dependencies
+#### ISOLINUX/Grub
 BIOS_IMG="${ISOLINUX_DIR}/bios.img"
 CORE_IMG="${ISOLINUX_DIR}/core.img"
 UBUNTU_GRUB="${UBUNTU_DIR}/grub.cfg"
@@ -162,6 +162,11 @@ UBUNTU_GRUB="${UBUNTU_DIR}/grub.cfg"
 #### UEFI
 #BOOT_EFI="${EFI_BOOT_DIR}/bootx64.efi"
 EFI_IMG="${EFI_BOOT_DIR}/efi.img"
+
+#### SOF-BIN
+SOF_VER_SHORT="$(/usr/bin/echo "${SOF_VERSION}" | /usr/bin/cut -d. -f1-2)"
+SOF_DIR="${PROJECT_DIR}/modules/sof-bin/v${SOF_VER_SHORT}.x"
+CHFW_DIR="${CHROOT_DIR}/lib/firmware/intel"
 
 ### Dummy Repo dirs
 REPO_DIR="${ISO_DIR}/dists/${CODE_NAME}"
@@ -507,6 +512,43 @@ function copy_post_config_dirs () {
     copy_directory "${CONFIG_DIR}/trap_shutdown" "${CHOME_DIR}"
     copy_directory "${CONFIG_DIR}/X11/xorg.conf.d" "${CHROOT_DIR}/etc/X11/"
     copy_directory "${PROFILE_DIR}" "${CHROOT_DIR}/etc/"
+
+    # SOF SUPPORT
+    SOF_BIN_STR='sof-ipc4'
+    SOF_LIB_STR='sof-ipc4-lib'
+    SOF_TPLG_STR='sof-ipc4-tplg'
+
+    ## SOF directories
+    SOF_BIN_DIR="${SOF_DIR}/${SOF_BIN_STR}-v${SOF_VERSION}"
+    SOF_LIB_DIR="${SOF_DIR}/${SOF_LIB_STR}-v${SOF_VERSION}"
+    SOF_TPLG_DIR="${SOF_DIR}/${SOF_TPLG_STR}-v${SOF_VERSION}"
+
+    list_item "copy_directory ${SOF_BIN_DIR}/* ${CHFW_DIR}/${SOF_BIN_STR}" # debugging
+
+
+    if [[ -d "${SOF_DIR}" ]]; then
+        list_entry
+
+        ## Copy SOF binaries
+        for d in ${SOF_BIN_DIR}*; do
+            /usr/bin/rsync -av ${d}/* "${CHFW_DIR}/${SOF_BIN_STR}"
+        done
+
+        # ## Copy SOF libraries
+        for d in ${SOF_LIB_DIR}*; do
+            /usr/bin/rsync -av ${d}/* "${CHFW_DIR}/${SOF_LIB_STR}"
+        done
+
+        for d in ${SOF_TPLG_DIR}*; do
+            /usr/bin/rsync -av ${d}/* "${CHFW_DIR}/${SOF_TPLG_STR}"
+        done
+
+        list_catch
+    else
+        list_item_fail "/"${SOF_DIR}/" could not be found!"
+        list_exit
+        exit 1
+    fi
 }
 
 ## Function to copy post-configuration files
@@ -942,7 +984,7 @@ fi
 
 on_completion
 
-## Trigger update-initramfs before exporting artifacts
+## Trigger update-initramfs before exporting artifacts (update initrd)
 TAG='ISO-INITRAMFS'
 list_header "Triggering update-initramfs"
 list_entry

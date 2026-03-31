@@ -7,3 +7,6 @@
 [submodule "modules/bats-assert"]
 	path = modules/bats-assert
 	url = https://github.com/bats-core/bats-assert.git
+[submodule "modules/sof-bin"]
+	path = modules/sof-bin
+	url = https://github.com/thesofproject/sof-bin.git
