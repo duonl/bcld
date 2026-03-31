@@ -37,6 +37,7 @@ jobs:
         /usr/bin/git clone https://github.com/bats-core/bats-support.git
         /usr/bin/git clone https://github.com/bats-core/bats-assert.git
         /usr/bin/git clone https://github.com/duonl/bcld.wiki.git
+        /usr/bin/git clone https://github.com/thesofproject/sof-bin.git
         cd - || exit
     - name: Install dependencies
       run: |

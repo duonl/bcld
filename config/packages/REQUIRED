@@ -2,6 +2,7 @@ adwaita-icon-theme
 alien
 alsa-base
 alsa-utils
+alsa-ucm-conf
 amd64-microcode
 apport
 apt-utils
