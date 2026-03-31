@@ -3,6 +3,7 @@
 ## 2026
 
 ## March
+* `2026-03-31 13:11:38` : [OAC-1392] Fixing secret context in GitHub pipeline support for Vendorless BCLD
 * `2026-03-17 12:41:45` : [OAC-1392] Adding support for newer SOF systems
     * Kernel patch: `6.14.0-37` --> `6.17.0-19`
 
