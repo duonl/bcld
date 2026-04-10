@@ -388,7 +388,7 @@ function check_sb_state () {
     SB_STATUS="$(/usr/bin/mokutil --sb-state 2>&1)"
 
     if [[ -n "${SB_STATUS}" ]]; then
-        if [[ "${SB_STATUS}" == 'Secure Boot enabled' ]]; then
+        if [[ "${SB_STATUS}" == 'SecureBoot enabled' ]]; then
             list_item_pass "${SB_STATUS}"
 
             # Check which certs are on the device
