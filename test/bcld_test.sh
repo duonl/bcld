@@ -388,7 +388,6 @@ function check_sb_state () {
     SB_STATUS="$(/usr/bin/mokutil --sb-state 2>&1)"
 
     if [[ -n "${SB_STATUS}" ]]; then
-        /usr/bin/echo
         if [[ "${SB_STATUS}" == 'Secure Boot enabled' ]]; then
             list_item_pass "${SB_STATUS}"
 
@@ -401,7 +400,7 @@ function check_sb_state () {
         else
             list_item_fail "${SB_STATUS}"
         fi
-        /usr/bin/echo
+        list_exit
     fi
 }
 
