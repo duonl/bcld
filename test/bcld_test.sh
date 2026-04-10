@@ -385,11 +385,13 @@ function check_sb_state () {
     # Check if Secure Boot enabled
     list_header 'Checking Secure Boot...'
 
-    if [[ "$(/usr/bin/mokutil --sb-state)" ]]; then
+    SB_STATUS="$(/usr/bin/mokutil --sb-state 2>&1)"
+
+    if [[ -n "${SB_STATUS}" ]]; then
         /usr/bin/echo
-        SB_ENABLED="$(/usr/bin/mokutil --sb-state | /usr/bin/grep 'SecureBoot')"
-        if [[ "${SB_ENABLED}" == 'Secure Boot enabled' ]]; then
-            list_item_pass 'Secure Boot is enabled!'
+        if [[ "${SB_STATUS}" == 'Secure Boot enabled' ]]; then
+            list_item_pass "${SB_STATUS}"
+
             # Check which certs are on the device
             if [[ "$(mokutil --db | grep -E 'UEFI CA 2023|KEK 2K CA 2023')" ]]; then
                 list_item_pass 'This system has updated Secure Boot certificates!'
@@ -397,7 +399,7 @@ function check_sb_state () {
                 list_item_fail 'WARNING: THIS SYSTEM HAS OUTDATED SECURE BOOT CERTIFICATES!!!'
             fi
         else
-            list_item_fail 'Secure Boot is disabled...'
+            list_item_fail "${SB_STATUS}"
         fi
         /usr/bin/echo
     fi
