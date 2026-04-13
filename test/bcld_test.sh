@@ -385,7 +385,7 @@ function check_sb_state () {
     # Check if Secure Boot enabled
     list_header 'Checking Secure Boot...'
 
-    SB_STATUS="$(/usr/bin/mokutil --sb-state 2>&1)"
+    SB_STATUS="$(/usr/bin/mokutil --sb-state 2>&1 | /usr/bin/tail -1 )"
 
     if [[ -n "${SB_STATUS}" ]]; then
         if [[ "${SB_STATUS}" == 'SecureBoot enabled' ]]; then
@@ -398,7 +398,7 @@ function check_sb_state () {
                 list_item_fail 'WARNING: THIS SYSTEM HAS OUTDATED SECURE BOOT CERTIFICATES!!!'
             fi
         else
-            list_item_fail "${SB_STATUS}"
+            list_item_fail "SecureBoot disabled: ${SB_STATUS}"
         fi
         list_exit
     fi
