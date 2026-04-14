@@ -398,7 +398,7 @@ function check_sb_state () {
                 list_item_fail 'WARNING: THIS SYSTEM HAS OUTDATED SECURE BOOT CERTIFICATES!!!'
             fi
         else
-            list_item_fail "SecureBoot disabled: ${SB_STATUS}"
+            list_item_fail "${SB_STATUS}"
         fi
         list_exit
     fi
