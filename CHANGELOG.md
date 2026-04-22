@@ -3,6 +3,7 @@
 ## 2026
 
 ## April
+* `2026-04-22 04:42:17` : [OAC-1421] Enabling Nvidia GSP support
 * `2026-04-09 15:12:21` : [OAC-1429] Added checks for Secure Boot certificates
 
 ## March
