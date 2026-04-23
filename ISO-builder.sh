@@ -1079,7 +1079,7 @@ for pkg in $(cat ./artifacts/PKGS_ALL); do
 		FAILED_COUNT="$(( FAILED_COUNT + 1 ))"
 		FAILED_PKGS+=" ${pkg}"
 	fi
-	
+
 done
 
 if [[ "${FAILED_COUNT}" -gt 0 ]]; then
