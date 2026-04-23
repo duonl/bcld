@@ -707,7 +707,8 @@ TAG='ISO-PKGS'
 
 copy_file "${BUILD_CONF}" "${CHROOT_ROOT}"
 subst_file "${CONFIG_DIR}/apt/sources.list" "${CHROOT_DIR}/etc/apt/sources.list"
-copy_directory "${CONFIG_DIR}/apt/preferences" "${CHROOT_DIR}/etc/apt/preferences.d"
+copy_file "${CONFIG_DIR}/apt/preferences/limit-restricted" "${CHROOT_DIR}/etc/apt/preferences.d"
+copy_file "${CONFIG_DIR}/apt/preferences/nvidia-gsp-allow" "${CHROOT_DIR}/etc/apt/preferences.d"
 list_item 'Retrieving Linux Surface GPG key...'
 
 ### Debian Non-interactive
