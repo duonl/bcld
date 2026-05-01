@@ -74,6 +74,7 @@ function list_pkg_pass () {
 function list_item_fail () {
     /usr/bin/echo "    ├─[-]╼ ${1}"
     /usr/bin/logger -t "BCLD-ERROR" "${1}"
+    /usr/bin/sleep 1s
 }
 
 # Function to improve log readability

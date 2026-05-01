@@ -2,6 +2,9 @@
 
 ## 2026
 
+## April
+* `2026-04-09 15:12:21` : [OAC-1429] Added checks for Secure Boot certificates
+
 ## March
 * `2026-03-31 13:11:38` : [OAC-1392] Fixing secret context in GitHub pipeline support for Vendorless BCLD
 * `2026-03-17 12:41:45` : [OAC-1392] Adding support for newer SOF systems
