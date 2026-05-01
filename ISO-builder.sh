@@ -557,6 +557,7 @@ function copy_post_configs () {
 
 	copy_file "${CONFIG_DIR}/modprobe/alsa-base.conf" "${CHROOT_DIR}/etc/modprobe.d/alsa-base.conf"
 	copy_file "${CONFIG_DIR}/modprobe/blacklist.conf" "${CHROOT_DIR}/etc/modprobe.d/blacklist.conf"
+    copy_file "${CONFIG_DIR}/modprobe/nouveau.conf" "${CHROOT_DIR}/etc/modprobe.d/nouveau.conf"
 	copy_file "${CONFIG_DIR}/network-manager/conf.d/default-wifi-powersave-on.conf" "${CHROOT_DIR}/etc/NetworkManager/conf.d/default-wifi-powersave-on.conf"
 	copy_file "${CONFIG_DIR}/network-manager/interfaces" "${CHROOT_DIR}/etc/network/"
 	copy_file "${CONFIG_DIR}/network-manager/NetworkManager.conf" "${CHROOT_DIR}/etc/NetworkManager/"
@@ -706,6 +707,8 @@ TAG='ISO-PKGS'
 
 copy_file "${BUILD_CONF}" "${CHROOT_ROOT}"
 subst_file "${CONFIG_DIR}/apt/sources.list" "${CHROOT_DIR}/etc/apt/sources.list"
+# copy_file "${CONFIG_DIR}/apt/preferences/limit-restricted" "${CHROOT_DIR}/etc/apt/preferences.d"
+# copy_file "${CONFIG_DIR}/apt/preferences/nvidia-gsp-allow" "${CHROOT_DIR}/etc/apt/preferences.d"
 list_item 'Retrieving Linux Surface GPG key...'
 
 ### Debian Non-interactive
@@ -731,7 +734,7 @@ fi
 
 # !!! NVIDIA TESTING !!!
 # if [[ ${BCLD_NVIDIA} == 'true' ]]; then
-#     add_pkgs "${PKGS_DIR}/NVIDIA" "${PKG_ART}"
+add_pkgs "${PKGS_DIR}/NVIDIA" "${PKG_ART}"
 # fi
 
 ### Display all packages, if there are no packages we cannot continue!
@@ -1076,7 +1079,7 @@ for pkg in $(cat ./artifacts/PKGS_ALL); do
 		FAILED_COUNT="$(( FAILED_COUNT + 1 ))"
 		FAILED_PKGS+=" ${pkg}"
 	fi
-	
+
 done
 
 if [[ "${FAILED_COUNT}" -gt 0 ]]; then

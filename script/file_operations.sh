@@ -155,7 +155,7 @@ function add_pkgs () {
     done < "${pkg_file}"
 
     /usr/bin/echo >> "${pkg_list}"
-    list_item_pass "Succesfully added package list: ${file_name}"
+    list_item_pass "Successfully added package list: ${file_name}"
 
 }
 
