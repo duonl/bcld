@@ -2,6 +2,12 @@
 
 ## 2026
 
+## May
+* `2026-05-04 01:26:19` : Minor kernel patch: `6.17.0-22` --> `6.17.0-23`
+    * New BCLD parameter: `bcld.afname.left_mouse`
+    * For reversing mouse buttons for left-handed users
+    * Swapped old Big Mouse parameter: `bcld.afname.big_mouse` (no longer `bcld.afname.mouse`)
+
 ## April
 * `2026-04-28 04:22:40` : [OAC-1421] Kernel patch: `6.17.0-19` --> `6.17.0-22`
 * `2026-04-22 04:42:17` : [OAC-1421] Enabling Nvidia GSP support
