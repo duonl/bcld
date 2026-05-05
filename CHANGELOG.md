@@ -3,6 +3,7 @@
 ## 2026
 
 ## May
+* `2026-05-05 01:15:29` : Updated `UBUNTU_REPO` and removed `UBUNTU_URL` from [BUILD.conf](./config/BUILD.conf)
 * `2026-05-04 01:26:19` : Minor kernel patch: `6.17.0-22` --> `6.17.0-23`
     * New BCLD parameter: `bcld.afname.left_mouse`
     * For reversing mouse buttons for left-handed users

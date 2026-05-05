@@ -95,8 +95,7 @@ ISO_NAME='bcld.iso'
 MD5_TAG='md5_file'
 PKCS_PASS="$(uuidgen)"
 
-## Paths
-UBUNTU_BASE=$(basename "${UBUNTU_URL}")
+# Paths
 
 ## Config
 PROFILE_DIR="${CONFIG_DIR}/bash/profile.d"
@@ -624,7 +623,7 @@ if [[ -f /usr/sbin/debootstrap ]] && [[ ! -d "${BOOTSTRAP_DIR}" ]]; then
     list_entry
     /usr/sbin/debootstrap --variant=minbase --arch=amd64 "${CODE_NAME}" "${BOOTSTRAP_DIR}" "${UBUNTU_REPO}" | /usr/bin/tee "${BOOTSTRAP_LOG}"
     list_catch
-    
+
     copy_bootstrap
 
 elif [[ -d "${BOOTSTRAP_DIR}" ]] && [[ "$(/usr/bin/find "${BOOTSTRAP_DIR}" -mindepth 1 -type d | /usr/bin/wc -l )" -gt 0 ]]; then
