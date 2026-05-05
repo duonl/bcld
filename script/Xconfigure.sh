@@ -143,7 +143,7 @@ if [[ "${BCLD_LEFT_MOUSE}" -eq 1 ]]; then
     # xmodmap will automatically detect the current mouse and only change the appropriate buttons
     /usr/bin/echo -e "\nBCLD_LEFT_MOUSE detected!"
     /usr/bin/echo "Swapping mouse buttons 1 (M1, LMB) and 2 (M2, RMB)..."
-    /usr/bin/xmodmap -e "pointer = 2 1 3"
+    /usr/bin/xmodmap -e "pointer = 3 2 1"
 fi
 
 ## Check if DISPLAY is set
