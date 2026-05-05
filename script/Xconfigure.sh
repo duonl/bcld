@@ -138,10 +138,10 @@ if [[ "${BCLD_VENDOR}" == 'vendorless' ]]; then
     /usr/bin/xmodmap -e "pointer = 1 3 2"
 fi
 
-if [[ -n "${BCLD_LEFT_MOUSE}" ]]; then
+if [[ "${BCLD_LEFT_MOUSE}" -eq 1 ]]; then
     # This feature allows for swapping mouse buttons for the left-handed
     # xmodmap will automatically detect the current mouse and only change the appropriate buttons
-    /usr/bin/echo -e "\nVendorless BCLD detected!"
+    /usr/bin/echo -e "\nBCLD_LEFT_MOUSE detected!"
     /usr/bin/echo "Swapping mouse buttons 1 (M1, LMB) and 2 (M2, RMB)..."
     /usr/bin/xmodmap -e "pointer = 2 1 3"
 fi
