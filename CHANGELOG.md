@@ -2,6 +2,9 @@
 
 ## 2026
 
+* `2026-05-18 01:56:20` : [OAC-1424] Added JBL520C (J520C) support (on boot)
+    * Kernel patch:  `6.17.0-23` --> `6.17.0-29`
+
 ## May
 * `2026-05-05 01:15:29` : Updated `UBUNTU_REPO` and removed `UBUNTU_URL` from [BUILD.conf](./config/BUILD.conf)
 * `2026-05-04 01:26:19` : Minor kernel patch: `6.17.0-22` --> `6.17.0-23`

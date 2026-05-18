@@ -781,6 +781,14 @@ if [[ ${BCLD_SINK} ]]; then
     unset BCLD_COMBINE
 fi
 
+### Special devices
+
+#### Add J520C if it is found on startup
+if /usr/bin/grep -q 'J520C' /proc/asound/cards; then
+	/usr/bin/pactl load-module module-alsa-sink device=hw:J520C sink_name='J520C'
+	/usr/bin/pactl set-default-sink 'J520C'
+fi
+
 ### Combined sinks
 if [[ ${BCLD_COMBINE} = 1 ]]; then
     
