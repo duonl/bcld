@@ -146,7 +146,8 @@ function read_all_params() {
 
 	### Afname
 	readparam "${AFNAME_PARAM}" "${AFNAME_ALIAS}"
-	readparam "${MOUSE_PARAM}" "${MOUSE_ALIAS}"
+	readparam "${BIG_MOUSE_PARAM}" "${BIG_MOUSE_ALIAS}"
+	readparam "${LEFT_MOUSE_PARAM}" "${LEFT_MOUSE_ALIAS}"
 	readparam "${RESTART_PARAM}" "${RESTART_ALIAS}"
 	readparam "${SHUTDOWN_PARAM}" "${SHUTDOWN_ALIAS}"
 	readparam "${LOGGING_PARAM}" "${LOGGING_ALIAS}"
@@ -673,8 +674,8 @@ else
 fi
 
 #### Configure BCLD Big Mouse
-if [[ "${BCLD_MOUSE}" -eq 1 ]] && [[ -f "${HOME}/big-cursor.pcf.gz" ]]; then
-	list_item_pass "Setting BCLD Big Mouse: ${BCLD_MOUSE}"
+if [[ "${BCLD_BIG_MOUSE}" -eq 1 ]] && [[ -f "${HOME}/big-cursor.pcf.gz" ]]; then
+	list_item_pass "Setting BCLD Big Mouse: ${BCLD_BIG_MOUSE}"
     /usr/bin/cp "${HOME}/big-cursor.pcf.gz" /usr/share/fonts/X11/misc/cursor.pcf.gz
 
 	/usr/bin/cat <<- EOF | /usr/bin/sudo /usr/bin/tee /usr/share/icons/default/index.theme &> /dev/null
