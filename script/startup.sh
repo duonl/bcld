@@ -146,7 +146,8 @@ function read_all_params() {
 
 	### Afname
 	readparam "${AFNAME_PARAM}" "${AFNAME_ALIAS}"
-	readparam "${MOUSE_PARAM}" "${MOUSE_ALIAS}"
+	readparam "${BIG_MOUSE_PARAM}" "${BIG_MOUSE_ALIAS}"
+	readparam "${LEFT_MOUSE_PARAM}" "${LEFT_MOUSE_ALIAS}"
 	readparam "${RESTART_PARAM}" "${RESTART_ALIAS}"
 	readparam "${SHUTDOWN_PARAM}" "${SHUTDOWN_ALIAS}"
 	readparam "${LOGGING_PARAM}" "${LOGGING_ALIAS}"
@@ -673,8 +674,8 @@ else
 fi
 
 #### Configure BCLD Big Mouse
-if [[ "${BCLD_MOUSE}" -eq 1 ]] && [[ -f "${HOME}/big-cursor.pcf.gz" ]]; then
-	list_item_pass "Setting BCLD Big Mouse: ${BCLD_MOUSE}"
+if [[ "${BCLD_BIG_MOUSE}" -eq 1 ]] && [[ -f "${HOME}/big-cursor.pcf.gz" ]]; then
+	list_item_pass "Setting BCLD Big Mouse: ${BCLD_BIG_MOUSE}"
     /usr/bin/cp "${HOME}/big-cursor.pcf.gz" /usr/share/fonts/X11/misc/cursor.pcf.gz
 
 	/usr/bin/cat <<- EOF | /usr/bin/sudo /usr/bin/tee /usr/share/icons/default/index.theme &> /dev/null
@@ -778,6 +779,15 @@ if [[ ${BCLD_SINK} ]]; then
     /usr/bin/pactl set-default-sink "${BCLD_SINK}" \
         || list_item "BCLD_SINK: ${BCLD_SINK} not found!"
     unset BCLD_COMBINE
+fi
+
+### Special devices
+
+#### Add J520C if it is found on startup
+if /usr/bin/grep -q 'J520C' /proc/asound/cards; then
+	list_item_pass 'JBL 520c USB detected!'
+	/usr/bin/pactl load-module module-alsa-sink device=hw:J520C sink_name='J520C' &> /dev/null
+	/usr/bin/pactl set-default-sink 'J520C'
 fi
 
 ### Combined sinks

@@ -382,10 +382,25 @@ function BCLD_NSSDB () {
 
 ## Function to check Secure Boot
 function check_sb_state () {
-    if [[ "$(/usr/bin/mokutil --sb-state)" ]]; then
-        /usr/bin/echo
-        /usr/bin/mokutil --sb-state | /usr/bin/grep 'SecureBoot'
-        /usr/bin/echo
+    # Check if Secure Boot enabled
+    list_header 'Checking Secure Boot...'
+
+    SB_STATUS="$(/usr/bin/mokutil --sb-state 2>&1 | /usr/bin/tail -1 )"
+
+    if [[ -n "${SB_STATUS}" ]]; then
+        if [[ "${SB_STATUS}" == 'SecureBoot enabled' ]]; then
+            list_item_pass "${SB_STATUS}"
+
+            # Check which certs are on the device
+            if [[ "$(mokutil --db | grep -E 'UEFI CA 2023|KEK 2K CA 2023')" ]]; then
+                list_item_pass 'This system has updated Secure Boot certificates!'
+            elif [[ "$(mokutil --db | grep -E 'PCA 2011|UEFI CA 2011')" ]]; then
+                list_item_fail 'WARNING: THIS SYSTEM HAS OUTDATED SECURE BOOT CERTIFICATES!!!'
+            fi
+        else
+            list_item_fail "${SB_STATUS}"
+        fi
+        list_exit
     fi
 }
 

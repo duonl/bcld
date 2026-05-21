@@ -133,9 +133,17 @@ if [[ "${BCLD_VENDOR}" == 'vendorless' ]]; then
     # Since M2 is already disabled in Vendorless BCLD, always swap M2 and M3
     # This allows for the usage of tabs on laptops
     # xmodmap will automatically detect the current mouse and only change the appropriate buttons
-    /usr/bin/echo -e "\nVendorless BCLD detected!" 
-    /usr/bin/echo "Swapping mouse buttons 2 and 3..." 
+    /usr/bin/echo -e "\nVendorless BCLD detected!"
+    /usr/bin/echo "Swapping mouse buttons 2 (MMB) and 3 (RMB)..."
     /usr/bin/xmodmap -e "pointer = 1 3 2"
+fi
+
+if [[ "${BCLD_LEFT_MOUSE}" -eq 1 ]]; then
+    # This feature allows for swapping mouse buttons for the left-handed
+    # xmodmap will automatically detect the current mouse and only change the appropriate buttons
+    /usr/bin/echo -e "\nBCLD_LEFT_MOUSE detected!"
+    /usr/bin/echo "Swapping mouse buttons 1 (LMB) and 3 (RMB)..."
+    /usr/bin/xmodmap -e "pointer = 3 2 1"
 fi
 
 ## Check if DISPLAY is set

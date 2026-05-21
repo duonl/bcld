@@ -2,6 +2,21 @@
 
 ## 2026
 
+* `2026-05-18 01:56:20` : [OAC-1424] Added JBL520C (J520C) support (on boot)
+    * Kernel patch: `6.17.0-23` --> `6.17.0-29`
+
+## May
+* `2026-05-05 01:15:29` : Updated `UBUNTU_REPO` and removed `UBUNTU_URL` from [BUILD.conf](./config/BUILD.conf)
+* `2026-05-04 01:26:19` : Minor kernel patch: `6.17.0-22` --> `6.17.0-23`
+    * New BCLD parameter: `bcld.afname.left_mouse`
+    * For reversing mouse buttons for left-handed users
+    * Swapped old Big Mouse parameter: `bcld.afname.big_mouse` (no longer `bcld.afname.mouse`)
+
+## April
+* `2026-04-28 04:22:40` : [OAC-1421] Kernel patch: `6.17.0-19` --> `6.17.0-22`
+* `2026-04-22 04:42:17` : [OAC-1421] Enabling Nvidia GSP support
+* `2026-04-09 15:12:21` : [OAC-1429] Added checks for Secure Boot certificates
+
 ## March
 * `2026-03-31 13:11:38` : [OAC-1392] Fixing secret context in GitHub pipeline support for Vendorless BCLD
 * `2026-03-17 12:41:45` : [OAC-1392] Adding support for newer SOF systems
