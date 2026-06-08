@@ -175,33 +175,23 @@ function BCLD_PARAMs () {
 ## Function to quickly swap out URL without needing to relog
 function BCLD_URL () {
 
+    list_header "Changing BCLD URL: ${1}"
+
     # Source the old file
     source "${ENV_FILE}"
 
-    # overwrite_count="$(/usr/bin/grep -c 'facet-overwrite-url' "${APP_FILE}")"
-    # url_count="$(/usr/bin/grep -c 'BCLD_URL=' "${ENV_FILE}")"
-
-    # # Only do this once
-    # if [[ "${overwrite_count}" -eq 0 ]]; then
-    #     /usr/bin/sudo /usr/bin/sed -i 's/${BCLD_OPTS}/--facet-overwrite-url=${BCLD_URL} ${BCLD_OPTS}/' "${APP_FILE}"
-    # fi
-
-    # # Echo once, otherwise SED
-    # if [[ "${url_count}" -eq 0 ]]; then
-    #     /usr/bin/echo "BCLD_URL=${1}" | /usr/bin/sudo /usr/bin/tee -a "${ENV_FILE}"
-    # else
-    #     /usr/bin/sudo /usr/bin/sed -i "s|^BCLD_URL=.*|BCLD_URL=${1}|" "${ENV_FILE}"
-    # fi
-
-    if [[ -n "${BCLD_OPTS}" ]]; then
-        # INJECT Facet override if not present, but BCLD_OPTS is set
-        /usr/bin/sudo /usr/bin/sed -i "s/BCLD_OPTS=\"/BCLD_OPTS=\"--facet-overwrite-url=${1-BCLD_DEFAULT_URL} /" "${ENV_FILE}"
-    elif [[ $(grep -c 'facet-overwrite-url' "${ENV_FILE}") ]]; then
+    if [[ $(grep -c 'facet-overwrite-url' "${ENV_FILE}") ]]; then
         # OVERWRITE Facet override if present, with new BCLD_URL
-        /usr/bin/sudo /usr/bin/sed -i "s/BCLD_OPTS=\"/BCLD_OPTS=\"--facet-overwrite-url=${1-BCLD_DEFAULT_URL} /" "${ENV_FILE}"
+        list_item 'Overwriting existing BCLD_URL'
+        /usr/bin/sudo /usr/bin/sed -i "s/facet-overwrite-url=.*/facet-overwrite-url=${1:-BCLD_DEFAULT_URL}/" "${ENV_FILE}"
+    elif [[ -n "${BCLD_OPTS}" ]]; then
+        # INJECT Facet override if not present, but BCLD_OPTS is set
+        list_item 'Injecting new BCLD_URL'
+        /usr/bin/sudo /usr/bin/sed -i "s/^BCLD_OPTS=.*/BCLD_OPTS=\"${BCLD_OPTS} --facet-overwrite-url=${1:-BCLD_DEFAULT_URL}\"/" "${ENV_FILE}"
     else
         # INJECT Facet override with fresh BCLD_OPTS if not present at all.
-        /usr/bin/echo "BCLD_OPTS=\"--facet-overwrite-url=${1}\"" | /usr/bin/sudo /usr/bin/tee -a "${ENV_FILE}"
+        list_item 'Injecting new BCLD_OPTS'
+        /usr/bin/echo "BCLD_OPTS=\"--facet-overwrite-url=${1:-BCLD_DEFAULT_URL}\"" | /usr/bin/sudo /usr/bin/tee -a "${ENV_FILE}"
     fi
 
     # Source the changes
