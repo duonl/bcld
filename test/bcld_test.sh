@@ -176,26 +176,26 @@ function BCLD_PARAMs () {
 function BCLD_URL () {
 
     list_header "Changing BCLD URL: ${1}"
-
     # Source the old file
-    source "${ENV_FILE}"
+    source "${ENV_FILE}" && list_item_pass 'Sourced file before changes'
 
-    if grep -c 'facet-overwrite-url' "${ENV_FILE}"; then
+    if grep -c 'facet-overwrite-url' "${ENV_FILE}" > /dev/null; then
         # OVERWRITE Facet override if present, with new BCLD_URL
         list_item 'Overwriting existing BCLD_URL'
-        /usr/bin/sudo /usr/bin/sed -i "s/facet-overwrite-url=.*/facet-overwrite-url=${1:-BCLD_DEFAULT_URL}/" "${ENV_FILE}"
-    elif [[ -n "${BCLD_OPTS}" ]]; then
+        /usr/bin/sudo /usr/bin/sed -i "s|facet-overwrite-url=.*|facet-overwrite-url=${1:-BCLD_DEFAULT_URL}\"|" "${ENV_FILE}"
+    elif grep -c 'BCLD_OPTS' "${ENV_FILE}" > /dev/null; then
         # INJECT Facet override if not present, but BCLD_OPTS is set
         list_item 'Injecting new BCLD_URL'
-        /usr/bin/sudo /usr/bin/sed -i "s/^BCLD_OPTS=.*/BCLD_OPTS=\"${BCLD_OPTS} --facet-overwrite-url=${1:-BCLD_DEFAULT_URL}\"/" "${ENV_FILE}"
+        /usr/bin/sudo /usr/bin/sed -i "s|^BCLD_OPTS=.*|BCLD_OPTS=\"${BCLD_OPTS} --facet-overwrite-url=${1:-BCLD_DEFAULT_URL}\"|" "${ENV_FILE}"
     else
         # INJECT Facet override with fresh BCLD_OPTS if not present at all.
         list_item 'Injecting new BCLD_OPTS'
-        /usr/bin/echo "BCLD_OPTS=\"--facet-overwrite-url=${1:-BCLD_DEFAULT_URL}\"" | /usr/bin/sudo /usr/bin/tee -a "${ENV_FILE}"
+        /usr/bin/echo "BCLD_OPTS=\"--facet-overwrite-url=${1:-BCLD_DEFAULT_URL}\"" | /usr/bin/sudo /usr/bin/tee -a "${ENV_FILE}" > /dev/null
     fi
 
     # Source the changes
-    source "${ENV_FILE}"
+    source "${ENV_FILE}"  && list_item_pass 'Sourced file after changes'
+    list_exit
 }
 
 ## Function for switching parameters on or off during session
@@ -517,7 +517,7 @@ function reset_terminal () {
         # Give manual user warning and opportunity to escape for manual testing in terminal
         for sec in {10..1}; do
                 # KIOSKMODE IS NOT ENABLED
-                /usr/bin/printf "\r%2d" "${sec}"
+                /usr/bin/printf "\r%2d" "$((sec-1))"
                 /usr/bin/sleep 1s
         done
 
