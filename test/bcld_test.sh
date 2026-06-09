@@ -180,7 +180,7 @@ function BCLD_URL () {
     # Source the old file
     source "${ENV_FILE}"
 
-    if [[ $(grep -c 'facet-overwrite-url' "${ENV_FILE}") ]]; then
+    if grep -c 'facet-overwrite-url' "${ENV_FILE}"; then
         # OVERWRITE Facet override if present, with new BCLD_URL
         list_item 'Overwriting existing BCLD_URL'
         /usr/bin/sudo /usr/bin/sed -i "s/facet-overwrite-url=.*/facet-overwrite-url=${1:-BCLD_DEFAULT_URL}/" "${ENV_FILE}"
