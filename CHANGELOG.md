@@ -3,6 +3,9 @@
 ## 2026
 
 ## June
+* `2026-06-11 05:01:39` : [OAC-1422] Adding `picom` desktop compositor to fix NW.js to X11 mouse focus bleed issue
+    * [OAC-1465] Hotfix for CVEs CopyFail (CVE-2026-31431) and DirtyFrag (CVE-2026-43284 & CVE-2026-43500)
+    * Minor kernel patch: `6.17.0-29` --> `6.17.0-35`
 * `2026-06-04 05:45:48` : [OAC-1422] Started reworking `BCLD_URL` test method
 
 ## May

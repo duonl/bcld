@@ -556,6 +556,7 @@ function copy_post_configs () {
 
 	copy_file "${CONFIG_DIR}/modprobe/alsa-base.conf" "${CHROOT_DIR}/etc/modprobe.d/alsa-base.conf"
 	copy_file "${CONFIG_DIR}/modprobe/blacklist.conf" "${CHROOT_DIR}/etc/modprobe.d/blacklist.conf"
+    copy_file "${CONFIG_DIR}/modprobe/copyfail_dirtyfrag_mitigation.conf" "${CHROOT_DIR}/etc/modprobe.d/copyfail_dirtyfrag_mitigation.conf"
     copy_file "${CONFIG_DIR}/modprobe/nouveau.conf" "${CHROOT_DIR}/etc/modprobe.d/nouveau.conf"
 	copy_file "${CONFIG_DIR}/network-manager/conf.d/default-wifi-powersave-on.conf" "${CHROOT_DIR}/etc/NetworkManager/conf.d/default-wifi-powersave-on.conf"
 	copy_file "${CONFIG_DIR}/network-manager/interfaces" "${CHROOT_DIR}/etc/network/"
