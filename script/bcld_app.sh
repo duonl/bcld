@@ -55,9 +55,6 @@ TAG="RUN-APP"
 # For automatic certificate selection
 /usr/bin/autocert.sh
 
-# Launch Picom compositor (OAC-1422)
-/usr/bin/picom -b 2>/dev/null &
-
 # Launch app with BCLD_OPTS
 /usr/bin/bash -c "${BCLD_APP} ${BCLD_OPTS}" &> "${OPENBOX_LOG}" &
 

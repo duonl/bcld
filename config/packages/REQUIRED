@@ -196,7 +196,6 @@ passwd
 pciutils
 perl
 perl-base
-picom
 po-debconf
 procps
 psmisc
