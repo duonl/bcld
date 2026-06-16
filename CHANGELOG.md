@@ -3,6 +3,7 @@
 ## 2026
 
 ## June
+* `2026-06-16 01:19:50` : [OAC-1471] Upgrade `/usr/sbin/debootstrap` to `/usr/bin/debootstrap`
 * `2026-06-15 02:21:38` : [OAC-1471] Major kernel upgrade: `6.17.0-35` --> `7.0.0-22`
 * `2026-06-12 04:28:45` : [OAC-1422] `picom` removed as it did nothing
 * `2026-06-11 05:01:39` : [OAC-1422] Adding `picom` desktop compositor to fix NW.js to X11 mouse focus bleed issue

@@ -413,7 +413,7 @@ function check_apps () {
     else 
         # Use ./config/packages/APP in any other case
 
-        APP_PKG_CHECK="$(/usr/sbin/chroot "${CHROOT_DIR}" /usr/bin/dpkg -l | /usr/bin/awk '{ print $2 }' | grep "^${BCLD_RUN}$" | /usr/bin/wc -l)"
+        APP_PKG_CHECK="$(/usr/bin/chroot "${CHROOT_DIR}" /usr/bin/dpkg -l | /usr/bin/awk '{ print $2 }' | grep "^${BCLD_RUN}$" | /usr/bin/wc -l)"
         
         list_item "Running App package check on ${BCLD_RUN}..."
         
@@ -791,7 +791,7 @@ TAG='ISO-CHROOT'
 list_header "Chrooting"
 
 ## Chroot
-/usr/sbin/chroot "${CHROOT_DIR}" "/usr/bin/chroot.sh" | /usr/bin/tee "${CHROOT_LOG}"
+/usr/bin/chroot "${CHROOT_DIR}" "/usr/bin/chroot.sh" | /usr/bin/tee "${CHROOT_LOG}"
 
 ## Check if app was installed after chrooting
 if [[ ! -f "${CHROOT_DIR}/var/cache/apt/pkgcache.bin" ]]; then
@@ -930,7 +930,7 @@ if [[ -f ${CHROOT_DIR}/etc/legal ]];then
 fi
 
 ## Fix permissions on all copied files in /home
-/usr/sbin/chroot "${CHROOT_DIR}" /usr/bin/bash -c "/usr/bin/chown -R ${BCLD_USER}:${BCLD_USER} /home/${BCLD_USER}" | /usr/bin/tee -a "${CHROOT_LOG}"
+/usr/bin/chroot "${CHROOT_DIR}" /usr/bin/bash -c "/usr/bin/chown -R ${BCLD_USER}:${BCLD_USER} /home/${BCLD_USER}" | /usr/bin/tee -a "${CHROOT_LOG}"
 
 on_completion
 
@@ -991,7 +991,7 @@ on_completion
 TAG='ISO-INITRAMFS'
 list_header "Triggering update-initramfs"
 list_entry
-/usr/sbin/chroot "${CHROOT_DIR}" /usr/sbin/update-initramfs -c -k all | /usr/bin/tee -a "${CHROOT_LOG}"
+/usr/bin/chroot "${CHROOT_DIR}" /usr/sbin/update-initramfs -c -k all | /usr/bin/tee -a "${CHROOT_LOG}"
 
 ### Lazy force unmounts after last chroot command
 list_header "Forcing unmounts"
@@ -1072,7 +1072,7 @@ FAILED_COUNT=0
 
 # Check for installed pkgs
 for pkg in $(cat ./artifacts/PKGS_ALL); do
-	PKG_COUNT="$(/usr/sbin/chroot ./chroot bash -c "/usr/bin/dpkg --get-selections ${pkg}" | /usr/bin/grep -cw 'install')"
+	PKG_COUNT="$(/usr/bin/chroot ./chroot bash -c "/usr/bin/dpkg --get-selections ${pkg}" | /usr/bin/grep -cw 'install')"
 	
 	# Increase amount of FAILED_PKGS if a PKG install cannot be COUNT
 	if [[ "${PKG_COUNT}" -eq 0 ]]; then
