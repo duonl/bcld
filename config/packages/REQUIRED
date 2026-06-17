@@ -41,7 +41,7 @@ discover
 distro-info-data
 dmidecode
 dmsetup
-dnsutils
+#dnsutils
 dpkg-dev
 ed
 eject
