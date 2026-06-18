@@ -2,10 +2,16 @@
 
 ## 2026
 
-* `2026-05-18 01:56:20` : [OAC-1424] Added JBL520C (J520C) support (on boot)
-    * Kernel patch: `6.17.0-23` --> `6.17.0-29`
+## June
+* `2026-06-12 04:28:45` : [OAC-1422] `picom` removed as it did nothing
+* `2026-06-11 05:01:39` : [OAC-1422] Adding `picom` desktop compositor to fix NW.js to X11 mouse focus bleed issue
+    * [OAC-1465] Hotfix for CVEs CopyFail (CVE-2026-31431) and DirtyFrag (CVE-2026-43284 & CVE-2026-43500)
+    * Minor kernel patch: `6.17.0-29` --> `6.17.0-35`
+* `2026-06-04 05:45:48` : [OAC-1422] Started reworking `BCLD_URL` test method
 
 ## May
+* `2026-05-18 01:56:20` : [OAC-1424] Added JBL520C (J520C) support (on boot)
+    * Kernel patch: `6.17.0-23` --> `6.17.0-29`
 * `2026-05-05 01:15:29` : Updated `UBUNTU_REPO` and removed `UBUNTU_URL` from [BUILD.conf](./config/BUILD.conf)
 * `2026-05-04 01:26:19` : Minor kernel patch: `6.17.0-22` --> `6.17.0-23`
     * New BCLD parameter: `bcld.afname.left_mouse`
