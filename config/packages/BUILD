@@ -1,7 +1,7 @@
 apt-utils
 aptitude
 bind9-dnsutils
-coreutils
+coreutils-from-uutils
 ca-certificates
 curl
 debootstrap

@@ -7,10 +7,10 @@ on:
       - release/*
 jobs:
   vendorless-extra-r8168:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     environment: release
     container:
-      image: ubuntu:noble
+      image: ubuntu:resolute
       options: --privileged
       env:
         BCLD_APP: ${{ vars.BCLD_APP }}
