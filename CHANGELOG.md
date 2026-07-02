@@ -3,6 +3,9 @@
 ## 2026
 
 ## June
+* `2026-06-16 01:19:50` : [OAC-1471] Upgrade `/usr/sbin/debootstrap` to `/usr/bin/debootstrap`
+    * Update packages for Ubuntu 26 LTS upgrade for Facet 15 (BCLD 15)
+* `2026-06-15 02:21:38` : [OAC-1471] Major kernel upgrade: `6.17.0-35` --> `7.0.0-22`
 * `2026-06-12 04:28:45` : [OAC-1422] `picom` removed as it did nothing
 * `2026-06-11 05:01:39` : [OAC-1422] Adding `picom` desktop compositor to fix NW.js to X11 mouse focus bleed issue
     * [OAC-1465] Hotfix for CVEs CopyFail (CVE-2026-31431) and DirtyFrag (CVE-2026-43284 & CVE-2026-43500)
