@@ -261,6 +261,9 @@ log_whitespace
 log_line "── PulseAudio dump:"
 log_line "${PACMDUMP}"
 log_whitespace
+log_line "── PipeWire dump:"
+output_file "${AUDIO_LOG}"
+log_whitespace
 
 # Bootstrap
 #log_header "Bootstrap"
