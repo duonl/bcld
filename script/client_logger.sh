@@ -325,3 +325,5 @@ log_header "Journal"
 log_line "Dumping journal to ${BCLD_LOG}"
 /usr/bin/journalctl --no-pager | /usr/bin/sudo /usr/bin/tee "${BCLD_LOG}" &> /dev/null
 /usr/bin/journalctl --no-pager -f | /usr/bin/sudo /usr/bin/tee -a "${BCLD_LOG}" &> /dev/null &
+
+/usr/bin/echo 'Client logger completed!'
