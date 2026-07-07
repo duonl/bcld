@@ -594,43 +594,37 @@ fi
 
 print_item "Scanning sound cards (please wait)"
 
-# pactl does not work inside a VM
-if [[ $(/usr/bin/systemd-detect-virt) == 'none' ]]; then
-    # Give systems time to start Pulse Audio
-    for scan in $(/usr/bin/seq 1 20); do
-        /usr/bin/pactl get-default-sink | /usr/bin/grep -qv null && break
-        /usr/bin/printf "." && /usr/bin/sleep 1s
-    done
-    
-    /usr/bin/echo
+# Give systems time to start Pulse Audio
+for scan in $(/usr/bin/seq 1 20); do
+	/usr/bin/pactl get-default-sink | /usr/bin/grep -qv null && break
+	/usr/bin/printf "." && /usr/bin/sleep 1s
+done
 
-    # When started, we can now use Pulse Audio controls
-    BCLD_SINKS="$(/usr/bin/pactl list short sinks  | /usr/bin/awk '{ print $2 }' )" \
-		&& export BCLD_SINKS
-    
-    # If no BCLD_SINKS can be found, or if PA sets it to (auto_)null, take action based on BCLD_MODEL
-    if [[ -z "${BCLD_SINKS}" ]] \
-        || [[ "${BCLD_SINKS}" == 'null' ]] \
-        || [[ "${BCLD_SINKS}" == 'auto_null' ]]; then
-        
-        # This means no outputs can be found
-        # Do not allow boot without sound devices
-        # Only do this for BCLD_SOUNDCHECK
-        if [[ "${BCLD_SOUNDCHECK}" -eq 1 ]]; then
-            trap_shutdown 'snd'
-        else
-            # Ignore sound devices on DEBUG and TEST, not without warning
-            list_item_fail 'Unable to detect any sound cards!'
-        fi
-    else
-        list_item_pass "Sinks detected: ${BCLD_SINKS}"
-    fi
-    # SINKS found with pactl and output in JSON. Used throughout code
-    SINKS_JSON="$(/usr/bin/pactl --format json list sinks)"
+/usr/bin/echo
+
+# When started, we can now use Pulse Audio controls
+BCLD_SINKS="$(/usr/bin/pactl list short sinks  | /usr/bin/awk '{ print $2 }' )" \
+	&& export BCLD_SINKS
+
+# If no BCLD_SINKS can be found, or if PA sets it to (auto_)null, take action based on BCLD_MODEL
+if [[ -z "${BCLD_SINKS}" ]] \
+	|| [[ "${BCLD_SINKS}" == 'null' ]] \
+	|| [[ "${BCLD_SINKS}" == 'auto_null' ]]; then
+	
+	# This means no outputs can be found
+	# Do not allow boot without sound devices
+	# Only do this for BCLD_SOUNDCHECK
+	if [[ "${BCLD_SOUNDCHECK}" -eq 1 ]]; then
+		trap_shutdown 'snd'
+	else
+		# Ignore sound devices on DEBUG and TEST, not without warning
+		list_item_fail 'Unable to detect any sound cards!'
+	fi
 else
-    /usr/bin/echo
-    list_item_fail "Virtual machine detected, skipping..."
+	list_item_pass "Sinks detected: ${BCLD_SINKS}"
 fi
+# SINKS found with pactl and output in JSON. Used throughout code
+SINKS_JSON="$(/usr/bin/pactl --format json list sinks)"
 
 ## Read BCLD_VERBOSE first
 readparam "${VERBOSE_PARAM}" "${VERBOSE_ALIAS}"

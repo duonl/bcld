@@ -488,7 +488,8 @@ function copy_config_scripts () {
 	list_header "Copying configuration scripts."
 	
 	copy_file "${SCRIPT_DIR}/autocert.sh" "${CHROOT_BIN}"
-	copy_file "${SCRIPT_DIR}/bcld_app.sh" "${CHROOT_BIN}"
+    copy_file "${SCRIPT_DIR}/bcld_app.sh" "${CHROOT_BIN}"
+    copy_file "${SCRIPT_DIR}/bcld_audio.sh" "${CHROOT_BIN}"
 	copy_file "${SCRIPT_DIR}/bcld_vendor.sh" "${CHROOT_BIN}"
 	copy_file "${SCRIPT_DIR}/chroot.sh" "${CHROOT_BIN}"
 	copy_file "${SCRIPT_DIR}/client_logger.sh" "${CHROOT_BIN}"
@@ -760,6 +761,9 @@ copy_config_scripts
 TAG='ISO-SERVICES'
 
 list_header "Copying BCLD Services"
+
+## BCLD Audio
+copy_file "${CONFIG_DIR}/systemd/system/BCLD-audio.service" "${CHSERVICE_DIR}/BCLD-audio.service"
 
 ## USB-logger
 copy_file "${CONFIG_DIR}/systemd/system/BCLD-USB.service" "${CHSERVICE_DIR}/BCLD-USB.service"

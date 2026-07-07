@@ -196,6 +196,8 @@ passwd
 pciutils
 perl
 perl-base
+pipewire
+pipewire-pulse
 po-debconf
 procps
 psmisc
@@ -235,6 +237,7 @@ upower
 usbutils
 util-linux
 v86d
+wireplumber
 wpasupplicant
 x11-apps
 x11-session-utils
