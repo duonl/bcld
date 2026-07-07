@@ -592,6 +592,7 @@ list_item "Starting WirePlumber..."
 sleep 1s
 list_item "Starting PipeWire Pulse..."
 /usr/bin/dbus-run-session -- /usr/bin/pipewire-pulse &>> "${HOME}/bcld_audio.log" &
+/usr/bin/sleep 1s
 
 ### Read BCLD Sound Check parameter early
 readparam "${AUDIO_SOUNDCHECK_PARAM}" "${AUDIO_SOUNDCHECK_ALIAS}"
