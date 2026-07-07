@@ -134,7 +134,7 @@ CHLOGIND="${CHETC}/systemd/logind.conf"
 CHSERVICE_DIR="${CHETC}/systemd/system"
 
 ### Chroot home
-CHSERVICE_HOME="${CHOME_DIR}/.config/systemd/user/"
+CHSERVICE_HOME="${CHOME_DIR}/.config/systemd/user"
 CHNSSDB="${CHOME_DIR}/.pki/nssdb"
 
 ## IMG DIRs
@@ -348,6 +348,7 @@ function prep_dirs () {
     prep_dir "${GRUB_DIR}"
     prep_dir "${CASPER_DIR}"
     prep_dir "${CHAPP_DIR}"
+    prep_dir "${CHSERVICE_HOME}"
     prep_dir "${DISK_DIR}"
     prep_dir "${DIST_DIR}"
     prep_dir "${UBUNTU_DIR}"
