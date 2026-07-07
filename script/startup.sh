@@ -582,8 +582,10 @@ function init_app () {
 ## Configurations
 list_header "Configuring BCLD"
 
-## PACTL
-list_item "Waiting for Pulse daemon to start"
+## PipeWire
+### Ubuntu 26 LTS requires custom images to manually start PipeWire components
+list_item "Starting PipeWire daemon..."
+/usr/bin/dbus-run-session -- /usr/bin/bcld_audio.sh &> "${HOME}/bcld_audio.log"
 
 ### Read BCLD Sound Check parameter early
 readparam "${AUDIO_SOUNDCHECK_PARAM}" "${AUDIO_SOUNDCHECK_ALIAS}"

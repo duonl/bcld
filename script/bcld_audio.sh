@@ -39,12 +39,11 @@
 # 
 #
 # BCLD Audio
-# Script to launch PipeWire audio components for Ubuntu LTS 26
+# Script to launch PipeWire audio components for Ubuntu 26 LTS
 
 /usr/bin/pipewire &
 /usr/bin/sleep 1
 /usr/bin/wireplumber &
 /usr/bin/sleep 1
 /usr/bin/pipewire-pulse &
-
-wait
+/usr/bin/sleep 1
