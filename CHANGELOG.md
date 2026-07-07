@@ -2,6 +2,9 @@
 
 ## 2026
 
+## Juli
+* `2026-07-07 11:24:01` : Testing PipeWire
+
 ## June
 * `2026-06-16 01:19:50` : [OAC-1471] Upgrade `/usr/sbin/debootstrap` to `/usr/bin/debootstrap`
     * Update packages for Ubuntu 26 LTS upgrade for Facet 15 (BCLD 15)
