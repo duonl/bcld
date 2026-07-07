@@ -131,8 +131,11 @@ CHROOT_CHROME_CERT_DIR="${CHETC}/chromium/policies/managed/"
 CHENV="${CHETC}/environment"
 CHINIT="${CHETC}/init.d"
 CHLOGIND="${CHETC}/systemd/logind.conf"
-CHNSSDB="${CHOME_DIR}/.pki/nssdb"
 CHSERVICE_DIR="${CHETC}/systemd/system"
+
+### Chroot home
+CHSERVICE_HOME="${CHOME_DIR}/.config/systemd/user/"
+CHNSSDB="${CHOME_DIR}/.pki/nssdb"
 
 ## IMG DIRs
 GRUB_DIR="${IMG_DIR}/boot/grub"
@@ -763,7 +766,7 @@ TAG='ISO-SERVICES'
 list_header "Copying BCLD Services"
 
 ## BCLD Audio
-copy_file "${CONFIG_DIR}/systemd/system/BCLD-audio.service" "${CHSERVICE_DIR}/BCLD-audio.service"
+copy_file "${CONFIG_DIR}/systemd/system/BCLD-audio.service" "${CHSERVICE_HOME}/BCLD-audio.service"
 
 ## USB-logger
 copy_file "${CONFIG_DIR}/systemd/system/BCLD-USB.service" "${CHSERVICE_DIR}/BCLD-USB.service"
