@@ -491,7 +491,6 @@ function copy_config_scripts () {
 	
 	copy_file "${SCRIPT_DIR}/autocert.sh" "${CHROOT_BIN}"
     copy_file "${SCRIPT_DIR}/bcld_app.sh" "${CHROOT_BIN}"
-    copy_file "${SCRIPT_DIR}/bcld_audio.sh" "${CHROOT_BIN}"
 	copy_file "${SCRIPT_DIR}/bcld_vendor.sh" "${CHROOT_BIN}"
 	copy_file "${SCRIPT_DIR}/chroot.sh" "${CHROOT_BIN}"
 	copy_file "${SCRIPT_DIR}/client_logger.sh" "${CHROOT_BIN}"
