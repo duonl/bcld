@@ -18,3 +18,5 @@ vulkan-tools
 xserver-xorg-video-qxl
 pipewire
 pipewire-pulse
+wireplumber
+
