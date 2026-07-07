@@ -586,8 +586,10 @@ list_header "Configuring BCLD"
 ### Ubuntu 26 LTS requires custom images to manually start PipeWire components
 list_item "Starting PipeWire daemon..."
 /usr/bin/dbus-run-session -- /usr/bin/pipewire &> "${HOME}/bcld_audio.log" &
+sleep 1s
 list_item "Starting WirePlumber..."
 /usr/bin/dbus-run-session -- /usr/bin/wireplumber &>> "${HOME}/bcld_audio.log" &
+sleep 1s
 list_item "Starting PipeWire Pulse..."
 /usr/bin/dbus-run-session -- /usr/bin/pipewire-pulse &>> "${HOME}/bcld_audio.log" &
 
