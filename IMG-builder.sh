@@ -214,8 +214,9 @@ copy_file "${MOUNT_EFI}/EFI/BOOT/grubx64.efi" "${MS_GRUB_DIR}/bootmgfw.efi"
 ## GRUB Ubuntu
 list_item 'Ubuntu...'
 UB_GRUB_DIR="${MOUNT_EFI}/EFI/ubuntu"
-prep_dir "${UB_GRUB_DIR}"
+prep_dir "${UB_GRUB_DIR}/x86_64-efi"
 copy_file "${EFI_IMAGE_GRUB}" "${UB_GRUB_DIR}/grub.cfg"
+copy_file '/usr/lib/grub/x86_64-efi/ntfs.mod' "${UB_GRUB_DIR}/x86_64-efi/ntfs.mod"
 
 on_completion
 
