@@ -1,9 +1,7 @@
 # BCLD ENVs
 BCLD_APP="${BCLD_APP}"
-BCLD_AUDIO_LOG="${HOME}/bcld_audio.log"
 BCLD_CODE_NAME="${BCLD_CODE_NAME}"
 BCLD_DEFAULT_URL="${BCLD_DEFAULT_URL}"
-BCLD_LOG='/var/log/bcld.log'
 BCLD_MODEL="${BCLD_MODEL}"
 BCLD_PATCH="${BCLD_PATCH}"
 BCLD_RUN="${BCLD_RUN}"
@@ -11,6 +9,9 @@ BCLD_STARTUP_SCRIPT='/bin/startup.sh'
 BCLD_USER="${BCLD_USER}"
 BCLD_TEST='/usr/bin/bcld_test.sh'
 
+## LOG FILES
+BCLD_AUDIO_LOG="/home/${BCLD_USER}/bcld_audio.log"
+BCLD_LOG='/var/log/bcld.log'
 BCLD_MD5CHECK="/home/${BCLD_USER}/casper_md5check.log"
 
 # PATH
