@@ -344,7 +344,7 @@ function connect_psk () {
 		list_item 'Attempting to connect (WPA-PSK)'
 		
 		list_entry
-		/usr/bin/nmcli device wifi connect "${ssid_decoded}" password "$(/usr/bin/echo "${BCLD_PSK}" | /usr/bin/base64 -d)"
+		/usr/bin/sudo /usr/bin/nmcli device wifi connect "${ssid_decoded}" password "$(/usr/bin/echo "${BCLD_PSK}" | /usr/bin/base64 -d)"
 		list_catch
 		
 		# This method requires BCLD_IF
