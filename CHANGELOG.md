@@ -8,7 +8,7 @@
     * `nmcli` commands now also require `sudo` when editing connections
 * `2026-07-08 02:12:56` : [OAC-1471] Adding `ntfs.mod` from `grub-efi-amd64-bin`
 * `2026-07-07 11:24:01` : [OAC-1471] Adding PipeWire with WirePlumber
-    * Minor kernel upgrade: `7.0.0-22` --> `7.0.0-27`
+    * Minor kernel patch: `7.0.0-22` --> `7.0.0-27`
 * `2026-07-07 08:06:41` : [OAC-1471] Adding `grub-efi-amd64-bin` to [BUILD](./config/packages/BUILD) packages
 
 ## June
