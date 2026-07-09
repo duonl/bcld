@@ -1108,8 +1108,8 @@ cd "${ISO_DIR}"
 /usr/bin/grub-mkstandalone \
     --format=i386-pc \
     --output=isolinux/core.img \
-    --install-modules="linux16 linux normal iso9660 biosdisk memdisk search tar ls ntfs" \
-    --modules="linux16 linux normal configfile iso9660 biosdisk search ntfs" \
+    --install-modules="linux16 linux normal iso9660 biosdisk memdisk search tar ls ntfs video" \
+    --modules="linux16 linux normal configfile iso9660 biosdisk search ntfs video" \
     --locales="" \
     --fonts="" \
     "boot/grub/grub.cfg=isolinux/grub.cfg" # Interne ISO grub.cfg mapping (BIOS)

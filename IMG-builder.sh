@@ -197,7 +197,7 @@ copy_file "${EFI_IMAGE_GRUB}" "${MOUNT_EFI}/boot/grub/grub.cfg"
 
 ### Warnings can be ignored if it says 'Installation finished. No error reported.'
 list_entry
-/usr/sbin/grub-install --target=i386-pc --no-floppy --recheck --boot-directory="${MOUNT_EFI}/boot/" --force "${LOOP_DEV}" --modules='ntfs'
+/usr/sbin/grub-install --target=i386-pc --no-floppy --recheck --boot-directory="${MOUNT_EFI}/boot/" --force "${LOOP_DEV}"
 list_catch
 
 ## GRUB UEFI
