@@ -139,7 +139,6 @@ CHNSSDB="${CHOME_DIR}/.pki/nssdb"
 ## IMG DIRs
 GRUB_DIR="${IMG_DIR}/boot/grub"
 ISO_DIR="${IMG_DIR}/ISO"
-
 IMAGE_GRUB="${GRUB_DIR}/grub.cfg"
 
 ## ISO DIRs
