@@ -368,7 +368,7 @@ function connect_eap () {
 		set_bcld_wireless
 		set_EAP_AUTH
 
-		/usr/bin/nmcli con add \
+		/usr/bin/sudo /usr/bin/nmcli con add \
 			type wifi \
 			con-name 'eduroam' \
 			ifname "${BCLD_IF}" \
@@ -379,7 +379,7 @@ function connect_eap () {
 			802-1x.eap "${BCLD_EAP_METHOD}" \
 			802-1x.phase2-auth "${BCLD_EAP_AUTH}"
 
-		/usr/bin/nmcli connection up 'eduroam'
+		/usr/bin/sudo /usr/bin/nmcli connection up 'eduroam'
 		
 		connect_wifi "${BCLD_IF}"
 	fi
@@ -582,17 +582,16 @@ function init_app () {
 ## Configurations
 list_header "Configuring BCLD"
 
-## PipeWire
-### Ubuntu 26 LTS requires custom images to manually start PipeWire components
-list_item "Starting PipeWire daemon..."
+## Ubuntu 26 LTS requires custom images to manually start PipeWire components
+### PipeWire
 /usr/bin/dbus-run-session -- /usr/bin/pipewire &> "${HOME}/bcld_audio.log" &
-sleep 1s
-list_item "Starting WirePlumber..."
+/usr/bin/sleep 1s && [[ -n "$(/usr/bin/pidof pipewire)" ]] && list_item_pass "Started PipeWire daemon!" || list_item_pass "Unable to start PipeWire daemon!"
+### WirePlumber
 /usr/bin/dbus-run-session -- /usr/bin/wireplumber &>> "${HOME}/bcld_audio.log" &
-sleep 1s
-list_item "Starting PipeWire Pulse..."
+/usr/bin/sleep 1s && [[ -n "$(/usr/bin/pidof wireplumber)" ]] && list_item_pass "Started WirePlumber!" || list_item_pass "Unable to start WirePlumber!"
+### PipeWire Pulse
 /usr/bin/dbus-run-session -- /usr/bin/pipewire-pulse &>> "${HOME}/bcld_audio.log" &
-/usr/bin/sleep 1s
+/usr/bin/sleep 1s && [[ -n "$(/usr/bin/pidof pipewire-pulse)" ]] && list_item_pass "Started PipeWire Pulse!" || list_item_pass "Unable to start PipeWire Pulse!"
 
 ### Read BCLD Sound Check parameter early
 readparam "${AUDIO_SOUNDCHECK_PARAM}" "${AUDIO_SOUNDCHECK_ALIAS}"

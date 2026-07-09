@@ -14,7 +14,6 @@ fdisk
 genisoimage
 gettext-base
 git
-grub-efi-amd64-signed
 grub-pc
 gzip
 inetutils-ping
