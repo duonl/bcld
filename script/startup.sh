@@ -344,7 +344,7 @@ function connect_psk () {
 		list_item 'Attempting to connect (WPA-PSK)'
 		
 		list_entry
-		/usr/bin/nmcli device wifi connect "${ssid_decoded}" password "$(/usr/bin/echo "${BCLD_PSK}" | /usr/bin/base64 -d)"
+		/usr/bin/sudo /usr/bin/nmcli device wifi connect "${ssid_decoded}" password "$(/usr/bin/echo "${BCLD_PSK}" | /usr/bin/base64 -d)"
 		list_catch
 		
 		# This method requires BCLD_IF
@@ -368,7 +368,7 @@ function connect_eap () {
 		set_bcld_wireless
 		set_EAP_AUTH
 
-		/usr/bin/nmcli con add \
+		/usr/bin/sudo /usr/bin/nmcli con add \
 			type wifi \
 			con-name 'eduroam' \
 			ifname "${BCLD_IF}" \
@@ -379,7 +379,7 @@ function connect_eap () {
 			802-1x.eap "${BCLD_EAP_METHOD}" \
 			802-1x.phase2-auth "${BCLD_EAP_AUTH}"
 
-		/usr/bin/nmcli connection up 'eduroam'
+		/usr/bin/sudo /usr/bin/nmcli connection up 'eduroam'
 		
 		connect_wifi "${BCLD_IF}"
 	fi
@@ -582,8 +582,16 @@ function init_app () {
 ## Configurations
 list_header "Configuring BCLD"
 
-## PACTL
-list_item "Waiting for Pulse daemon to start"
+## Ubuntu 26 LTS requires custom images to manually start PipeWire components
+### PipeWire
+/usr/bin/dbus-run-session -- /usr/bin/pipewire &> "${BCLD_AUDIO_LOG}" &
+/usr/bin/sleep 1s && [[ -n "$(/usr/bin/pidof pipewire)" ]] && list_item_pass "Started PipeWire daemon!" || list_item_pass "Unable to start PipeWire daemon!"
+### WirePlumber
+/usr/bin/dbus-run-session -- /usr/bin/wireplumber &>> "${BCLD_AUDIO_LOG}" &
+/usr/bin/sleep 1s && [[ -n "$(/usr/bin/pidof wireplumber)" ]] && list_item_pass "Started WirePlumber!" || list_item_pass "Unable to start WirePlumber!"
+### PipeWire Pulse
+/usr/bin/dbus-run-session -- /usr/bin/pipewire-pulse &>> "${BCLD_AUDIO_LOG}" &
+/usr/bin/sleep 1s && [[ -n "$(/usr/bin/pidof pipewire-pulse)" ]] && list_item_pass "Started PipeWire Pulse!" || list_item_pass "Unable to start PipeWire Pulse!"
 
 ### Read BCLD Sound Check parameter early
 readparam "${AUDIO_SOUNDCHECK_PARAM}" "${AUDIO_SOUNDCHECK_ALIAS}"
@@ -594,43 +602,37 @@ fi
 
 print_item "Scanning sound cards (please wait)"
 
-# pactl does not work inside a VM
-if [[ $(/usr/bin/systemd-detect-virt) == 'none' ]]; then
-    # Give systems time to start Pulse Audio
-    for scan in $(/usr/bin/seq 1 20); do
-        /usr/bin/pactl get-default-sink | /usr/bin/grep -qv null && break
-        /usr/bin/printf "." && /usr/bin/sleep 1s
-    done
-    
-    /usr/bin/echo
+# Give systems time to start Pulse Audio
+for scan in $(/usr/bin/seq 1 20); do
+	/usr/bin/pactl get-default-sink | /usr/bin/grep -qv null && break
+	/usr/bin/printf "." && /usr/bin/sleep 1s
+done
 
-    # When started, we can now use Pulse Audio controls
-    BCLD_SINKS="$(/usr/bin/pactl list short sinks  | /usr/bin/awk '{ print $2 }' )" \
-		&& export BCLD_SINKS
-    
-    # If no BCLD_SINKS can be found, or if PA sets it to (auto_)null, take action based on BCLD_MODEL
-    if [[ -z "${BCLD_SINKS}" ]] \
-        || [[ "${BCLD_SINKS}" == 'null' ]] \
-        || [[ "${BCLD_SINKS}" == 'auto_null' ]]; then
-        
-        # This means no outputs can be found
-        # Do not allow boot without sound devices
-        # Only do this for BCLD_SOUNDCHECK
-        if [[ "${BCLD_SOUNDCHECK}" -eq 1 ]]; then
-            trap_shutdown 'snd'
-        else
-            # Ignore sound devices on DEBUG and TEST, not without warning
-            list_item_fail 'Unable to detect any sound cards!'
-        fi
-    else
-        list_item_pass "Sinks detected: ${BCLD_SINKS}"
-    fi
-    # SINKS found with pactl and output in JSON. Used throughout code
-    SINKS_JSON="$(/usr/bin/pactl --format json list sinks)"
+/usr/bin/echo
+
+# When started, we can now use Pulse Audio controls
+BCLD_SINKS="$(/usr/bin/pactl list short sinks  | /usr/bin/awk '{ print $2 }' )" \
+	&& export BCLD_SINKS
+
+# If no BCLD_SINKS can be found, or if PA sets it to (auto_)null, take action based on BCLD_MODEL
+if [[ -z "${BCLD_SINKS}" ]] \
+	|| [[ "${BCLD_SINKS}" == 'null' ]] \
+	|| [[ "${BCLD_SINKS}" == 'auto_null' ]]; then
+	
+	# This means no outputs can be found
+	# Do not allow boot without sound devices
+	# Only do this for BCLD_SOUNDCHECK
+	if [[ "${BCLD_SOUNDCHECK}" -eq 1 ]]; then
+		trap_shutdown 'snd'
+	else
+		# Ignore sound devices on DEBUG and TEST, not without warning
+		list_item_fail 'Unable to detect any sound cards!'
+	fi
 else
-    /usr/bin/echo
-    list_item_fail "Virtual machine detected, skipping..."
+	list_item_pass "Sinks detected: ${BCLD_SINKS}"
 fi
+# SINKS found with pactl and output in JSON. Used throughout code
+SINKS_JSON="$(/usr/bin/pactl --format json list sinks)"
 
 ## Read BCLD_VERBOSE first
 readparam "${VERBOSE_PARAM}" "${VERBOSE_ALIAS}"

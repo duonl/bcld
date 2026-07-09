@@ -3,9 +3,9 @@
 
 search --label 'BCLD-USB' --no-floppy --set=root --hint=hd0,gpt2
 
-# Modules
-insmod ntfs
-insmod video
+# Modules, we will try to bake these in with grub-mkstandalone
+#insmod ntfs
+#insmod video
 
 # Grub settings
 set gfxpayload="keep"
