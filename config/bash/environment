@@ -1,5 +1,6 @@
 # BCLD ENVs
 BCLD_APP="${BCLD_APP}"
+BCLD_AUDIO_LOG="${HOME}/bcld_audio.log"
 BCLD_CODE_NAME="${BCLD_CODE_NAME}"
 BCLD_DEFAULT_URL="${BCLD_DEFAULT_URL}"
 BCLD_LOG='/var/log/bcld.log'

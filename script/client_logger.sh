@@ -93,7 +93,6 @@ LOG_DIR="/var/log"
 
 ### Log Files
 ALTERNATIVES="${LOG_DIR}/alternatives.log"
-AUDIO_LOG="${HOME}/bcld_audio.log"
 PLYMOUTH_LOG="${LOG_DIR}/boot.log"
 BOOTSTRAP_LOG="${LOG_DIR}/bootstrap.log"
 CASPER_LOG="${LOG_DIR}/casper.log"
@@ -262,7 +261,7 @@ log_line "── PulseAudio dump:"
 log_line "${PACMDUMP}"
 log_whitespace
 log_line "── PipeWire dump:"
-output_file "${AUDIO_LOG}"
+output_file "${BCLD_AUDIO_LOG}"
 log_whitespace
 
 # Bootstrap

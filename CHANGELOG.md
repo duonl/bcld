@@ -6,6 +6,7 @@
 * `2026-07-09 10:06:24` : [OAC-1471] Added `ntfs.mod` through `grub-smktandalone` instead
     * Removed `grub-efi-amd64-bin`
     * `nmcli` commands now also require `sudo` when editing connections
+    * Removed virtual machine checks for audio in BCLD TEST, since PipeWire allows audio to function now
 * `2026-07-08 02:12:56` : [OAC-1471] Adding `ntfs.mod` from `grub-efi-amd64-bin`
 * `2026-07-07 11:24:01` : [OAC-1471] Adding PipeWire with WirePlumber
     * Minor kernel patch: `7.0.0-22` --> `7.0.0-27`

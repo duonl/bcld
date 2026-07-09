@@ -148,7 +148,6 @@ img_size () {
 	run art_check ./image/ISO/EFI/BOOT/efi.img
 	run art_check ./image/ISO/EFI/BOOT/grub.cfg
 	run art_check ./image/ISO/EFI/BOOT/mmx64.efi
-    run art_check ./image/ISO/EFI/ubuntu/x86_64-efi/ntfs.mod
 	run art_check ./image/ISO/isolinux/bios.img
 	run art_check ./image/ISO/isolinux/grub.cfg
 	run art_check ./image/ISO/isolinux/core.img
