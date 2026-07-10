@@ -260,6 +260,9 @@ log_whitespace
 log_line "── PulseAudio dump:"
 log_line "${PACMDUMP}"
 log_whitespace
+log_line "── PipeWire dump:"
+output_file "${BCLD_AUDIO_LOG}"
+log_whitespace
 
 # Bootstrap
 #log_header "Bootstrap"
@@ -321,3 +324,5 @@ log_header "Journal"
 log_line "Dumping journal to ${BCLD_LOG}"
 /usr/bin/journalctl --no-pager | /usr/bin/sudo /usr/bin/tee "${BCLD_LOG}" &> /dev/null
 /usr/bin/journalctl --no-pager -f | /usr/bin/sudo /usr/bin/tee -a "${BCLD_LOG}" &> /dev/null &
+
+/usr/bin/echo 'Client logger completed!'
