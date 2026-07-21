@@ -629,7 +629,7 @@ if [[ -z "${BCLD_SINKS}" ]] \
 		list_item_fail 'Unable to detect any sound cards!'
 	fi
 else
-	list_item_pass "Sinks detected: ${BCLD_SINKS}"
+	list_item_pass "Sound card detected!"
 fi
 # SINKS found with pactl and output in JSON. Used throughout code
 SINKS_JSON="$(/usr/bin/pactl --format json list sinks)"
