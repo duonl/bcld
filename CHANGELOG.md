@@ -3,6 +3,8 @@
 ## 2026
 
 ## Juli
+* `2026-07-21 05:46:27` : [OAC-1461] Remove double output of detected audio sinks
+    * Minor kernel patch: `7.0.0-27` --> `7.0.0-28`
 * `2026-07-09 10:06:24` : [OAC-1471] Added `ntfs.mod` through `grub-smktandalone` instead
     * Removed `grub-efi-amd64-bin`
     * `nmcli` commands now also require `sudo` when editing connections
