@@ -4,7 +4,7 @@
 |---|---|
 | This is the <u>official</u> BCLD (Bootable Client Lockdown) Project.<br/>This project is a follow-up to the Fedora BCLD project.<br/>BCLD was initiated in hopes of advancing hardware support and being able to operate in accordance with Secure Boot.<br/>Below are extensive instructions to the product. | <img title="" src="./assets/bcld-logo.png" alt="logo" width="300" data-align="left"> |
 
-**BCLD Version**: 15.0-3 BCLD (Abaddon)<br/>
+**BCLD Version**: 15.0-4 BCLD (Abaddon)<br/>
 **BCLD Kernel**: 7.0.0-29-generic
 
 # Index
