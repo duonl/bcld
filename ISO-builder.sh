@@ -917,6 +917,11 @@ fi
 delete_file "${CHROOT_DIR}/etc/machine-id" 'Generalizing distro...'
 delete_file "${CHROOT_DIR}/etc/resolv.conf" 'Clearing resolv.conf...'
 
+if [[ ${BCLD_MODEL} = 'release' ]]; then
+    # Delete APT sources for RELEASE
+    delete_file "${CHROOT_DIR}/etc/apt/sources.list" 'Removing APT sources for RELEASE...'
+fi
+
 ## Unnecessary services
 delete_file "${CHSERVICE_DIR}/dbus-org.freedesktop.resolve1.service" 'Disable resolvconf'
 delete_file "${CHSERVICE_DIR}/multi-user.target.wants/systemd-resolved.service" 'Disable resolvconf'

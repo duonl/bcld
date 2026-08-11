@@ -2,6 +2,13 @@
 
 ## 2026
 
+## August
+* `2026-08-11 09:17:16` : [OAC-1516] Optimizations for PXE-boot
+    * [OAC-1521] Updated [README](./README.md)
+    * [OAC-1517] Removed [APT sources file](./config/apt/sources.list) for RELEASE
+    * Minor kernel patch: `7.0.0-28` --> `7.0.0-29`
+
+
 ## Juli
 * `2026-07-21 05:46:27` : [OAC-1461] Remove double output of detected audio sinks
     * Minor kernel patch: `7.0.0-27` --> `7.0.0-28`
