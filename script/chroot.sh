@@ -227,6 +227,12 @@ list_item "Set DPKG to unattended..."
 /usr/bin/echo unattended-upgrades unattended-upgrades/enable_auto_updates boolean true | debconf-set-selections
 dpkg-reconfigure -f noninteractive unattended-upgrades
 
+## Clean out debconf passwords
+list_item "Clean out debconf passwords..."
+/usr/bin/rm -f /var/cache/debconf/passwords.dat
+/usr/bin/touch /var/cache/debconf/passwords.dat
+/usr/bin/chmod 600 /var/cache/debconf/passwords.dat
+
 # This is where the Chrome apps will be pulled from Nexus
 if [[ ${DEB_COUNT} -gt 0 ]]; then
     # Look for any Chrome apps inside APP_DIR
