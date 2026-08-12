@@ -147,7 +147,6 @@ if [[ -n "${BCLD_PKG_EXTRA}" ]]; then
 	/usr/bin/apt-get install -yq --no-install-recommends ${BCLD_PKG_EXTRA} | /usr/bin/tee -a "${LOG_FILE}"
 fi
 
-
 ### Uninstall packages ###
 
 ## If there is a REMOVE file, use it.
@@ -160,11 +159,10 @@ if [[ -f ${REMOVE} ]]; then
     /usr/bin/apt-get remove -yq --purge $(/usr/bin/cat ${REMOVE}) | /usr/bin/tee -a "${LOG_FILE}"
 fi
 
-
 # Configurations
 list_header "Configurations"
 
-## User/Run Level/Target, het is complex...
+## User/Run Level/Target
 list_item "Default Target: ${DEFAULT_TARGET}"
 list_entry
 /usr/bin/systemctl enable "${DEFAULT_TARGET}.target"
@@ -228,6 +226,12 @@ list_catch
 list_item "Set DPKG to unattended..."
 /usr/bin/echo unattended-upgrades unattended-upgrades/enable_auto_updates boolean true | debconf-set-selections
 dpkg-reconfigure -f noninteractive unattended-upgrades
+
+## Clean out debconf passwords
+list_item "Clean out debconf passwords..."
+/usr/bin/rm -f /var/cache/debconf/passwords.dat
+/usr/bin/touch /var/cache/debconf/passwords.dat
+/usr/bin/chmod 600 /var/cache/debconf/passwords.dat
 
 # This is where the Chrome apps will be pulled from Nexus
 if [[ ${DEB_COUNT} -gt 0 ]]; then

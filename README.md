@@ -1,18 +1,11 @@
-# UPDATE 20/05/2025
-📣📣📣 IMPORTANT 📣📣📣
-
-> BCLD HAS OFFICIALLY CHANGED OWNERSHIP TO DUO (NL)
-
-> ALL DEVELOPMENT AND MAINTENANCE ACTIVITIES WILL CONTINUE AS NORMAL
-
 # Introduction
 
 |||
 |---|---|
 | This is the <u>official</u> BCLD (Bootable Client Lockdown) Project.<br/>This project is a follow-up to the Fedora BCLD project.<br/>BCLD was initiated in hopes of advancing hardware support and being able to operate in accordance with Secure Boot.<br/>Below are extensive instructions to the product. | <img title="" src="./assets/bcld-logo.png" alt="logo" width="300" data-align="left"> |
 
-**BCLD Version**: 14.2-4 BCLD (Chimera)<br/>
-**BCLD Kernel**: 6.14.0-37-generic
+**BCLD Version**: 15.0-4 BCLD (Abaddon)<br/>
+**BCLD Kernel**: 7.0.0-29-generic
 
 # Index
 
@@ -258,7 +251,6 @@ This folder contains important scripts for building a BCLD image.
 * As with Fedora BCLD, the version number is kept in a file called `./VERSION`.
 * This can be configured in [BUILD.conf](./config/BUILD.conf).
 * So use helpful, concise descriptions like: `14-dec-2022_BCLD-Omniscius-3_FACET-TEST.img`
-* 
 * The `VERSION` file contains a concatenated string: `12.10-3 BCLD Test (Omniscius)`.
 
 # Artifacts

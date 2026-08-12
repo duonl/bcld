@@ -2,7 +2,19 @@
 
 ## 2026
 
+## August
+* `2026-08-12 04:36:19` : [OAC-1516] Optimizations for PXE-boot (2)
+    * [OAC-1519] Replace `/var/cache` with `/var/cache/apt` in [mksquashfs exclusions](./ISO-builder.sh#L1061)
+    * [OAC-1519] Clean out debconf passwords in [chroot.sh](./script/chroot.sh#L230)
+    * [OAC-1526] Adding `layerfs-path=filesystem.squashfs` as default variable in [Grub](./config/grub/grub.cfg.img) as `$SQUASHFS_PXE`
+* `2026-08-11 09:17:16` : [OAC-1516] Optimizations for PXE-boot
+    * [OAC-1521] Updated [README](./README.md)
+    * [OAC-1517] Removed [APT sources file](./config/apt/sources.list) for RELEASE and DEBUG
+    * Minor kernel patch: `7.0.0-28` --> `7.0.0-29`
+
 ## Juli
+* `2026-07-21 05:46:27` : [OAC-1461] Remove double output of detected audio sinks
+    * Minor kernel patch: `7.0.0-27` --> `7.0.0-28`
 * `2026-07-09 10:06:24` : [OAC-1471] Added `ntfs.mod` through `grub-smktandalone` instead
     * Removed `grub-efi-amd64-bin`
     * `nmcli` commands now also require `sudo` when editing connections

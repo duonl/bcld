@@ -917,6 +917,11 @@ fi
 delete_file "${CHROOT_DIR}/etc/machine-id" 'Generalizing distro...'
 delete_file "${CHROOT_DIR}/etc/resolv.conf" 'Clearing resolv.conf...'
 
+if [[ ${BCLD_MODEL} != 'test' ]]; then
+    # Delete APT sources for RELEASE and DEBUG
+    delete_file "${CHROOT_DIR}/etc/apt/sources.list" 'Removing APT sources for RELEASE and DEBUG...'
+fi
+
 ## Unnecessary services
 delete_file "${CHSERVICE_DIR}/dbus-org.freedesktop.resolve1.service" 'Disable resolvconf'
 delete_file "${CHSERVICE_DIR}/multi-user.target.wants/systemd-resolved.service" 'Disable resolvconf'
@@ -1053,7 +1058,7 @@ list_header "Generating SquashFS"
 list_entry
 /usr/bin/mksquashfs chroot "${CASPER_DIR}/filesystem.squashfs" \
 	-e boot \
-	-e var/cache \
+	-e var/cache/apt \
 	-e var/lib/apt/lists \
 	-e usr/share/backgrounds
 list_catch

@@ -600,7 +600,7 @@ if [[ "${BCLD_SOUNDCHECK}" -eq 1 ]]; then
     list_item_pass 'BCLD Sound Check enabled!'
 fi
 
-print_item "Scanning sound cards (please wait)"
+print_item "Checking for sound card(s)"
 
 # Give systems time to start Pulse Audio
 for scan in $(/usr/bin/seq 1 20); do
@@ -629,7 +629,7 @@ if [[ -z "${BCLD_SINKS}" ]] \
 		list_item_fail 'Unable to detect any sound cards!'
 	fi
 else
-	list_item_pass "Sinks detected: ${BCLD_SINKS}"
+	list_item_pass "Sound card(s) found!"
 fi
 # SINKS found with pactl and output in JSON. Used throughout code
 SINKS_JSON="$(/usr/bin/pactl --format json list sinks)"
