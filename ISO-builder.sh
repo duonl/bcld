@@ -1058,6 +1058,7 @@ list_header "Generating SquashFS"
 list_entry
 /usr/bin/mksquashfs chroot "${CASPER_DIR}/filesystem.squashfs" \
 	-e boot \
+	-e var/cache/apt \
 	-e var/lib/apt/lists \
 	-e usr/share/backgrounds
 list_catch

@@ -4,8 +4,7 @@
 
 ## August
 * `2026-08-12 04:36:19` : [OAC-1516] Optimizations for PXE-boot (2)
-    * [OAC-1519] Reconfigure `debconf` inside [chroot.sh](./script/chroot.sh#L229) to initialize database and template
-    * [OAC-1519] Remove `/var/cache` from `mksquashfs` exclusions
+    * [OAC-1519] Replace `/var/cache` with `/var/cache/apt` in [mksquashfs exclusions](./ISO-builder.sh#L1061)
     * [OAC-1526] Adding `layerfs-path=filesystem.squashfs` as default variable in [Grub](./config/grub/grub.cfg.img) as `$SQUASHFS_PXE`
 * `2026-08-11 09:17:16` : [OAC-1516] Optimizations for PXE-boot
     * [OAC-1521] Updated [README](./README.md)
