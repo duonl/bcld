@@ -9,7 +9,7 @@
     * [OAC-1526] Adding `layerfs-path=filesystem.squashfs` as default variable in [Grub](./config/grub/grub.cfg.img) as `$SQUASHFS_PXE`
 * `2026-08-11 09:17:16` : [OAC-1516] Optimizations for PXE-boot
     * [OAC-1521] Updated [README](./README.md)
-    * [OAC-1517] Removed [APT sources file](./config/apt/sources.list) for RELEASE
+    * [OAC-1517] Removed [APT sources file](./config/apt/sources.list) for RELEASE and DEBUG
     * Minor kernel patch: `7.0.0-28` --> `7.0.0-29`
 
 ## Juli

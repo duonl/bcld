@@ -917,9 +917,9 @@ fi
 delete_file "${CHROOT_DIR}/etc/machine-id" 'Generalizing distro...'
 delete_file "${CHROOT_DIR}/etc/resolv.conf" 'Clearing resolv.conf...'
 
-if [[ ${BCLD_MODEL} = 'release' ]]; then
-    # Delete APT sources for RELEASE
-    delete_file "${CHROOT_DIR}/etc/apt/sources.list" 'Removing APT sources for RELEASE...'
+if [[ ${BCLD_MODEL} != 'test' ]]; then
+    # Delete APT sources for RELEASE and DEBUG
+    delete_file "${CHROOT_DIR}/etc/apt/sources.list" 'Removing APT sources for RELEASE and DEBUG...'
 fi
 
 ## Unnecessary services
