@@ -2,6 +2,11 @@
 
 ## 2026
 
+## September
+* `2026-09-04 02:54:29` : [OAC-1538] Added newer params to [bcld.cfg](./config/bcld/bcld.cfg)
+    * Minor kernel patch: `7.0.0-29` --> `7.0.0-31`
+    * Updated [vernum](./config/BUILD.conf) to `15.0-5`
+
 ## August
 * `2026-08-12 04:36:19` : [OAC-1516] Optimizations for PXE-boot (2)
     * [OAC-1519] Replace `/var/cache` with `/var/cache/apt` in [mksquashfs exclusions](./ISO-builder.sh#L1061)
