@@ -2,6 +2,12 @@
 
 ## 2026
 
+## November
+* `2026-11-10 03:52:11` : [OAC-1568] Enable BCLD mouse keys
+    - New BCLD parameter: `bcld.afname.mouse_keys`
+    - Set to '1' to enable mouse keys for Numpads
+    - Kernel patch: `7.0.0-29` --> `7.0.0-43`
+
 ## August
 * `2026-08-12 04:36:19` : [OAC-1516] Optimizations for PXE-boot (2)
     * [OAC-1519] Replace `/var/cache` with `/var/cache/apt` in [mksquashfs exclusions](./ISO-builder.sh#L1061)
