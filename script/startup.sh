@@ -21,7 +21,7 @@
 #
 # Copyright © 2024 Quintor B.V.
 #
-# BCLD is licensed under the EUPL, Version 1.2 or 
+# BCLD is licensed under the EUPL, Version 1.2 or
 # – as soon they will be approved by the European Commission -
 # subsequent versions of the EUPL (the "Licence");
 # You may not use BCLD except in compliance with the Licence.
@@ -147,6 +147,7 @@ function read_all_params() {
 	### Afname
 	readparam "${AFNAME_PARAM}" "${AFNAME_ALIAS}"
 	readparam "${BIG_MOUSE_PARAM}" "${BIG_MOUSE_ALIAS}"
+	readparam "${KB_MOUSE_PARAM}" "${KB_MOUSE_ALIAS}"
 	readparam "${LEFT_MOUSE_PARAM}" "${LEFT_MOUSE_ALIAS}"
 	readparam "${RESTART_PARAM}" "${RESTART_ALIAS}"
 	readparam "${SHUTDOWN_PARAM}" "${SHUTDOWN_ALIAS}"
