@@ -1,0 +1,36 @@
+// XKB key types for BCLD diacritics (bcld.afname.diacritics)
+// Adds a 5th level for Ctrl (or Ctrl+Shift) to the standard 4th level behaviour
+// Loaded by Xconfigure.sh: setxkbmap -types 'complete+bcld(ctrl)'
+
+partial default xkb_types "ctrl" {
+    virtual_modifiers LevelThree;
+
+    // Ctrl gives level 5 (used for Ctrl+,)
+    type "BCLD_CTRL" {
+        modifiers = Shift + LevelThree + Control;
+        map[Shift] = Level2;
+        map[LevelThree] = Level3;
+        map[Shift+LevelThree] = Level4;
+        map[Control] = Level5;
+        level_name[Level1] = "Base";
+        level_name[Level2] = "Shift";
+        level_name[Level3] = "AltGr";
+        level_name[Level4] = "Shift AltGr";
+        level_name[Level5] = "Ctrl";
+    };
+
+    // Ctrl+Shift gives level 5 (used for Ctrl+Shift+& and Ctrl+Shift+?)
+    // Ctrl without Shift stays on level 1 (normal behaviour)
+    type "BCLD_CTRLSHIFT" {
+        modifiers = Shift + LevelThree + Control;
+        map[Shift] = Level2;
+        map[LevelThree] = Level3;
+        map[Shift+LevelThree] = Level4;
+        map[Control+Shift] = Level5;
+        level_name[Level1] = "Base";
+        level_name[Level2] = "Shift";
+        level_name[Level3] = "AltGr";
+        level_name[Level4] = "Shift AltGr";
+        level_name[Level5] = "Ctrl Shift";
+    };
+};

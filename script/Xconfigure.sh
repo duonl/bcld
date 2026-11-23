@@ -97,7 +97,21 @@ log_first 'Checking keyboard settings...'
 # Bindings
 
 ## Xkbmap for disabling TTY switching
-/usr/bin/setxkbmap -option srvrkeys:none
+## Enabling diacritics on BCLD through BCLD parameter
+## By default diacritics are disabled
+if [[ "${BCLD_DIACRITICS}" -eq 1 ]]; then
+    if /usr/bin/setxkbmap -layout us -variant intl -option srvrkeys:none \
+        -types 'complete+bcld(ctrl)' \
+        -symbols 'pc+us(intl)+inet(evdev)+srvrkeys(none)+bcld(redirect)'; then
+        log_item 'Diacritics enabled: us(intl) + BCLD redirects'
+    else
+        log_item 'Diacritics could not be enabled, falling back to default keymap!'
+        /usr/bin/setxkbmap -option srvrkeys:none
+    fi
+else
+    /usr/bin/setxkbmap -option srvrkeys:none
+fi
+
 
 ## Escaping
 if [[ "${BCLD_MODEL}" != 'debug' ]]; then

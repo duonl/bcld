@@ -1,6 +1,11 @@
 # Release Information
 
 ## 2026
+## November
+* `2026-11-23 11:01:00` : [OAC-1582] New diacritics feature, enabling with new param to [bcld.cfg](./config/bcld/bcld.cfg)
+    - New BCLD parameter: `bcld.afname.diacritics`
+    - Set to '1' for us(intl) dead keys and Ctrl+, / Ctrl+Shift+& / Ctrl+Shift+? redirects
+    - New files: [.XCompose](./config/X11/xcompose/.XCompose), [xkb types](./config/X11/xkb/types/bcld), [xkb symbols](./config/X11/xkb/symbols/bcld)
 
 ## September
 * `2026-09-04 02:54:29` : [OAC-1538] Added newer params to [bcld.cfg](./config/bcld/bcld.cfg)

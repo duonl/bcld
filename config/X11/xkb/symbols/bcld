@@ -1,0 +1,39 @@
+// XKB symbols for BCLD diacritics (bcld.afname.diacritics)
+// Recreates the MS Word shortcuts for ç, ß and ¿ without key injection
+// Level 5 (Ctrl / Ctrl+Shift, see types/bcld) redirects to an unused keycode
+// The redirect clears Ctrl/Shift, so the app's input method accepts the dead key
+// Loaded by Xconfigure.sh: setxkbmap -symbols '...+bcld(redirect)'
+// Levels 1-4 are equal to us(intl)
+
+partial alphanumeric_keys
+xkb_symbols "redirect" {
+
+    // Ctrl+, then c gives ç (dead_cedilla, default compose rule)
+    key <AB08> {
+        type[Group1] = "BCLD_CTRL",
+        symbols[Group1] = [ comma, less, ccedilla, Ccedilla, dead_cedilla ],
+        actions[Group1] = [ NoAction(), NoAction(), NoAction(), NoAction(),
+                        RedirectKey(key=<I248>, clearmods=Control) ]
+    };
+
+    // Ctrl+Shift+& then s gives ß (dead_stroke, rule in .XCompose)
+    key <AE07> {
+        type[Group1] = "BCLD_CTRLSHIFT",
+        symbols[Group1] = [ 7, ampersand, onehalf, dead_horn, dead_stroke ],
+        actions[Group1] = [ NoAction(), NoAction(), NoAction(), NoAction(),
+                            RedirectKey(key=<I190>, clearmods=Control+Shift) ]
+    };
+
+    // Ctrl+Shift+? gives ¿ (Alt is disabled, so Alt+Ctrl+Shift+? works too)
+    key <AB10> {
+        type[Group1] = "BCLD_CTRLSHIFT",
+        symbols[Group1] = [ slash, question, questiondown, dead_hook, questiondown ],
+        actions[Group1] = [ NoAction(), NoAction(), NoAction(), NoAction(),
+                            RedirectKey(key=<I183>, clearmods=Control+Shift) ]
+    };
+
+    // Redirect targets: unused keycodes, not blanked by .xmodmap
+    key <I248> { [ dead_cedilla ] };
+    key <I190> { [ dead_stroke  ] };
+    key <I183> { [ questiondown ] };
+};

@@ -571,6 +571,11 @@ function copy_post_configs () {
     copy_file "${CONFIG_DIR}/rsyslog/70-bcld-log.conf" "${CHOME_DIR}/70-bcld-log.conf"
 	copy_file "${CONFIG_DIR}/X11/xbindkeys/.xbindkeysrc" "${CHOME_DIR}"
     copy_file "${CONFIG_DIR}/X11/xmodmap/.xmodmap" "${CHOME_DIR}"
+
+    copy_file "${CONFIG_DIR}/X11/xcompose/.XCompose" "${CHOME_DIR}"
+    copy_file "${CONFIG_DIR}/X11/xkb/symbols/bcld" "${CHROOT_DIR}/usr/share/X11/xkb/symbols/bcld"
+    copy_file "${CONFIG_DIR}/X11/xkb/types/bcld" "${CHROOT_DIR}/usr/share/X11/xkb/types/bcld"
+
     copy_file "${CONFIG_DIR}/X11/xscreensaver/.xscreensaver" "${CHOME_DIR}"
 	copy_file "${SCRIPT_DIR}/rsyslogger.sh" "${CHROOT_BIN}"
 	
