@@ -1,13 +1,12 @@
 # Release Information
 
 ## 2026
+
 ## November
 * `2026-11-23 11:01:00` : [OAC-1582] New diacritics feature, enabling with new param to [bcld.cfg](./config/bcld/bcld.cfg)
     - New BCLD parameter: `bcld.afname.diacritics`
     - Set to '1' for us(intl) dead keys and Ctrl+, / Ctrl+Shift+& / Ctrl+Shift+? redirects
     - New files: [.XCompose](./config/X11/xcompose/.XCompose), [xkb types](./config/X11/xkb/types/bcld), [xkb symbols](./config/X11/xkb/symbols/bcld)
-
-## November
 * `2026-11-10 03:52:11` : [OAC-1568] Enable BCLD mouse keys
     - New BCLD parameter: `bcld.afname.mouse_keys`
     - Set to '1' to enable mouse keys for Numpads
