@@ -7,6 +7,12 @@
     - Set to '1' for us(intl) dead keys and Ctrl+, / Ctrl+Shift+& / Ctrl+Shift+? redirects
     - New files: [.XCompose](./config/X11/xcompose/.XCompose), [xkb types](./config/X11/xkb/types/bcld), [xkb symbols](./config/X11/xkb/symbols/bcld)
 
+## November
+* `2026-11-10 03:52:11` : [OAC-1568] Enable BCLD mouse keys
+    - New BCLD parameter: `bcld.afname.mouse_keys`
+    - Set to '1' to enable mouse keys for Numpads
+    - Kernel patch: `7.0.0-31` --> `7.0.0-43`
+    - Updated [vernum](./config/BUILD.conf) to `15.1-0` ("Beowulf")
 ## September
 * `2026-09-04 02:54:29` : [OAC-1538] Added newer params to [bcld.cfg](./config/bcld/bcld.cfg)
     * Minor kernel patch: `7.0.0-29` --> `7.0.0-31`
