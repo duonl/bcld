@@ -138,6 +138,14 @@ if [[ "${BCLD_VENDOR}" == 'vendorless' ]]; then
     /usr/bin/xmodmap -e "pointer = 1 3 2"
 fi
 
+if [[ "${BCLD_KB_MOUSE}" -eq 1 ]]; then
+    # This feature allows for using Numpad keys as mouse buttons
+    /usr/bin/echo -e "\nBCLD_KB_MOUSE detected!"
+    /usr/bin/echo "Enabling Numpad mouse keys..."
+    /usr/bin/xkbset m
+    /usr/bin/xkbset exp =m  # Disables auto expiry
+fi
+
 if [[ "${BCLD_LEFT_MOUSE}" -eq 1 ]]; then
     # This feature allows for swapping mouse buttons for the left-handed
     # xmodmap will automatically detect the current mouse and only change the appropriate buttons
