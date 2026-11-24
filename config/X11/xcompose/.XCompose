@@ -1,0 +1,8 @@
+# XCompose config for BCLD diacritic ß (bcld.afname.diacritics)
+# Rule is only triggered through dead key dead_stroke
+
+# Include the default compose table
+include "%L"
+
+# dead_stroke + s gives ß. dead_stroke is produced by Ctrl+Shift+& through XKB redirect, see symbols/bcld
+<dead_stroke> <s> : "ß"
